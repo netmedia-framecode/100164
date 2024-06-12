@@ -16,7 +16,7 @@ function smtp_mail($to, $subject, $message, $from_name, $from, $cc, $bcc, $debug
   $mail->ClearCCs();
   $mail->ClearBCCs();
   $mail->SMTPAuth         = true;
-  $mail->Host             = "tugasakhir.my.id;103.131.51.14";
+  $mail->Host             = "tugasakhir.my.id;103.16.198.157";
   $mail->Port             = 587;
   $mail->SMTPSecure       = "tls";
   $mail->Username         = "no-reply@tugasakhir.my.id";

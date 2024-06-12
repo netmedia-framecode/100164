@@ -32,4 +32,4 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
-<script src="<?= $baseURL; ?>/assets/ckeditor/ckeditor.js"></script>
+<script src="<?= $baseURL; ?>assets/ckeditor/ckeditor.js"></script>

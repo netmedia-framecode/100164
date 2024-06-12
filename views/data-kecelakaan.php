@@ -14,6 +14,7 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
     <h1 class="h3 mb-0 text-gray-800"><?= $_SESSION["project_gis_korlantas"]["name_page"] ?></h1>
     <div class="d-none d-sm-inline-block">
       <a href="#" class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#tambah"><i class="bi bi-plus-lg"></i> Tambah</a>
+      <a href="#" class="btn btn-sm btn-success shadow-sm" data-toggle="modal" data-target="#import"><i class="bi bi-file-arrow-up"></i> Import</a>
       <a href="export" class="btn btn-sm btn-success shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Export</a>
     </div>
   </div>
@@ -775,6 +776,34 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
           <div class="modal-footer justify-content-center border-top-0">
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
             <button type="submit" name="add_laka" class="btn btn-primary btn-sm">Tambah</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="import" tabindex="-1" aria-labelledby="tambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0 shadow">
+          <h5 class="modal-title" id="tambahLabel">Tambah Kecelakaan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="files">Upload Data Kecelakaan</label>
+              <div class="custom-file">
+                <input type="file" name="files-laka" class="custom-file-input" id="customFile" accept=".xlsx, .xls">
+                <label class="custom-file-label" for="customFile">Pilih file</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center border-top-0">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
+            <button type="submit" name="import_laka" class="btn btn-primary btn-sm">Tambah</button>
           </div>
         </form>
       </div>

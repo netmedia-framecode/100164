@@ -36,7 +36,7 @@ require_once("../templates/views_top.php"); ?>
             </tr>
           </tfoot>
           <tbody>
-            <?php foreach ($views_polres as $data) { ?>
+            <?php foreach ($views_polres_dash as $data) { ?>
               <tr>
                 <td>
                   <p><?= $data['nama_polres'] ?></p>

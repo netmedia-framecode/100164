@@ -4,6 +4,7 @@
 error_reporting(~E_NOTICE & ~E_DEPRECATED);
 require_once("db_connect.php");
 require_once(__DIR__ . "/../models/sql.php");
+require_once(__DIR__ . "/../assets/vendor/autoload.php");
 require_once("functions.php");
 
 $messageTypes = ["success", "info", "warning", "danger", "dark"];
@@ -58,7 +59,7 @@ if (isset($_POST["kontak"])) {
   $validated_post = array_map(function ($value) use ($conn) {
     return valid($conn, $value);
   }, $_POST);
-  if (kontak($conn, $validated_post, $action = 'insert') > 0) {
+  if (kontak($conn, $validated_post, $action = 'insert', $deskripsi = null) > 0) {
     $message = "Pesan anda berhasil terkirim.";
     $message_type = "success";
     alert($message, $message_type);
@@ -914,7 +915,19 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
       $message = "Data kecelakaan berhasil ditambahkan.";
       $message_type = "success";
       alert($message, $message_type);
-      header("Location: pemetaan");
+      header("Location: data-kecelakaan");
+      exit();
+    }
+  }
+  if (isset($_POST["import_laka"])) {
+    $validated_post = array_map(function ($value) use ($conn) {
+      return valid($conn, $value);
+    }, $_POST);
+    if (laka($conn, $validated_post, $action = 'import') > 0) {
+      $message = "Data kecelakaan berhasil diimport.";
+      $message_type = "success";
+      alert($message, $message_type);
+      header("Location: data-kecelakaan");
       exit();
     }
   }
@@ -1027,4 +1040,31 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
 
   $select_kontak = "SELECT * FROM kontak";
   $views_kontak = mysqli_query($conn, $select_kontak);
+  if (isset($_POST["reply_kontak"])) {
+    $validated_post = array_map(function ($value) use ($conn) {
+      return valid($conn, $value);
+    }, $_POST);
+    if (kontak($conn, $validated_post, $action = 'reply', $deskripsi = $_POST['deskripsi']) > 0) {
+      $message = "Berhasil mengirim pesan balasan.";
+      $message_type = "success";
+      alert($message, $message_type);
+      header("Location: kontak");
+      exit();
+    }
+  }
+  if (isset($_POST["delete_kontak"])) {
+    $validated_post = array_map(function ($value) use ($conn) {
+      return valid($conn, $value);
+    }, $_POST);
+    if (kontak($conn, $validated_post, $action = 'delete', $deskripsi = null) > 0) {
+      $message = "Berhasil menghapus pesan dari pengunjung.";
+      $message_type = "success";
+      alert($message, $message_type);
+      header("Location: kontak");
+      exit();
+    }
+  }
+
+  $select_polres_dash = "SELECT * FROM polres";
+  $views_polres_dash = mysqli_query($conn, $select_polres_dash);
 }

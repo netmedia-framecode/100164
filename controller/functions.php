@@ -59,16 +59,138 @@ function compressImage($source, $destination, $quality)
   return $destination;
 }
 
-function kontak($conn, $data, $action)
+function kontak($conn, $data, $action, $deskripsi)
 {
   if ($action == "insert") {
     $sql = "INSERT INTO kontak(name,email,subject,message) VALUES('$data[nama]', '$data[email]', '$data[subject]', '$data[message]')";
   }
 
-  if ($action == "update") {
+  if ($action == "reply") {
+    require_once("mail.php");
+    $to       = $data['email'];
+    $subject  = "Reply - $data[subject] [GIS Korlantas]";
+    $message  = "<!doctype html>
+    <html>
+      <head>
+          <meta name='viewport' content='width=device-width'>
+          <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+          <title>Reply - $data[subject] [GIS Korlantas]</title>
+          <style>
+              @media only screen and (max-width: 620px) {
+                  table[class='body'] h1 {
+                      font-size: 28px !important;
+                      margin-bottom: 10px !important;}
+                  table[class='body'] p,
+                  table[class='body'] ul,
+                  table[class='body'] ol,
+                  table[class='body'] td,
+                  table[class='body'] span,
+                  table[class='body'] a {
+                      font-size: 16px !important;}
+                  table[class='body'] .wrapper,
+                  table[class='body'] .article {
+                      padding: 10px !important;}
+                  table[class='body'] .content {
+                      padding: 0 !important;}
+                  table[class='body'] .container {
+                      padding: 0 !important;
+                      width: 100% !important;}
+                  table[class='body'] .main {
+                      border-left-width: 0 !important;
+                      border-radius: 0 !important;
+                      border-right-width: 0 !important;}
+                  table[class='body'] .btn table {
+                      width: 100% !important;}
+                  table[class='body'] .btn a {
+                      width: 100% !important;}
+                  table[class='body'] .img-responsive {
+                      height: auto !important;
+                      max-width: 100% !important;
+                      width: auto !important;}}
+              @media all {
+                  .ExternalClass {
+                      width: 100%;}
+                  .ExternalClass,
+                  .ExternalClass p,
+                  .ExternalClass span,
+                  .ExternalClass font,
+                  .ExternalClass td,
+                  .ExternalClass div {
+                      line-height: 100%;}
+                  .apple-link a {
+                      color: inherit !important;
+                      font-family: inherit !important;
+                      font-size: inherit !important;
+                      font-weight: inherit !important;
+                      line-height: inherit !important;
+                      text-decoration: none !important;
+                  .btn-primary table td:hover {
+                      background-color: #d5075d !important;}
+                  .btn-primary a:hover {
+                      background-color: #000 !important;
+                      border-color: #000 !important;
+                      color: #fff !important;}}
+          </style>
+      </head>
+      <body class style='background-color: #e1e3e5; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;'>
+          <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='body' style='border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; background-color: #e1e3e5; width: 100%;' width='100%' bgcolor='#e1e3e5'>
+          <tr>
+              <td style='font-family: sans-serif; font-size: 14px; vertical-align: top;' valign='top'>&nbsp;</td>
+              <td class='container' style='font-family: sans-serif; font-size: 14px; vertical-align: top; display: block; max-width: 580px; padding: 10px; width: 580px; margin: 0 auto;' width='580' valign='top'>
+              <div class='content' style='box-sizing: border-box; display: block; margin: 0 auto; max-width: 580px; padding: 10px;'>
+      
+                  <!-- START CENTERED WHITE CONTAINER -->
+                  <table role='presentation' class='main' style='border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; background: #ffffff; border-radius: 3px; width: 100%;' width='100%'>
+      
+                  <!-- START MAIN CONTENT AREA -->
+                  <tr>
+                      <td class='wrapper' style='font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;' valign='top'>
+                      <table role='presentation' border='0' cellpadding='0' cellspacing='0' style='border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; width: 100%;' width='100%'>
+                          <tr>
+                          <td style='font-family: sans-serif; font-size: 14px; vertical-align: top;' valign='top'>
+                              <p style='font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;'>Hi " . $data['name'] . ",</p>
+                              <p style='font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;'>$deskripsi</p>
+                              <p style='font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 25px;'>Terima kasih telah mengirim pesan di GIS Korlantas.</p>
+                              <small>Peringatan! Ini adalah pesan otomatis sehingga Anda tidak dapat membalas pesan ini.</small>
+                          </td>
+                          </tr>
+                      </table>
+                      </td>
+                  </tr>
+      
+                  <!-- END MAIN CONTENT AREA -->
+                  </table>
+                  
+                  <!-- START FOOTER -->
+                  <div class='footer' style='clear: both; margin-top: 10px; text-align: center; width: 100%;'>
+                  <table role='presentation' border='0' cellpadding='0' cellspacing='0' style='border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; width: 100%;' width='100%'>
+                      <tr>
+                      <td class='content-block' style='font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #9a9ea6; font-size: 12px; text-align: center;' valign='top' align='center'>
+                          <span class='apple-link' style='color: #9a9ea6; font-size: 12px; text-align: center;'>Workarea Jln. S. K. Lerik, Kota Baru, Kupang, NTT, Indonesia. (0380) 8438423</span>
+                      </td>
+                      </tr>
+                      <tr>
+                      <td class='content-block powered-by' style='font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #9a9ea6; font-size: 12px; text-align: center;' valign='top' align='center'>
+                          Powered by <a href='https://www.netmedia-framecode.com' style='color: #9a9ea6; font-size: 12px; text-align: center; text-decoration: none;'>Netmedia Framecode</a>.
+                      </td>
+                      </tr>
+                  </table>
+                  </div>
+                  <!-- END FOOTER -->
+      
+              <!-- END CENTERED WHITE CONTAINER -->
+              </div>
+              </td>
+              <td style='font-family: sans-serif; font-size: 14px; vertical-align: top;' valign='top'>&nbsp;</td>
+          </tr>
+          </table>
+      </body>
+    </html>";
+    smtp_mail($to, $subject, $message, "", "", 0, 0, true);
   }
 
   if ($action == "delete") {
+    $sql = "DELETE FROM kontak WHERE id_kontak='$data[id_kontak]'";
   }
 
   mysqli_query($conn, $sql);
@@ -1411,6 +1533,17 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
     return mysqli_affected_rows($conn);
   }
 
+  function convertExcelDateToDate($excelDate)
+  {
+    $seconds = ($excelDate - 25569) * 86400;
+    return gmdate("Y-m-d", $seconds);
+  }
+
+  function removeNonNumeric($data)
+  {
+    return preg_replace('/\D/', '', $data);
+  }
+
   function laka($conn, $data, $action)
   {
     if ($action == "insert") {
@@ -1475,6 +1608,230 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         '$data[keterangan_kerugian]',
         '$data[jam_kejadian]'
       )";
+      mysqli_query($conn, $sql);
+    }
+
+    if ($action == "import") {
+      require '../assets/PHPExcel/Classes/PHPExcel.php';
+      require '../assets/PHPExcel/Classes/PHPExcel/Calculation.php';
+      require '../assets/PHPExcel/Classes/PHPExcel/Cell.php';
+
+      // Ambil file yang diupload
+      $nama_file = $_FILES['files-laka']['name'];
+      $tmp_file = $_FILES['files-laka']['tmp_name'];
+
+      // Cek apakah file yang diupload adalah file Excel
+      $ext = pathinfo($nama_file, PATHINFO_EXTENSION);
+      if ($ext != 'xls' && $ext != 'xlsx') {
+        $message = "Hanya file Excel yang diperbolehkan!";
+        $message_type = "danger";
+        alert($message, $message_type);
+        return false;
+      }
+
+      // Load file Excel menggunakan PHPExcel
+      $objPHPExcel = PHPExcel_IOFactory::load($tmp_file);
+
+      // Ambil data dari file Excel
+      $sheet = $objPHPExcel->getSheet(0);
+      $highestRow = $sheet->getHighestRow();
+      $highestColumn = $sheet->getHighestColumn();
+
+      // Loop untuk membaca data
+      for ($row = 2; $row <= $highestRow; $row++) {
+        $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
+
+        // Data dari tabel lain yang berelasi dengan tabel laka
+        $id_informasi_khusus = $rowData[0][8];
+        $id_kondisi_cahaya = $rowData[0][10];
+        $id_cuaca = $rowData[0][11];
+        $id_tingkat_kecelakaan = $rowData[0][3];
+        $id_kecelakaan_menonjol = $rowData[0][12];
+        $id_fungsi_jalan = $rowData[0][14];
+        $id_kelas_jalan = $rowData[0][15];
+        $id_tipe_jalan = $rowData[0][16];
+        $id_permukaan_jalan = $rowData[0][17];
+        $id_kemiringan_jalan = $rowData[0][19];
+        $id_status_jalan = $rowData[0][20];
+        $id_polres = $rowData[0][1];
+        $id_titik_rawan = $rowData[0][13];
+
+        // Data tabel laka
+        $no_laka = valid($conn, $rowData[0][0]);
+        $waktu_kejadian = valid($conn, $rowData[0][2]);
+        $jumlah_meninggal = valid($conn, $rowData[0][4]);
+        $jumlah_luka_berat = valid($conn, $rowData[0][5]);
+        $jumlah_luka_ringan = valid($conn, $rowData[0][6]);
+        $titik_acuan = valid($conn, $rowData[0][7]);
+        $tipe_kecelakaan = valid($conn, $rowData[0][9]);
+        $batas_kecepatan = valid($conn, $rowData[0][18]);
+        $nilai_kerugian_non_kendaraan = valid($conn, $rowData[0][21]);
+        $nilai_kerugian_kendaraan = valid($conn, $rowData[0][22]);
+        $keterangan_kerugian = valid($conn, $rowData[0][23]);
+
+        // Ambil data ID dari tabel lain dengan data yang sesuai di excel
+        $check_informasi_khusus = "SELECT * FROM informasi_khusus WHERE informasi_khusus LIKE '%$id_informasi_khusus%'";
+        $data_informasi_khusus = mysqli_query($conn, $check_informasi_khusus);
+        if (mysqli_num_rows($data_informasi_khusus) > 0) {
+          $data_informasi_khusus = mysqli_fetch_assoc($data_informasi_khusus);
+          $id_informasi_khusus = $data_informasi_khusus['id_informasi_khusus'];
+        } else {
+          $id_informasi_khusus = 1;
+        }
+        $check_kondisi_cahaya = "SELECT * FROM kondisi_cahaya WHERE kondisi_cahaya LIKE '%$id_kondisi_cahaya%'";
+        $data_kondisi_cahaya = mysqli_query($conn, $check_kondisi_cahaya);
+        if (mysqli_num_rows($data_kondisi_cahaya) > 0) {
+          $data_kondisi_cahaya = mysqli_fetch_assoc($data_kondisi_cahaya);
+          $id_kondisi_cahaya = $data_kondisi_cahaya['id_kondisi_cahaya'];
+        } else {
+          $id_kondisi_cahaya = 1;
+        }
+        $check_cuaca = "SELECT * FROM cuaca WHERE kondisi LIKE '%$id_cuaca%'";
+        $data_cuaca = mysqli_query($conn, $check_cuaca);
+        if (mysqli_num_rows($data_cuaca) > 0) {
+          $data_cuaca = mysqli_fetch_assoc($data_cuaca);
+          $id_cuaca = $data_cuaca['id_cuaca'];
+        } else {
+          $id_cuaca = 3;
+        }
+        $check_tingkat_kecelakaan = "SELECT * FROM tingkat_kecelakaan WHERE tingkat_kecelakaan LIKE '%$id_tingkat_kecelakaan%'";
+        $data_tingkat_kecelakaan = mysqli_query($conn, $check_tingkat_kecelakaan);
+        if (mysqli_num_rows($data_tingkat_kecelakaan) > 0) {
+          $data_tingkat_kecelakaan = mysqli_fetch_assoc($data_tingkat_kecelakaan);
+          $id_tingkat_kecelakaan = $data_tingkat_kecelakaan['id_tingkat_kecelakaan'];
+        } else {
+          $id_tingkat_kecelakaan = 1;
+        }
+        $check_kecelakaan_menonjol = "SELECT * FROM kecelakaan_menonjol WHERE kecelakaan_menonjol LIKE '%$id_kecelakaan_menonjol%'";
+        $data_kecelakaan_menonjol = mysqli_query($conn, $check_kecelakaan_menonjol);
+        if (mysqli_num_rows($data_kecelakaan_menonjol) > 0) {
+          $data_kecelakaan_menonjol = mysqli_fetch_assoc($data_kecelakaan_menonjol);
+          $id_kecelakaan_menonjol = $data_kecelakaan_menonjol['id_kecelakaan_menonjol'];
+        } else {
+          $id_kecelakaan_menonjol = 1;
+        }
+        $check_fungsi_jalan = "SELECT * FROM fungsi_jalan WHERE fungsi_jalan LIKE '%$id_fungsi_jalan%'";
+        $data_fungsi_jalan = mysqli_query($conn, $check_fungsi_jalan);
+        if (mysqli_num_rows($data_fungsi_jalan) > 0) {
+          $data_fungsi_jalan = mysqli_fetch_assoc($data_fungsi_jalan);
+          $id_fungsi_jalan = $data_fungsi_jalan['id_fungsi_jalan'];
+        } else {
+          $id_fungsi_jalan = 1;
+        }
+        $check_kelas_jalan = "SELECT * FROM kelas_jalan WHERE kelas_jalan LIKE '%$id_kelas_jalan%'";
+        $data_kelas_jalan = mysqli_query($conn, $check_kelas_jalan);
+        if (mysqli_num_rows($data_kelas_jalan) > 0) {
+          $data_kelas_jalan = mysqli_fetch_assoc($data_kelas_jalan);
+          $id_kelas_jalan = $data_kelas_jalan['id_kelas_jalan'];
+        } else {
+          $id_kelas_jalan = 1;
+        }
+        $check_tipe_jalan = "SELECT * FROM tipe_jalan WHERE tipe_jalan LIKE '%$id_tipe_jalan%'";
+        $data_tipe_jalan = mysqli_query($conn, $check_tipe_jalan);
+        if (mysqli_num_rows($data_tipe_jalan) > 0) {
+          $data_tipe_jalan = mysqli_fetch_assoc($data_tipe_jalan);
+          $id_tipe_jalan = $data_tipe_jalan['id_tipe_jalan'];
+        } else {
+          $id_tipe_jalan = 1;
+        }
+        $check_permukaan_jalan = "SELECT * FROM permukaan_jalan WHERE permukaan_jalan LIKE '%$id_permukaan_jalan%'";
+        $data_permukaan_jalan = mysqli_query($conn, $check_permukaan_jalan);
+        if (mysqli_num_rows($data_permukaan_jalan) > 0) {
+          $data_permukaan_jalan = mysqli_fetch_assoc($data_permukaan_jalan);
+          $id_permukaan_jalan = $data_permukaan_jalan['id_permukaan_jalan'];
+        } else {
+          $id_permukaan_jalan = 1;
+        }
+        $check_kemiringan_jalan = "SELECT * FROM kemiringan_jalan WHERE kemiringan_jalan LIKE '%$id_kemiringan_jalan%'";
+        $data_kemiringan_jalan = mysqli_query($conn, $check_kemiringan_jalan);
+        if (mysqli_num_rows($data_kemiringan_jalan) > 0) {
+          $data_kemiringan_jalan = mysqli_fetch_assoc($data_kemiringan_jalan);
+          $id_kemiringan_jalan = $data_kemiringan_jalan['id_kemiringan_jalan'];
+        } else {
+          $id_kemiringan_jalan = 1;
+        }
+        $check_status_jalan = "SELECT * FROM status_jalan WHERE status_jalan LIKE '%$id_status_jalan%'";
+        $data_status_jalan = mysqli_query($conn, $check_status_jalan);
+        if (mysqli_num_rows($data_status_jalan) > 0) {
+          $data_status_jalan = mysqli_fetch_assoc($data_status_jalan);
+          $id_status_jalan = $data_status_jalan['id_status_jalan'];
+        } else {
+          $id_status_jalan = 1;
+        }
+        $check_nama_polres = "SELECT * FROM polres WHERE nama_polres LIKE '%$id_polres%'";
+        $data_polres = mysqli_query($conn, $check_nama_polres);
+        if (mysqli_num_rows($data_polres) > 0) {
+          $data_polres = mysqli_fetch_assoc($data_polres);
+          $id_polres = $data_polres['id_polres'];
+        } else {
+          $id_polres = 1;
+        }
+        $check_titik_rawan = "SELECT * FROM titik_rawan WHERE nama_jalan_rawan LIKE '%$id_titik_rawan%'";
+        $data_titik_rawan = mysqli_query($conn, $check_titik_rawan);
+        if (mysqli_num_rows($data_titik_rawan) > 0) {
+          $data_titik_rawan = mysqli_fetch_assoc($data_titik_rawan);
+          $id_titik_rawan = $data_titik_rawan['id_titik_rawan'];
+        } else {
+          $id_titik_rawan = 1;
+        }
+        $tanggal_kejadian = convertExcelDateToDate($waktu_kejadian);
+        $nilai_kerugian_non_kendaraan = removeNonNumeric($nilai_kerugian_non_kendaraan);
+        $nilai_kerugian_kendaraan = removeNonNumeric($nilai_kerugian_kendaraan);
+
+        // Simpan data ke database
+        $sql = "INSERT INTO laka (
+          id_informasi_khusus,
+          id_kondisi_cahaya,
+          id_cuaca,
+          id_tingkat_kecelakaan,
+          id_kecelakaan_menonjol,
+          id_fungsi_jalan,
+          id_kelas_jalan,
+          id_tipe_jalan,
+          id_permukaan_jalan,
+          id_kemiringan_jalan,
+          id_status_jalan,
+          id_polres,
+          no_laka,
+          tanggal_kejadian,
+          jumlah_meninggal,
+          jumlah_luka_berat,
+          jumlah_luka_ringan,
+          titik_acuan,
+          tipe_kecelakaan,
+          batas_kecepatan_dilokasi,
+          nilai_kerugian_non_kendaraan,
+          nilai_kerugian_kendaraan,
+          keterangan_kerugian,
+          id_titik_rawan
+        ) VALUES (
+          '$id_informasi_khusus',
+          '$id_kondisi_cahaya',
+          '$id_cuaca',
+          '$id_tingkat_kecelakaan',
+          '$id_kecelakaan_menonjol',
+          '$id_fungsi_jalan',
+          '$id_kelas_jalan',
+          '$id_tipe_jalan',
+          '$id_permukaan_jalan',
+          '$id_kemiringan_jalan',
+          '$id_status_jalan',
+          '$id_polres',
+          '$no_laka',
+          '$tanggal_kejadian',
+          '$jumlah_meninggal',
+          '$jumlah_luka_berat',
+          '$jumlah_luka_ringan',
+          '$titik_acuan',
+          '$tipe_kecelakaan',
+          '$batas_kecepatan',
+          '$nilai_kerugian_non_kendaraan',
+          '$nilai_kerugian_kendaraan',
+          '$keterangan_kerugian',
+          '$id_titik_rawan'
+        )";
+        mysqli_query($conn, $sql);
+      }
     }
 
     if ($action == "update") {
@@ -1489,13 +1846,14 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         }
       }
       $sql = "UPDATE laka SET id_informasi_khusus='$data[id_informasi_khusus]', id_kondisi_cahaya='$data[id_kondisi_cahaya]', id_cuaca='$data[id_cuaca]', id_tingkat_kecelakaan='$data[id_tingkat_kecelakaan]', id_kecelakaan_menonjol='$data[id_kecelakaan_menonjol]', id_fungsi_jalan='$data[id_fungsi_jalan]', id_kelas_jalan='$data[id_kelas_jalan]', id_tipe_jalan='$data[id_tipe_jalan]', id_permukaan_jalan='$data[id_permukaan_jalan]', id_kemiringan_jalan='$data[id_kemiringan_jalan]', id_status_jalan='$data[id_status_jalan]', id_polres='$data[id_polres]', no_laka='$data[no_laka]', tanggal_kejadian='$data[tanggal_kejadian]', jumlah_meninggal='$data[jumlah_meninggal]', jumlah_luka_berat='$data[jumlah_luka_berat]', jumlah_luka_ringan='$data[jumlah_luka_ringan]', titik_acuan='$data[titik_acuan]', tipe_kecelakaan='$data[tipe_kecelakaan]', id_titik_rawan='$data[id_titik_rawan]', batas_kecepatan_dilokasi='$data[batas_kecepatan_dilokasi]', nilai_kerugian_non_kendaraan='$data[nilai_kerugian_non_kendaraan]', nilai_kerugian_kendaraan='$data[nilai_kerugian_kendaraan]', keterangan_kerugian='$data[keterangan_kerugian]', jam_kejadian='$data[jam_kejadian]' WHERE id_laka='$data[id_laka]'";
+      mysqli_query($conn, $sql);
     }
 
     if ($action == "delete") {
       $sql = "DELETE FROM laka WHERE id_laka='$data[id_laka]'";
+      mysqli_query($conn, $sql);
     }
 
-    mysqli_query($conn, $sql);
     return mysqli_affected_rows($conn);
   }
 

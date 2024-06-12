@@ -670,12 +670,12 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
                 <option value="" selected>Pilih Polres</option>
                 <?php if (isset($_POST['id_polres'])) {
                   $id_polres = $_POST['id_polres'];
-                  foreach ($views_polres as $data_select_polres) {
+                  foreach ($views_polres_dash as $data_select_polres) {
                     $selected = ($data_select_polres['id_polres'] == $id_polres) ? 'selected' : ''; ?>
                     <option value="<?= $data_select_polres['id_polres'] ?>" <?= $selected ?>><?= $data_select_polres['nama_polres'] ?></option>
                   <?php }
                 } else {
-                  foreach ($views_polres as $data_select_polres) { ?>
+                  foreach ($views_polres_dash as $data_select_polres) { ?>
                     <option value="<?= $data_select_polres['id_polres'] ?>"><?= $data_select_polres['nama_polres'] ?></option>
                 <?php }
                 } ?>

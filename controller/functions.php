@@ -63,6 +63,7 @@ function kontak($conn, $data, $action, $deskripsi)
 {
   if ($action == "insert") {
     $sql = "INSERT INTO kontak(name,email,subject,message) VALUES('$data[nama]', '$data[email]', '$data[subject]', '$data[message]')";
+    mysqli_query($conn, $sql);
   }
 
   if ($action == "reply") {
@@ -191,9 +192,9 @@ function kontak($conn, $data, $action, $deskripsi)
 
   if ($action == "delete") {
     $sql = "DELETE FROM kontak WHERE id_kontak='$data[id_kontak]'";
+    mysqli_query($conn, $sql);
   }
 
-  mysqli_query($conn, $sql);
   return mysqli_affected_rows($conn);
 }
 

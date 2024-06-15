@@ -32,19 +32,39 @@ JOIN polres ON laka.id_polres=polres.id_polres
 JOIN titik_rawan ON laka.id_titik_rawan=titik_rawan.id_titik_rawan
 ";
 $views_laka = mysqli_query($conn, $select_laka);
-$select_polres = "SELECT * FROM polres JOIN laka ON polres.id_polres=laka.id_polres JOIN titik_rawan ON laka.id_titik_rawan=titik_rawan.id_titik_rawan GROUP BY polres.id_polres";
+$select_polres = "SELECT polres.*, COUNT(laka.id_laka) AS jumlah_laka
+  FROM polres
+  JOIN laka ON polres.id_polres = laka.id_polres
+  JOIN titik_rawan ON laka.id_titik_rawan = titik_rawan.id_titik_rawan
+  WHERE polres.id_polres != 1
+  GROUP BY polres.id_polres
+";
 $views_polres = mysqli_query($conn, $select_polres);
 $select_titik_rawan_maps_details = "SELECT titik_rawan.* FROM titik_rawan JOIN laka ON laka.id_titik_rawan=titik_rawan.id_titik_rawan";
 $views_titik_rawan_maps_details = mysqli_query($conn, $select_titik_rawan_maps_details);
 $select_titik_rawan_maps = "SELECT * FROM titik_rawan";
 $views_titik_rawan_maps = mysqli_query($conn, $select_titik_rawan_maps);
-$select_titik_rawan_overview = "SELECT titik_rawan.*, SUM(laka.jumlah_luka_ringan) AS total_jumlah_luka_ringan, SUM(laka.jumlah_luka_berat) AS total_jumlah_luka_berat, SUM(laka.jumlah_meninggal) AS total_jumlah_meninggal, COUNT(laka.id_laka) AS total_laka, polres.nama_polres
-                                  FROM titik_rawan
-                                  LEFT JOIN laka ON laka.id_titik_rawan = titik_rawan.id_titik_rawan
-                                  LEFT JOIN polres ON laka.id_polres = polres.id_polres
-                                  GROUP BY titik_rawan.id_titik_rawan";
+$select_titik_rawan_overview = "SELECT 
+        titik_rawan.*, 
+        SUM(laka.jumlah_luka_ringan) AS total_jumlah_luka_ringan, 
+        SUM(laka.jumlah_luka_berat) AS total_jumlah_luka_berat, 
+        SUM(laka.jumlah_meninggal) AS total_jumlah_meninggal, 
+        COUNT(laka.id_laka) AS total_laka,
+        polres.nama_polres
+    FROM 
+        titik_rawan
+    LEFT JOIN 
+        laka ON laka.id_titik_rawan = titik_rawan.id_titik_rawan
+    LEFT JOIN 
+        polres ON laka.id_polres = polres.id_polres
+    WHERE
+        titik_rawan.id_titik_rawan != 1
+    GROUP BY 
+        titik_rawan.id_titik_rawan,
+        polres.nama_polres
+";
 $views_titik_rawan_overview = mysqli_query($conn, $select_titik_rawan_overview);
-$select_titik_rawan = "SELECT * FROM titik_rawan";
+$select_titik_rawan = "SELECT * FROM titik_rawan WHERE id_titik_rawan != 1";
 $views_titik_rawan = mysqli_query($conn, $select_titik_rawan);
 $select_tingkat_kecelakaan = "SELECT * FROM tingkat_kecelakaan";
 $views_tingkat_kecelakaan = mysqli_query($conn, $select_tingkat_kecelakaan);
@@ -157,13 +177,13 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
     unset($_SESSION["project_gis_korlantas"]["users"]["time_message"]);
   }
 
-  $count_polres = "SELECT * FROM polres";
+  $count_polres = "SELECT * FROM polres WHERE id_polres != 1";
   $count_polres = mysqli_query($conn, $count_polres);
   $counts_polres = mysqli_num_rows($count_polres);
   $count_laka = "SELECT * FROM laka";
   $count_laka = mysqli_query($conn, $count_laka);
   $counts_laka = mysqli_num_rows($count_laka);
-  $count_titik_rawan = "SELECT * FROM titik_rawan";
+  $count_titik_rawan = "SELECT * FROM titik_rawan WHERE id_titik_rawan != 1";
   $count_titik_rawan = mysqli_query($conn, $count_titik_rawan);
   $counts_titik_rawan = mysqli_num_rows($count_titik_rawan);
 
@@ -1065,6 +1085,6 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
     }
   }
 
-  $select_polres_dash = "SELECT * FROM polres";
+  $select_polres_dash = "SELECT * FROM polres WHERE id_polres != 1";
   $views_polres_dash = mysqli_query($conn, $select_polres_dash);
 }

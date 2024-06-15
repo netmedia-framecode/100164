@@ -63,9 +63,7 @@ require_once("../templates/views_top.php"); ?>
                             <div class="form-group">
                               <label for="img_titik_rawan">Gambar Titik Rawan Kecelakaan</label>
                               <div class="custom-file">
-                                <input type="file" name="img_titik_rawan" class="custom-file-input" id="img_titik_rawan" <?php if (!isset($_POST['ubah-titik-rawan'])) {
-                                                                                                                            echo " required";
-                                                                                                                          } ?>>
+                                <input type="file" name="img_titik_rawan" class="custom-file-input" id="img_titik_rawan">
                                 <label class="custom-file-label" for="img_titik_rawan">Unggah File</label>
                               </div>
                             </div>

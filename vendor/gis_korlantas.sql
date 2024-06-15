@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jan 2024 pada 07.00
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.2.4
+-- Host: localhost:3306
+-- Waktu pembuatan: 15 Jun 2024 pada 10.47
+-- Versi server: 8.3.0
+-- Versi PHP: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `auth` (
-  `id` int(11) NOT NULL,
-  `image` varchar(50) DEFAULT NULL,
-  `bg` varchar(10) DEFAULT NULL
+  `id` int NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `bg` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `auth` (
 --
 
 INSERT INTO `auth` (`id`, `image`, `bg`) VALUES
-(1, 'auth.jpg', '#5c5d60');
+(1, '3536408020.jpg', '#5c5d60');
 
 -- --------------------------------------------------------
 
@@ -47,8 +47,8 @@ INSERT INTO `auth` (`id`, `image`, `bg`) VALUES
 --
 
 CREATE TABLE `cuaca` (
-  `id_cuaca` int(11) NOT NULL,
-  `kondisi` varchar(50) DEFAULT NULL
+  `id_cuaca` int NOT NULL,
+  `kondisi` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -68,8 +68,8 @@ INSERT INTO `cuaca` (`id_cuaca`, `kondisi`) VALUES
 --
 
 CREATE TABLE `fungsi_jalan` (
-  `id_fungsi_jalan` int(11) NOT NULL,
-  `fungsi_jalan` varchar(35) DEFAULT NULL
+  `id_fungsi_jalan` int NOT NULL,
+  `fungsi_jalan` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -88,8 +88,8 @@ INSERT INTO `fungsi_jalan` (`id_fungsi_jalan`, `fungsi_jalan`) VALUES
 --
 
 CREATE TABLE `informasi_khusus` (
-  `id_informasi_khusus` int(11) NOT NULL,
-  `informasi_khusus` varchar(100) NOT NULL
+  `id_informasi_khusus` int NOT NULL,
+  `informasi_khusus` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -109,8 +109,8 @@ INSERT INTO `informasi_khusus` (`id_informasi_khusus`, `informasi_khusus`) VALUE
 --
 
 CREATE TABLE `kecelakaan_menonjol` (
-  `id_kecelakaan_menonjol` int(11) NOT NULL,
-  `kecelakaan_menonjol` varchar(10) DEFAULT NULL
+  `id_kecelakaan_menonjol` int NOT NULL,
+  `kecelakaan_menonjol` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -128,8 +128,8 @@ INSERT INTO `kecelakaan_menonjol` (`id_kecelakaan_menonjol`, `kecelakaan_menonjo
 --
 
 CREATE TABLE `kelas_jalan` (
-  `id_kelas_jalan` int(11) NOT NULL,
-  `kelas_jalan` varchar(100) DEFAULT NULL
+  `id_kelas_jalan` int NOT NULL,
+  `kelas_jalan` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -148,8 +148,8 @@ INSERT INTO `kelas_jalan` (`id_kelas_jalan`, `kelas_jalan`) VALUES
 --
 
 CREATE TABLE `kemiringan_jalan` (
-  `id_kemiringan_jalan` int(11) NOT NULL,
-  `kemiringan_jalan` varchar(50) DEFAULT NULL
+  `id_kemiringan_jalan` int NOT NULL,
+  `kemiringan_jalan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -168,8 +168,8 @@ INSERT INTO `kemiringan_jalan` (`id_kemiringan_jalan`, `kemiringan_jalan`) VALUE
 --
 
 CREATE TABLE `kondisi_cahaya` (
-  `id_kondisi_cahaya` int(11) NOT NULL,
-  `kondisi_cahaya` varchar(50) DEFAULT NULL
+  `id_kondisi_cahaya` int NOT NULL,
+  `kondisi_cahaya` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -187,12 +187,12 @@ INSERT INTO `kondisi_cahaya` (`id_kondisi_cahaya`, `kondisi_cahaya`) VALUES
 --
 
 CREATE TABLE `kontak` (
-  `id_kontak` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `email` text NOT NULL,
-  `subject` varchar(50) NOT NULL,
-  `message` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_kontak` int NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` text COLLATE utf8mb4_general_ci NOT NULL,
+  `subject` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `message` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -202,7 +202,8 @@ CREATE TABLE `kontak` (
 INSERT INTO `kontak` (`id_kontak`, `name`, `email`, `subject`, `message`, `created_at`) VALUES
 (1, 'Arlan Butar Butar', 'arlanbutarbutar@net-code.tech', 'Belum dapat invoice/faktur', 'tes', '2024-01-16 13:35:45'),
 (2, 'tes', 'arlanbutarbutar@net-code.tech', 'Website Tidak Bisa Diakses', 'tes', '2024-01-16 13:36:38'),
-(3, 'Arlan', 'arlan270899@gmail.com', 'Email bermasalah', 'rtesdvs', '2024-01-16 13:37:30');
+(3, 'Arlan', 'arlan270899@gmail.com', 'Email bermasalah', 'rtesdvs', '2024-01-16 13:37:30'),
+(4, 'bulpen', 'ardhyjuned7@gmail.com', 'kwkwkw', 'knxknckn', '2024-06-11 00:33:22');
 
 -- --------------------------------------------------------
 
@@ -211,34 +212,34 @@ INSERT INTO `kontak` (`id_kontak`, `name`, `email`, `subject`, `message`, `creat
 --
 
 CREATE TABLE `laka` (
-  `id_laka` int(11) NOT NULL,
-  `id_informasi_khusus` int(11) DEFAULT NULL,
-  `id_kondisi_cahaya` int(11) DEFAULT NULL,
-  `id_cuaca` int(11) DEFAULT NULL,
-  `id_tingkat_kecelakaan` int(11) DEFAULT NULL,
-  `id_kecelakaan_menonjol` int(11) DEFAULT NULL,
-  `id_fungsi_jalan` int(11) DEFAULT NULL,
-  `id_kelas_jalan` int(11) DEFAULT NULL,
-  `id_tipe_jalan` int(11) DEFAULT NULL,
-  `id_permukaan_jalan` int(11) DEFAULT NULL,
-  `id_kemiringan_jalan` int(11) DEFAULT NULL,
-  `id_status_jalan` int(11) DEFAULT NULL,
-  `id_polres` int(11) DEFAULT NULL,
-  `no_laka` varchar(75) DEFAULT NULL,
+  `id_laka` int NOT NULL,
+  `id_informasi_khusus` int DEFAULT NULL,
+  `id_kondisi_cahaya` int DEFAULT NULL,
+  `id_cuaca` int DEFAULT NULL,
+  `id_tingkat_kecelakaan` int DEFAULT NULL,
+  `id_kecelakaan_menonjol` int DEFAULT NULL,
+  `id_fungsi_jalan` int DEFAULT NULL,
+  `id_kelas_jalan` int DEFAULT NULL,
+  `id_tipe_jalan` int DEFAULT NULL,
+  `id_permukaan_jalan` int DEFAULT NULL,
+  `id_kemiringan_jalan` int DEFAULT NULL,
+  `id_status_jalan` int DEFAULT NULL,
+  `id_polres` int DEFAULT NULL,
+  `no_laka` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `tanggal_kejadian` date DEFAULT NULL,
-  `jumlah_meninggal` int(11) DEFAULT NULL,
-  `jumlah_luka_berat` int(11) DEFAULT NULL,
-  `jumlah_luka_ringan` int(11) DEFAULT NULL,
-  `titik_acuan` varchar(100) DEFAULT NULL,
-  `tipe_kecelakaan` text DEFAULT NULL,
-  `batas_kecepatan_dilokasi` int(11) DEFAULT NULL,
-  `nilai_kerugian_non_kendaraan` int(11) DEFAULT NULL,
-  `nilai_kerugian_kendaraan` int(11) DEFAULT NULL,
-  `keterangan_kerugian` text DEFAULT NULL,
+  `jumlah_meninggal` int DEFAULT NULL,
+  `jumlah_luka_berat` int DEFAULT NULL,
+  `jumlah_luka_ringan` int DEFAULT NULL,
+  `titik_acuan` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `tipe_kecelakaan` text COLLATE utf8mb4_general_ci,
+  `batas_kecepatan_dilokasi` int DEFAULT NULL,
+  `nilai_kerugian_non_kendaraan` int DEFAULT NULL,
+  `nilai_kerugian_kendaraan` int DEFAULT NULL,
+  `keterangan_kerugian` text COLLATE utf8mb4_general_ci,
   `jam_kejadian` time DEFAULT NULL,
-  `id_titik_rawan` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_titik_rawan` int DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -246,9 +247,74 @@ CREATE TABLE `laka` (
 --
 
 INSERT INTO `laka` (`id_laka`, `id_informasi_khusus`, `id_kondisi_cahaya`, `id_cuaca`, `id_tingkat_kecelakaan`, `id_kecelakaan_menonjol`, `id_fungsi_jalan`, `id_kelas_jalan`, `id_tipe_jalan`, `id_permukaan_jalan`, `id_kemiringan_jalan`, `id_status_jalan`, `id_polres`, `no_laka`, `tanggal_kejadian`, `jumlah_meninggal`, `jumlah_luka_berat`, `jumlah_luka_ringan`, `titik_acuan`, `tipe_kecelakaan`, `batas_kecepatan_dilokasi`, `nilai_kerugian_non_kendaraan`, `nilai_kerugian_kendaraan`, `keterangan_kerugian`, `jam_kejadian`, `id_titik_rawan`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 3, 1, 2, 1, 2, 2, 1, 1, 2, 2, 'LP/A/120/VI/2022/SPKT', '2023-06-11', 0, 0, 2, 'Jembatan', 'Kendaraan Out of Control keluar ke kanan jalan', 20, 0, 0, 'Berawal saat Pengendara Sepeda Motor Honda Revo bergerak dari arah Polsek Maulafa menuju ke arah Naimata sesampainya di Tkp tepatnya di Jembatan Petuk Tiga, Pengendara Sepeda Motor Honda Revo yang melaju dengan kecepatan tinggi dan dalam keadaan mengantuk tiba-tiba hilang kendali dan menabrak Pembatas jalan sehingga terjatuh.', '20:30:00', 3, '2024-01-16 07:10:05', '2024-01-16 07:10:05'),
-(3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 2, 'LP/A/121/VI/2022/SPKT', '2023-12-28', 0, 0, 1, 'depan jual jagung bakar', '-', 40, 0, 0, '-', '05:54:00', 3, '2024-01-16 07:10:05', '2024-01-16 07:10:05'),
-(5, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 2, 'LP/A/123/VI/2022/SPKT', '2024-01-15', 0, 0, 2, 'depan jual jagung bakar', 'Kendaraan Out of Control keluar ke kanan jalan', 40, 0, 0, '-', '15:48:00', 2, '2024-01-16 13:50:53', '2024-01-16 13:50:53');
+(1, 1, 2, 5, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1907/II/2021/LL', '1905-07-13', 1, 0, 0, 'Sekolah/ Kampus', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 100000, 0, 'Berawal saat pengendara Spm Yamaha Mio bergerak dari arah Bundaran Oesapa hendak ke arah Kampus Undana, saat sampai di Tkp dekat kampus Unkris, di duga karena pengendara dengan kecepatann tinggi sehingga keluar jalur dan menabrak Trotoar kemuadian terseret dan menabrak tiang Listrik.', NULL, 44, '2024-06-15 13:08:51', '2024-06-15 13:08:51'),
+(2, 1, 1, 5, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1910/II/2021/LL', '1905-07-13', 1, 0, 0, 'Sekolah/ Kampus', 'Tabrakan dengan material / rambu pekerjaan jalan', 20, 100000, 0, 'Berawal saat pengendara Spm beat  bergerak dari arah kampus undana hendak menuju kearah bundaran oesapa ,sesamapinya di TKP depan kamus unkris diduga menabrak material pavin blok yg berada dibadan jalan sehingga pengendara hilang kendali terjatuh dan terseret,  akibat kejadian tersebut pengendara mengalami luka luka dan dirwat dirumah sakit siloam', NULL, 44, '2024-06-15 13:08:51', '2024-06-15 13:08:51'),
+(3, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/1994/VI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Monumen/ Tugu/ Patok', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 500000, 0, 'Berawal saat pengendara spm hond beat bergerak dari arah Bandara dan hendak menuju ke arah Baumata, sesampainya di Tkp pengendara berusaha menghindari ke kiri jaln dari seekor anjing yg sedang berada dijalan namun pengendara spm honda beat hilang kendali dan masuk ke semak semak yg berda di kiri jalan, akibat dari kejadian tersebut pengendara mengalami luka luka.', NULL, 44, '2024-06-15 13:08:51', '2024-06-15 13:08:51'),
+(4, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/1995/VI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 3, 'Simpang', 'Di ruas jalan, pejalan kaki di bahu jalan atau di trotoar', 20, 500000, 0, 'Berawal saat pengendara spm bergerak dr arah penfui menuju kearah simpang oesapa diatas jalan adi sucipto, setibanya di tkp menabrak pejalan kaki yang sementara berjalan menyeberang dari pinggir kanan menuju ke pinggir kiri jalan yang mengakibatkan pejalan kaki dan spm langsung terjatuh, akibat dr kejadian tersebut pejalan kaki mengalami luka dan sementara dirawat di rsud kota kupang sedangkan peng. Spm dirawat di rsu siloam kupang.', NULL, 44, '2024-06-15 13:08:51', '2024-06-15 13:08:51'),
+(5, 1, 2, 5, 1, 2, 1, 1, 1, 4, 1, 2, 2, 'LP/B/2137/XI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Toko/ Pertokoan / Pasar', 'Tabrakan depan - depan', 20, 1000000, 0, 'Berawal dari pengemudi mobil bergerak dari arah patung burung Penfui dgn tujuan ke arah baumata dengan kecepatan tidak terlalu kencang, sedangkan pengendara SPM bergerak dari arah yg berlawanan, setibahnya di TKP pengemudi yg di duga mengantuk mbl yg di kemudikan mengambil jalur kanan sehingga terjadi tabrakan atas kejadian tersebut pengendara SPM di larikan ke RS. Kartini Kupang. Dan kedua kendaraan mengalami kerusakan material.', NULL, 44, '2024-06-15 13:08:51', '2024-06-15 13:08:51'),
+(6, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2148/XII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 2, 'Sekolah/ Kampus', 'Tabrakan depan - depan', 20, 500000, 0, 'Berawal saat SPM honda beat bergerak dari arah bundaran Oesapa menuju ke arah Penghijauan. Sedangkan SPM yamaha vixon bergerak dari Penghijauan menuju kearah bundaran Oesapa. Sesampainya di tkp depan UNKRIS pengendara SPM Honda beat bergerak dengan kecepatan tinggi dan masuk ke jalur spm yamaha vixon sehingga kecelakaan tidak bisa di hindarkan . Akibat dari kejadian tersebut kedua pengendara mengalami  luka-luka dan di rawat di RS Kartini dan RS Siloam Kupang.', NULL, 44, '2024-06-15 13:08:52', '2024-06-15 13:08:52'),
+(7, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/15/I/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 0, 'Air Mancur/ Bundaran', 'Di simpang, tabrakan dengan Kendaraan B yang datang dari arah kiri', 20, 20000000, 0, 'Berawal saat mobil Mitsubishi Xpander Nopol DH 1032 BG bergerak diatas Jalan Piet A. tallo masuk ke Bundaran Penghijauan, kemudian bergerak hendak masuk kearah Patung Adipura dan bertabrakan dengan Mobi Toyota Avanza Nopol DH 1575 AZ yang bergerak dari Jalan Herman Johanes memasuki Bundaran Penghijauan. Akibat kejadian tersebut kedua mobil tersebut mengalami kerusakan material.', NULL, 44, '2024-06-15 13:08:52', '2024-06-15 13:08:52'),
+(8, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/A/226/X/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NUSA TENGGARA TIMUR', '1905-07-14', 0, 0, 2, 'Simpang', 'Tabrakan depan - depan', 20, 1000000, 1000000, 'Berawal dari pengendara SPM Yamaha Vixion bergerak dari arah SMAN 4 dengan tujuan kearah UNKRIS. Sedangkan pengendara SPM Honda Beat bergerak dari arah berlawanan setibanya di TKP tepatnya di pertigaan bawah SMAN 4 kedua pengendara hilang kendali sehingga terjadi tabrakan.', NULL, 44, '2024-06-15 13:08:52', '2024-06-15 13:08:52'),
+(9, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1906/I/2021/LL', '1905-07-13', 0, 0, 3, 'Tempat Ibadah', 'Di ruas jalan, pejalan kaki berdiri ragu-ragu di tengah jalan', 20, 100000, 0, 'Berawal saat Spm Honda Spacy Nopol DH 5390 AZ bergerak dengan kecepatan tinggi dari arah Kupang menuju kearah Tarus, setibanya di TKP menabrak pejalan kaki yang sedang menyeberang jalan dari kiri ke kanan jalan sehingga mengakibatkan pengndara, penumpang dan pejalan kaki terjatuh dan luka-luka.', NULL, 38, '2024-06-15 13:08:52', '2024-06-15 13:08:52'),
+(10, 1, 1, 6, 1, 2, 1, 1, 1, 1, 1, 3, 2, 'LP/1915/1912/II/2021/LL', '1905-07-13', 0, 0, 1, 'SPBU', 'Tabrakan kendaraan belok kanan dengan kendaraan yang datang dari arah berlawanan', 20, 100000, 0, 'Berawal dari pengendara spm honda revo fit bergerak  dari arah  kupang hendak menuju kearah lasiana,sesampinya di TKP dekat spbu km 10 mobil yg didepanya berhenti dan spm honda revo fit melambung dari kiri mobil tersebut,pada saat melambung dari kiri tiba tiba ada spm honda beat yg datang dari arah lasiana belok kanan menuju kearah spbu,dan pengendara spm revo fit sempat menghindar kekiri.karena jarak terlalu km dekat sehingga terjadi tabrakan mengenai ban belkang dari spm beat tersebut dan terjatuh.akibat dari kejadian tersebut pengendara spm revo fit mengalami luka luka dan dirawat dirumah sakit siloam.', NULL, 38, '2024-06-15 13:08:53', '2024-06-15 13:08:53'),
+(11, 2, 2, 3, 1, 2, 1, 1, 3, 1, 1, 3, 2, 'LP/1915/1925/III/2021/LL', '1905-07-13', 0, 0, 1, 'Simpang', 'Tabrakan dengan kendaraan parkir di kiri', 20, 1000000, 0, 'Berawal saat Spm Suzuki Shooter Nopol DH 6208 GJ bergerak diatas Jalan Timor raya dari arah Kupang menuju kearah Lasiana, setibanya di TKP menyerempet pinggir kanan belakang mobil Toyota Innova Nopol DH 1461 HK yang sedang parkir sehingga Spm tersebut oleng dan terjatuh Kemudian Spm tersebut dilindas ban kiri belakang mobil truk Tronton Nopol  W 9968 UL yang juga bergerak dari arah yang sama. Akibat kejadian tersebut pengedara Spm terluka.', NULL, 38, '2024-06-15 13:08:53', '2024-06-15 13:08:53'),
+(12, 1, 2, 3, 2, 2, 1, 1, 1, 1, 1, 3, 2, 'LP/1915/1944/IV/2021/LL', '1905-07-13', 0, 1, 0, 'Kantor/ Perkantoran', 'Tabrakan kendaraan belok kanan dengan kendaraan yang datang dari arah berlawanan', 20, 250000, 0, 'Berawal saat Spm Suzuki A 100 tanpa TNKB bergerak diatas Jln. Timor Raya dari arah Lasiana menuju kearah Kupang dengan sepeda motornya tanpa lampu. Setibanya di TKP berbelok kanan memotong jalur sehingga langsung bertabrakan dengan mobil yang tidak teridentifikasi yang dating dari arah berlawanan. Akibat kejadian tersebut pengendara sepeda motor terjatuh dan terluka sedangkan mobil tersebut melarikan diri.', NULL, 38, '2024-06-15 13:08:53', '2024-06-15 13:08:53'),
+(13, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2018/VI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Gedung Bisnis/ Hotel/ Apartment', 'Tabrakan saat menyalip', 60, 3000000, 0, 'Kronologis berawal dari Spm Honda Win  yang bergerak dari arah Oesapa menuju arah Kupang dan sampai TKP menghindari mobil didepannya yang berhenti mendadak sehingga bergerak kekanan jalan dan bertabrakan dengan Mobil mikrolet yang datang dari arah berlawanan.', NULL, 38, '2024-06-15 13:08:53', '2024-06-15 13:08:53'),
+(14, 1, 2, 3, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2028/VII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 1, 0, 0, 'Tempat Ibadah', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 5000000, 0, 'Berawal dari pengendara Spm Suzuki Satria Fu bergerak dari arah SD kelapa Lima dengan tujuan ke arah jalan Timor raya, dengan kecepatan kencang setibahnya di TKP pengendara Spm hilang kendali saat melewati jalan menurun sehingga menabrak  tiang listrik yg berada di kiri jalan. Akibat dari kejadian tersebut pengendara Spm di larikan ke RS. S. K. Lerik Kupang.', NULL, 38, '2024-06-15 13:08:53', '2024-06-15 13:08:53'),
+(15, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2046/VIII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 5, 'Jembatan', 'Tabrakan saat menyalip', 50, 3000000, 0, 'Berawal saat kedua Spm bergerak dari arah yanng berlawanan diatas jalan Timor Raya, setibanya di Tkp Spm Honda Beat Nopol DH 2240 CN yang datang dari arah Oesapa bergerak zig-zag masuk kejalur kanan dan karena jarak yang sangat dekat sehingga bertabrakan dengan Spm Honda Scoopy Nopol DH 6617 KH yang datang dari arah berlawanan yang mengakibatkan kedua Spm terlibat lansng jatuh terseret, dimana akibat dari kejadian tersebut kedua pengendara dan penumpang Spm mengalami luka-luka dan sementara dirawat di RSUD S.K.Lerik Kota Kupang serta kedua kendaraan mengalami kerusakan material.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(16, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2048/VIII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 2, 'Kantor/ Perkantoran', 'Di ruas jalan, pejalan kaki menyeberang dari kiri ke kanan', 20, 300000, 0, 'Berawal dari pengendara SPM bergerak dari arah Oesapa timur dgn tujuan ke arah kelapa Lima dengan kecepatan kencang. Setibahnya di TKP pengendara SPM menabrak PJK Yang ada sementara menyebrang jalan dari arah kiri jalan ke arah kanan jalan. Akibat dari kejadian tersebut PJK mengalami luka2.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(17, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2058/VIII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Gedung Bisnis/ Hotel/ Apartment', 'Tabrakan kendaraan belok kiri dengan kendaraan yang jalan lurus', 20, 1000000, 0, 'Berawal dari pengemudi mbl bergerak dari arah Oesapa dgn tujuan kearah kelapa Lima namun pada saat sampai di TKP pengemudi mbl hendak memutar arah kembali ke arah Oesapa, namun saat memutar mengalami tabrakan dengan SPM yg datang dari arah yang sama, akibat dari kejadian  tersebut pengendara SPM di larikan ke RSU Kupang. kedua kendaraan mengalami kerusakan material.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(18, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2113/X/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 3, 'Jembatan', 'Tabrakan saat menyalip', 20, 500000, 0, 'Berawal saat pengendara Spm Honda Beat bergerak dari arah Kelapa Lima menuju Oesapa dan SPM Honda Scoopy bergerak dari arah Oesapa menuju Kelapa Lima, sesampainya di TKP tepat di tengah jembatan Oesapa pengendara Honda beat mengambil jalur ke kanan sehingga terjadi kecelakaan.akibat dari kejadian tersebut pengendara SPM Honda Scoopy mengalami luka pada jari tangan kanan, lutut kaki kanan dan jari kaki kanan dan langsung di larikan ke RS SK Lerik Kota Kupang', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(19, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 3, 2, 'LP/B/2130/XI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 4, 'Tempat Ibadah', 'Tabrakan saat pindah lajur ke kiri', 20, 500000, 0, 'Berawal dari spm beat dan SPM Honda CBR bergerak bersama dari arah pasar Oeba menuju ke arah Oesapa. Sesampainya di TKP SPM Honda CBR kaget melihat kendaraan di depan saat akan melambung SPM Honda beat, dan pengendara SPM Honda CBR menghindar ke kiri sehingga menabrak SPM Honda beat yg ada d sampingnya..akibat dari kejadian tersebut pengendara dan penumpang SPM Honda CBR di larikan ke RS SK Lerik kota kupang.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(20, 1, 2, 5, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2139/XI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 1, 0, 0, 'Monumen/ Tugu/ Patok', 'Tabrakan depan - depan', 60, 2000000, 0, 'Berawal dr pengendara SPM bergerak dari arah Kupang dgn tujuan kearah Tarus sedangkan pengemudi Mbl Truck Tangki diduga datang dari arah berlawanan. Setibahnya di TKP pengendara SPM hilang kendali sehingga terjadi tabrakan. Setelah kejadian tabrakan Mbl terus melaju. Akibat dari kejadian tersebut pengendara SPM meninggal dunia di TKP dan dibawa ke RSU Kpg. Kendaraan SPM mengalami kerusakan material. (Info sementara di TKP).', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(21, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2144/XII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Gedung Bisnis/ Hotel/ Apartment', 'Kendaraan Out of Control keluar ke kiri jalan', 60, 100000, 0, 'Berawal dr Spm CRF bergerak dari arah Oeba menuji kearah Lasiana diatas jalan Timor Raya, setibanya di tkp dpn mutiara karena pengendara mengantuk sehingg spm hilang kendali dan lgs terjatuh di pinggir jalan sebelah kiri, Atas kejadian  tersebut Korban di larikan ke RSU Kota  Kupang.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(22, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2147/XII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 2, 'Rumah / Perumahan / Pemukiman', 'Kendaraan Out of Control keluar ke kiri jalan', 60, 100000, 0, 'Berawal dari pengendara maupun penumpang  Spm honda Scopy tersebut bergerak dari Kupang hendak ke arah Oesapa, saat tiba di Tkp, pengendara hendak melambung kendaraan  Mobil yang bergerak di depannya, namun saat melambung ban depan dari spm masuk ke lubang jalan sehingga pengendara hilang kendali dan terjatuh di kanan jalan, akibatnya pengendara dan penumpang mengalami luka-luka dan di rawat di RSU Kota Kupang.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(23, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2153/XII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 2, 'Toko/ Pertokoan / Pasar', 'Tabrakan saat menyalip', 20, 2000000, 0, 'Kronologis berawal dari pengendara SPM Honda Supra fit bergerak dari arah tarus dgn tujuan kea arah kelapa Lima sedangkan pengendara SPM Honda Scoopy bergerak dari arah berlawanan, setibanya di TKP, pengendara spm Honda Scoopy melambung mobil sehingga masuk ke jalurnya pengendara SPM Honda Supra fit dan terjadi tabrakan. Akibat dari kejadian tersebut ke dua pengendara di bw ke RS. Leona .Kupang dan kedua kendaraan mengalami kerusakan material.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(24, 1, 2, 3, 1, 2, 1, 1, 1, 3, 1, 2, 2, 'LP/B/07/I/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 2, 'Kantor/ Perkantoran', 'Tabrakan saat menyalip', 60, 1000000, 0, 'Berawal saat Spm Honda Beat Nopol DH 2359 BT bergerak diataas Jalan Timor Raya dari arah Oesapa menuju kearah Kupang, setibanya di TKP mengambil jalur kanan untuk menghindari lubang kemudian hendak kembali lahi kejalur kiri tetapi langsung bertabrakan dengan Sepeda motor Honda CB150R Nopol DH 2291 BN yang datang dari arah berlawanan sehingga mengakibatkan kedua pengendara terjatuh dan mengalami luka-luka serta kedua kendaraan mengalami kerusakan material.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(25, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/24/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 1, 'Simpang', 'Tabrakan saat menyalip dari kiri', 60, 500000, 0, 'Berawal saat Pengendara  Sepeda Motor Honda Scoopy bergerak dari arah kelapa Lima dgn tujuan kea arah pasir panjang sedangkan MBL tengki tronton ada sementara berhenti di trafik light dengan posisi berada di urutan 3 (tiga) mobil. Pada saat lampu traffic light hijau mobil Hendak bergerak untuk jalan. Namun pada saat dari arah belakang kiri pengendara SPM yg hendak melambung di antara tengki tronton dan mobil pick up hilang kendali sehingga terjatuh di bagian ban belakang kiri mobil tengki tronton. Akibat dari kejadian tersebut penumpang SPM di larikan ke RS. S. K lerik Kupang.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(26, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/30/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 2, 'Monumen/ Tugu/ Patok', 'Di ruas jalan, pejalan kaki menyeberang dari kiri ke kanan', 60, 50000, 0, 'Berawal saat Pengendara Sepeda motor Yamaha Fino bergerak dari arah Oesapa hendak ke arah Kupang, saat tiba di tkp KM 8, tiba2 pejalan kaki tersebut menyebrang dari arah kiri ke arah kanan jalan, karena jarak sudah dekat sehingga pengendara tidak dapat lagi menghindar akibatnya tabrkan tak terhindarkan lagi.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(27, 1, 2, 3, 2, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/35/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 1, 0, 'Gedung Bisnis/ Hotel/ Apartment', 'Tabrakan depan - belakang', 60, 300000, 0, 'Berawal saat Pengendara  Spm Yamaha Jupiter Z  Bergerak dari arah Oesapa menuju ke arah Kupang beriringan dengan Mobil Kijang Grand Setibanya di Tkp tepatnya di depan Hotel Kristal Pengendara Spm Yamaha Jupiter Z  yang dalam keadaan mengantuk menabrak dari arah belakang Mobil Kijang Grand sehingga Pengendara dan Penumpang Spm di larikan ke RS.SILOAM KUPANG.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(28, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/48/III/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 1, 'Gedung Bisnis/ Hotel/ Apartment', 'Tabrakan depan - depan', 60, 1000000, 0, 'Berawal saat Pengendara Spm Yamaha Vino yang bergerak dari arah Pasir Panjang menuju ke arah Oesapa sedangkan Pengendara Spm Honda Beat Bergerak dari arah Oesapa Menuju ke arah Pasir Panjang setibanya di Tkp tepatnya di dekat Hotel Ima Tiba tiba Pengendara Spm Honda Beat langsung mengambil lajur dari Pengendara Spm Yamaha Vino sehingga terjadilah tabrakan. Atas Kejadian tersebut kedua Pengendara di larikan ke RS.S.K.LERIK KUPANG.', NULL, 38, '2024-06-15 13:08:54', '2024-06-15 13:08:54'),
+(29, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 3, 2, 'LP/A/229/X/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NUSA TENGGARA TIMUR', '1905-07-14', 0, 0, 3, 'Kantor/ Perkantoran', 'Di ruas jalan, pejalan kaki menyeberang dari kiri ke kanan', 20, 5000000, 5000000, 'Berawal dari pengemudi Mobil Pick Up bergerak dari arah Kupang dengan tujuan kearah Tarus. Setibanya di TKP Pengemudi Mobil hilang kendali dan menyenggol tiga orang PJK yang sementara menyebrang jalan', NULL, 38, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(30, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 3, 2, 'LP/A/235/X/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NUSA TENGGARA TIMUR', '1905-07-14', 0, 0, 2, 'Tempat Wisata', 'Tabrakan saat gerakan putar balik', 20, 500000, 500000, 'Berawal saat Mobil Mikrolet bergerak keluar dari cabang Jln. Halilintar (sebelah kiri dari arah Kupang kearah Lasiana), hendak menuju kearah Kupang, namun karena ada penumpang berdiri di ssebelah kanan jalan dari arah Kupang ke Lasiana sehingga pengemudi bergerak hendak memutar, saat memutar datang pengendara Spm Honda Vario dari arah Kupng dan langsung menabrak bagian samping kiri pintu pengemudi Mikrolet tersebut.', NULL, 38, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(31, 1, 2, 3, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/1992/V/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 1, 1, 0, 'Sekolah/ Kampus', 'Tabrakan depan - depan', 20, 15000000, 0, 'Berawal saat Spm HONDA BEAT  Nopol DH 6057 KG melaju dari arah benteng menuju arah Alak sesampainya di TKP bertabrakan dengan mobil Toyota Avanza DH 1612 HE yang datang dari arah berlawanan sehingga spm honda beat terseret sejauh 50 meter. Akibat dari kejadian tersebut pengendara dan penumpang spm honda beat mengalami luka luka dm dibawah ke RSU prof. Dr. W.Z Johanes Kupang.', NULL, 45, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(32, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2031/VII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Monumen/ Tugu/ Patok', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 100000, 0, 'Berawal saat Spm Honda Scoopy nopol DH 3121 KP yanag bergerak dari arah Terminal Kupang menuju arah Namosain yang ketika sampai di TKP ada sebuah SPM lain yang bergerak memotong jalan didepan dan karena jarak dekat pengendara SPM Scoopy langsung mengerem mendadak hingga terjatuh sendiri.', NULL, 45, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(33, 1, 2, 3, 2, 1, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2159/XII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 1, 0, 'Jembatan', 'Tabrakan depan - depan', 20, 2000000, 0, 'Kronologis kejadian berawal dari Pengendara Spm Honda Revo yang bergerak dari arah Alak menuju Kupang sedangkan Pengendara Mobil Daihatsu Feroza bergerak dari arah Kupang menuju Alak sesampainya di Tkp tepatnya di pertigaan gang maleset Pengemudi Mobil Daihatsu Feroza yang dalam keadaan mengantuk mengambil lajur dari Spm Honda Revo sehingga terjadi tabrakan. Atas kejadian tersebut Pengendara Spm Honda Revo dilarikan ke RSB  TITUS ULY Kupang.', NULL, 45, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(34, 1, 2, 3, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/03/I/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 1, 0, 1, 'Toko/ Pertokoan / Pasar', 'Di ruas jalan, pejalan kaki menyeberang dari kiri ke kanan', 20, 100000, 0, 'Berawal saat Sepeda motor Yamaha Jupiter MX warna hitam tanpa TNKB bergerak diatas Jalan Pahlawan dari arah Kantor Lurah Namosain menuju kearah Leter S, setibanya di TKP menabrak korban pejalan kaki yang sedang berjalan kaki dari pinggir kiri masuk ke tengah jalan sehingga pengendara sepeda motor dan pejalan kaki terjatuh.', NULL, 45, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(35, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/45/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 2, 'SPBU', 'Di ruas jalan, pejalan kaki menyeberang dari kiri ke kanan', 60, 0, 0, 'Berawal saat Sepeda Motor Honda CRF bergerak dari arah Nunbaun Delha hendak ke arah Tenau, saat tiba di Tkp, pejalan kaki tersebut diatas sedang berdiri di kiri jalan, dan ketika pengendara sudah dekat tiba2 pejalan kaki tersebut  berlari menyebrang ke arah kanan jalan namun karena jarak yang sudah dekat sehingga pengendara tdk dapat mengendalikan laju kendaraanya sehingga tabrakanpun terjadi. Pada saat tabrakan pejalan kaki tersebut terlempar ke arah depan sedangkan pengendara dan penumpang tidak terjatuh. Bahwa akibat dari tabrakan tersebut pejakan kaki mengalami luka dan di rawat di RSU Siloam Kupang.', NULL, 45, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(36, 1, 2, 5, 3, 2, 1, 1, 1, 4, 1, 2, 2, 'LP/B/46/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 1, 0, 0, 'Sekolah/ Kampus', 'Tabrakan saat menyalip dari kiri', 50, 500000, 0, 'Kronologis sementara  berawal saat pengendara  Spm Honda Supra Fit yang bergerak dari arah Namosain menuju arah Kupang dan saat sampai di TKP, pengendara hendak melambung sebuah mobil Dump Truk dari arah Kiri,  namun karena jaraknya terlalu mepet sehingga menyerempet bodi dump truk tersebut kemudian terjatuh dan tergilas oleh ban belakang dari dump truck tersebut.', NULL, 45, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(37, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/A/237/X/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NUSA TENGGARA TIMUR', '1905-07-14', 0, 0, 2, 'SPBU', 'Tabrakan depan - depan', 20, 1800000, 1000000, 'Bermula saat Spm Honda Beat bergerak dari arah Tenau menuju Kupang yang setibanya di TKP tiba-tiba saja melaju spm Yamaha Fino dari arah berlawanan dengan kecepatan tinggi masuk kejalur jalan sebelah kanan tidak mengurangi kecepatan langsung menghadap kedepan spm Honda beat sehingga terjadi tabrakan.', NULL, 45, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(38, 1, 2, 3, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2140/XI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 1, 0, 0, 'Kantor/ Perkantoran', 'Tabrakan saat menyalip', 20, 2000000, 0, 'Berawal saat pengendara Spm Honda Revo No. Pol DH 4520 FC yg bergerak dari arah Tenau menuju ke arah Kupang, sesampainya di Tkp pengendara Spm Honda Revo hendak melambung kanan dari sebuah mobil Pick Up yg saat itu sama2 melaju ke arah kupang, namum pada saat spm honda revo hendak melambung  mobil pick up tersebut, datang sebuah mobil truck mitsubishi No. Pol DH 9109 DA dari arah berlawanan sehingga terjadi serempetan antara Spm Honda revo no. Pol DH 4520 FC dgn Mobil Truck No. Pol DH 9109 DA. Akibat dari kejadian tersebut pengendara spm honda revo mengalami luka luka dan meninggal dunia di TKP', NULL, 48, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(39, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2161/XII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 3, 'Tempat Wisata', 'Tabrakan dengan Kendaraan menyebrang dari sisi kiri jalan', 20, 1500000, 0, 'Kronologis berawal saat Spm Honda Scoopy merah Nopol DH 4047 KF yang bergerak dari depan Kios yang tepat di samping Cafe Tebing hendak memotong jalan kebagian kanan masuk ke gang yg ada si seberang jalan, pada saat sementara bergerak memotong, datang Spm Honda Scoopy putih dari arah Tenau menuju arah Bolok dengan kecepatan tinggi tidak mengurangi kecepatan dan tidak menghindar sehingga terjadi tabrakan.', NULL, 48, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(40, 1, 2, 3, 2, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/39/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 1, 1, 'Tempat Ibadah', 'Tabrakan depan - belakang', 40, 1000000, 0, 'Berawal saat Sepeda motor Honda Beat Nopol DH 3950 HP bergerak diatas jalan Jurusan Bolok dari arah Perikanan menuju kearah Bolok, setibanya di TKP menabrak mobil Truk Mitsubishi “BLANTIKA” Nopol DH 9262 GC yang sedang terparkir (sedang mengganti ban mobil).sehingga Sepeda motor Honda Beat Nopol DH 3950 HP tersebut terjatuh kejalur kanan lalu bertabrakan dengan mobil Truk tangki air Mitsubishi Nopol DH 8848 AH yang datang dari arah berlawanan. Akibat kejadian tersebut pengendara dan penumpang Sepeda motor Honda Beat Nopol DH 3950 HP terjatuh dan terluka.', NULL, 48, '2024-06-15 13:08:55', '2024-06-15 13:08:55'),
+(47, 1, 2, 3, 2, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2025/VII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 1, 4, 'Gedung Bisnis/ Hotel/ Apartment', 'Tabrak belakang kendaraan depan yang belok kanan', 20, 5000000, 0, 'Berawal saat Mobil Dum Truck Mitsubishi Nopol DH L 9214 AV bergerak diatas Jalan M. Praja dari arah Tenau menuju kearah Namosain dengan kecepatan tinggi, setibanya di TKP menabrak Spm Honda Revo Nopol DH 5459 HM didepannya yang memotong jalan dari pinggir kiri hendak ke pinggir kanan jalan. Kemudian mobil dum truck tersebut menyeret Spm Honda Revo Nopol DH 5459 HM tersebut kepinggir kanan jalan dan menabrak pembatas pagar pembatas jalan lalu mobil dum truck tersebut terbalik.', NULL, 49, '2024-06-15 13:08:56', '2024-06-15 13:08:56'),
+(48, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2085/IX/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 3, 'Tempat Wisata', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 25000000, 0, 'Berawal saat pengemudi mbl  bergerak dari arah Pelabuhan kearah Kupang melewati Jln. M. Praja, setibanya di TKP dengan Jalan sedikit tikungan ke arah kiri dan kanan pengemudi mobil hendak mengambil botol susu yang terjatuh di sampingnya, sehingga mobil yang di kemudian oleng dan keluar jalur masuk ke dalam jurang yang berada di kiri jalan. Akibat dari kejadian tersebut pengemudi dan penumpang mengalami luka-luka dan di larikan ke RSU Kupang. Dan kendaraan mengalami kerusakan material berat.', NULL, 49, '2024-06-15 13:08:56', '2024-06-15 13:08:56'),
+(54, 1, 1, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2007/VI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 3, 'Monumen/ Tugu/ Patok', 'Tabrakan depan - depan', 20, 2000000, 0, 'Berawal saat Spm Honda Beat Nopol DH 2934 KN bergerak dengan kecepatan tinggi di Jalan kanan Jalur 40 pada jalu kanan dari arah Kampung lama menuju kearah Bolok, setibanya di TKP bertabrakan dengan Spm Yamaha Vixion Nopol DH 6190 AY yang bergerak dari arah berlawanan sehingga kedua pengendara dan penumpangnya terjatuh dan luka-luka.', NULL, 51, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(58, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1917/II/2021/LL', '1905-07-13', 0, 0, 3, 'Simpang', 'Tabrak belakang kendaraan depan yang belok kanan', 20, 300000, 0, 'Berawal saat pengendara Spm Honda Beat yg bergerak dari arah Jalur 40 menuju ke arah Oepura, sesampainya di Tkp, pengendara Spm Yamaha Jupiter Z menyalakan lampu Sign kanan dan hendak belok ke arah jalan Oebolifo ll, namun pada saat hendak belok kanan tiba2 ditabrak  dibagian kanan oleh Spm Yamaha Jupiter Z yg melaju dari arah jalur 40 menujh ke arah Oepura. Akibat dari kejadian tersebut pengendara Spm Yamaha Jupiter Z, pengendara Spm Honda Beat beserta penumpang terjatuh dan mengalami luka luka dan langsung dibawah ke RS Boromeus Kupang.', NULL, 46, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(59, 3, 2, 5, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1929/III/2021/LL', '1905-07-13', 1, 0, 0, 'Stasiun KA/Terminal Bis', 'Tabrakan depan - depan', 20, 100000, 0, 'Berawal saat Spm Honda Vario Nopol DH 3756 HJ bergerak dari arah Oelomin menuju kearah Oepura, setibanya di TKP (informasi awal bersenggolan dengan mobil yang belum teridentifikasi yang bergerak dari arah berlawanan) sehingga mengakibatkan Spm terjatuh dan pengendaranya MENINGGAL DUNIA di TKP sedangkan mobil yang diduga menjadi lawan tabraknya terus bergerak menuju kearah Oelomin.', NULL, 46, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(60, 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1955/IV/2021/LL', '1905-07-13', 0, 0, 1, 'Kantor/ Perkantoran', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 500000, 0, 'Berawal saat Spm Yamaha Vixion yang bergerak dari arah oepura  hendak menuju kearah sikumana dengan kecepatan kencang, sesampainya di TKP dekat pegadaian sikumana pengendara hilang kendali dan menabrak trotoar jalan dan terjatuh, akibat kejadian tersebut pengendara mengalami luka luka dan kendaraan mengalami kerusakan material', NULL, 46, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(61, 1, 2, 3, 2, 2, 1, 1, 1, 3, 1, 2, 2, 'LP/B/23/I/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 1, 0, 'Toko/ Pertokoan / Pasar', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 100000, 0, 'Berawal saat pengendara melaju dari arah Jalur 40 hendak kearah Oepura, sesampainya di TKP kehilangan kendali karena masuk ke jalan berlubang sehingga terjadi kecelakaam', NULL, 46, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(62, 3, 2, 3, 2, 2, 1, 1, 2, 1, 1, 2, 2, 'LP/1915/1905/I/2021/LL', '1905-07-13', 0, 1, 0, 'Gedung Bisnis/ Hotel/ Apartment', 'Tabrakan saat menyalip dari kanan', 20, 500000, 0, 'Berawal saat Spm Honda Supra X 125 Dari Penfui menuju jembatan Liliba sesampinya di TKP depan Hotel Timore tiba tiba dari arah belakang melintas motor Honda Beat dan menyenggol stir sebelah kanan yang mengakibtakan pengendara spm Honda Supra X 125 terjatuh dan menagalami luka lecet pada lutut kanan,luka lecet pada siku kanan dan mengalami patah tulang pada paha kaki kanan dan langsung di bawa ke Rumah Sakit Umum Siloam.', NULL, 41, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(63, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1960/IV/2021/LL', '1905-07-13', 0, 0, 4, 'Jembatan', 'Tabrakan depan - belakang', 20, 500000, 0, 'Berawal saat  kedua kendaraan sama sama bergerak dari arah bundaran penghijauan hendak menuju kearah bundaran tirosa dengan posisi spm honda supra tanpa tnkb didepan sedangkan spm honda revo dibelakang, sesampainya diTKP diujung jembatan liliba spm honda revo menabrak spm honda supra tanpa tnkb yg berada didepanya.dari n,akibat kejadian tersebut kedua pengendara dan penumpang terjatuh mengalami luka luka dan dirawat dirumah sakit siloam serta kedua kendaraan mengalami kerusakan material.', NULL, 41, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(64, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/1983/V/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA / POLDA NTT', '1905-07-13', 0, 0, 2, 'Jembatan', 'Tabrakan saat menyalip', 20, 200000, 0, 'Berawal saat Spm Honda Beat Nopol DH 2510 HU bergerak diatas Jln Piet A. Tallo dari arah Liliba menuju kearah Bundaran PU, setibanya diujung jembatan Liliba Spm Honda Beat Nopol DH 2510 HU melambung kanan kendaraan di depannya, ketika melambung sampai masuk ke jalur berlawanan sehingga bertabrakan dengan Spm Yamaha Mio tanpa TNKB yang datang dari arah berlawanan. Akibatnya kedua Spm terjatuh bersama pengendaranya, kemudian kedua pengendara dibawa ke RS Kartini untuk mendapatkan pertolongan.', NULL, 41, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(65, 1, 2, 3, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2038/VII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 1, 0, 0, 'Kantor/ Perkantoran', 'Tabrakan saat menyalip dari kiri', 20, 100000, 0, 'Berawal dr mbl truck bergerak dari arah Pulau Indah Oesapa, hendak ke arah jembatan Liliba saat tiba di Tkp, diduga pengendara Spm hendak melambung dari arah kiri namun karena terlalu mepet dgn bodi samping kiri dari mobil dump truck  sehingga terjadi senggolan akibatnya pengendara spm terjatuh di bawa kolong mobil dan tergilas ban belakang kiri.', NULL, 41, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(66, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/44/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 2, 'SPBU', 'Tabrakan dengan kendaraan parkir di kiri', 60, 500000, 0, 'Berawal saat Sepeda Motor Honda CRF bergerak dr arah Liliba menuju kearah penfui diatas jalan Piet A. Tallo, setibanya di Tkp karena pengendara dan penumpang saling bercerita sehingg tidak konsentrasi kearah depan dan tidak melihat Mbl Dump Truck yang sementara parkir, karena jarak yg sangat dekat sehingga spm menabrak bagian belakang dr mbl dump truck tersebut yg mengakibatkan spm lgs jatuh terseret. Akibat dr kejadian tsb pengendara dan penumpang spm mengalami luka dan sementara dirawat di rumkit kartini kupang.', NULL, 41, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(67, 1, 2, 3, 1, 2, 1, 1, 2, 1, 1, 2, 2, 'LP/A/223/X/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NUSA TENGGARA TIMUR', '1905-07-14', 0, 0, 4, 'SPBU', 'Tabrak kendaraan belok kanan dengan kendaraan yang jalan lurus', 20, 5000000, 5000000, 'Berawal dari Pengemudi Mobil Bus Arjuna bergerak dari arah Tugu Merpati kearah Jembatan Liliba, sesampainya di TKP tepatnya di putaran kanan SPBU Liliba hendak berbelok kanan tanpa memperhatikan keandaraan lain yang datang dari arah belakang sehingga terjadi kecelakaan, yakni Spm Beat Pop yang kemudian menabrak lagi Spm Vixion, dan kemudian Spm Vixion menabrak Spm Mio J. Akibat dari kejadian tersebut pengendara dan penumpang di larikan ke RS Kartini dan RS Leona Kupang dan keempat kendaraan mengalami kerusakan material.', NULL, 41, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(68, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1958/IV/2021/LL', '1905-07-13', 0, 0, 1, 'Kantor/ Perkantoran', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 100000, 0, 'Berawal saat Spm Honda Beat Nopol DH 2885 KR tunggal bergerak dari arah Bundara Gubernur menuju kearah Ramaana Mall, setibanya di TKP tiba-tiba kehilangan kendali dan terjatuh lalu terseret diatas aspal mengakibatkan pengendara mengalami luka-luka dan Spm mengalami kerusakan material.', NULL, 50, '2024-06-15 13:08:57', '2024-06-15 13:08:57'),
+(69, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2036/VII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 2, 'Kantor/ Perkantoran', 'Tabrakan saat menyalip', 20, 5000000, 0, 'Berawal dari Spm Yamaha R 15 yang melaju dari arah Gedung olah raga menuju arah  Makorem sedangkan Mobil Kijang  Toyota dari arah Makorem menuju  Gedung olah raga setibanya di tkp Mobil Kijang Toyota  yang ingin berbelok  mengambil lajur kanan  yang cukup banyak dan tidak melihat kalau ada pengendara Spm Yamaha R15  yang datang dari arah berlawanan sehingga langsung menabraknya kemudian kedua korban terjatuh dan terseret sehingga di larikan ke RS Bhayangkara.', NULL, 50, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(70, 1, 2, 3, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2051/VIII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 1, 0, 2, 'Kantor/ Perkantoran', 'Di ruas jalan, pejalan kaki menyeberang dari kanan ke kiri', 40, 100000, 0, 'Berawal saat Spm Suzuki Nex II Nopol DH 2527 KJ bergerak diatas Jalan Thamrin dari arah Korem menuju kearah Patung Kirab, setibanya di TKP menabrak korban pejalan kaki yang sedang menyeberang jalan dari pinggir kanan menuju ke kiri jalan sehingga mengakibatkan pejalan kaki dan pemotor terjatuh dan mengalami luka-luka.', NULL, 50, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(71, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2053/VIII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Kantor/ Perkantoran', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 1000000, 0, 'Berawal saat Spm Honda Beat yang bergerak dari arah Kantor Lurah Oebobo menuju  ke arah  Hotel Charvita setibanya di Tkp tepatnya di depan Kantor PU Provinsi Lama Pengendara Spm Honda Beat tersebut yang dalam keadaan mengatuk hilang kendali sehingga menabrak tiang listrik yang berada di sisi kiri jalan.Atas kejadian tersebut Pengendara Spm Honda Beat di larikan ke RSU Kupang.', NULL, 50, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(72, 1, 2, 3, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/22/I/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 2, 0, 0, 'Kantor/ Perkantoran', 'Di simpang, tabrakan dengan Kendaraan B yang datang dari arah kiri', 20, 2000000, 0, 'Berawal saat Pengendara  Sepeda Motor Honda Beat yang bergerak dari arah Kantor Lurah Oebobo Menuju Ke arah Bundaran Gubernur setibanya di Tkp tepatnya di samping Kantor PU Provinsi Lama tiba - tiba datang Pengendara Sepeda Motor Yamaha Mio dari arah Gang Bengkel Kantor PU menuju ke arah Hotel Greenia dan tidak memperhatikan  kalau ada Pengendara Sepeda Motor Honda Beat yang sedang melintas sehingga terjadilah tabrakan .Atas Kejadian tersebut kedua Pengendara Sepeda Motor dilarikan ke Rumah Sakit Bhayangkara Titus Uly Kupang.', NULL, 50, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(73, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/37/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 2, 'Gedung Bisnis/ Hotel/ Apartment', 'Tabrakan depan - depan', 20, 1000000, 0, 'Berawal saat Sepeda motor Yamaha Vixion Nopol DH 6297 HC bergerak diatas Jalan WJ Lalamentik dari arah Bundaran Oebufu menuju kearah Naimata, setibabnya di TKP bertabrakan dengan Sepeda Motor Honda Supra X 125 Nopol DH 4749 KE yang datang dari arah berlawanan sehingga kedua pengendara terjatuh dan terluka.', NULL, 50, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(74, 1, 2, 5, 1, 1, 1, 1, 1, 1, 1, 2, 2, 'LP/B/41/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 2, 'Simpang', 'Tabrakan kendaraan belok kanan dengan kendaraan yang datang dari arah berlawanan', 20, 500000, 0, 'Berawal saat pengendara Spm Honda CRF bergerak dari arah  Oebufu hendak  membelok ke arah samping Korem saat tiba di Tkp, datang pengendara Spm  suzuki Satria dari arah GOR hendak ke arah Oebufu, karena pengenara spm suzuki satria tidak memperhatikan spm honda CRF sehingga terjadi tabrakan. Akibat dari kecelakaan tersebut kedua pengendara mengalami luka-luka dan di rawat di RS Bhayangkara.', NULL, 50, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(75, 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1959/IV/2021/LL', '1905-07-13', 0, 0, 1, 'Gedung Bisnis/ Hotel/ Apartment', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 100000, 0, 'Berawal saat Spm Honda Spacy melaju dari arah Kantor Gubernur menuju ke arah Bundaran PU, sesampainya di TKP menghindari seekor kucing yang berada ditengah jalan sehingga kehilangan kendali dan terjatuh. Akibat dari kejadian tersebut pengendara Spm honda Spacy mengalami luka luka dan dibawah ke Rumah Sakit  Wirasakti.', NULL, 43, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(76, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/1915/1979/V/2021/LL', '1905-07-13', 0, 0, 1, 'Toko/ Pertokoan / Pasar', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 100000, 0, 'Berawal saat Spm Honda Scoopy Nopol DH 5906 KN yang bergerak dari arah Bundaran Kantor Gubernur menuju arah Ruko Oebobo yang sampai di TKP pengendara secara tiba-tiba mengerem mendadak karena berusaha menghindari seekor anjing yang berlari memotong jalan.', NULL, 43, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(77, 3, 2, 3, 3, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/1980/V/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 1, 0, 1, 'Toko/ Pertokoan / Pasar', 'Tabrakan depan - belakang', 20, 100000, 0, 'Berawal saat Spm Suzuki Skywave Nopol DH 2863 AN bergerak diatas Jalan Frans Seda diduga dari arah Tamnos menuju kearah Bundaran Tirosa, setibanya di TKP bertabrakan dengan Spm yang tidak teridentifikasi sehingga kedua Spm terjatuh mengakibatkan pengendara dan penumpang Spm Suzuki Skywave Nopol DH 2863 AN terluka. Belum diketahui penyebab tabrakan karena pengendara dan penumpang Spm Suzuki Skywave Nopol DH 2863 AN belum sadarkan diri sedangkan setelah petugas tiba di TKP lawan tabrak sudah meninggalkan TKP membawa sepeda motornya.', NULL, 43, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(78, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2067/VIII/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Toko/ Pertokoan / Pasar', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 1000000, 0, 'Berawal dari Spm yang bergerak kencang dari arah Kantor Gubernur menuju arah Ruko Oebobo karena pengendara mengantuk dan tidak menguasai kondisi jalan menikung sehingga bergerak keluar dari bibir aspal kanan hingga menabrak batu dan terpental menganai tiang listrik.', NULL, 43, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(79, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/2134/XI/2021/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-13', 0, 0, 1, 'Toko/ Pertokoan / Pasar', 'Kendaraan Out of Control keluar ke kiri jalan', 20, 200000, 0, 'Berawal dari Pengendara Spm yamaha mio yang bergerak dari  Pos Eltari  menuju ke arah Fatululi sesampainya di Tkp tepatnya di depan Ferari , Pengendara Spm yamaha mio  kaget karena ada pengendara lain yang hendak melambungnya sehingga hilang kendali dan terjatuh. Atas kejadian tersebut Korban di larikan ke RS. Kota Kupang.', NULL, 43, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(80, 1, 2, 3, 1, 2, 1, 1, 1, 3, 1, 2, 2, 'LP/B/28/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 1, 'Rumah Sakit', 'Kendaraan Out of Control keluar ke kiri jalan', 60, 200000, 0, 'Berawal saat Spm melaju dari arah Bundaran Tirosa hendak kearah Gubernur sesampainya di TKP kehilangan kendali karena masuk ke jalan berlubsng sehingga terjadi kecelakan', NULL, 43, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(81, 1, 2, 3, 1, 2, 1, 1, 1, 1, 1, 2, 2, 'LP/B/38/II/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NTT', '1905-07-14', 0, 0, 2, 'Kantor/ Perkantoran', 'Tabrakan depan - belakang', 40, 10000000, 0, 'Berawal saat kedua kendaraan bergerak bersamaan dari arah Bundaran PU menuju ke arah Lampu Merah Fatululi sesampainya di TKP depan kantor Statistik Kota pengemudi Mobil Toyota Avanza dengan kecepatan yang tinggi secara tiba tiba menabrak pengendara Honda Scoopy  DH 4597 KK dari arah belakang sehingga sepeda motor Honda Scoopy terseret Mobil Toyota Avanza dan menabrak pohon. Akibat dari kejadian tersebut pengendara sepeda motor Honda Scoopy mengalami luka luka dan di larikan ke RS. Leona.', NULL, 43, '2024-06-15 13:08:58', '2024-06-15 13:08:58'),
+(82, 1, 2, 3, 1, 2, 1, 1, 2, 1, 1, 2, 2, 'LP/A/228/X/2022/SPKT.SATLANTAS/POLRES KUPANG KOTA/POLDA NUSA TENGGARA TIMUR', '1905-07-14', 0, 0, 2, 'Sekolah/ Kampus', 'Tabrakan depan - belakang', 20, 500000, 500000, 'Berawal saat Sepeda motor Honda Scoopy Nopol DH 4693 KH bergerak diatas Jln. Frans Seda dari arah Fatululi kearah Liliba, setibanya di TKP diduga karena dalam pengaruh miras menabrak bagian belakang sepeda motor Honda Revo DH 5615 KD yang bergerak di depannya sehingga kedua sepeda motor terjatuh. Kemudian pengendara Sepeda motor Honda Scoopy Nopol DH 4693 KH dan penumpang sepeda motor Honda Revo DH 5615 KD dibawa ke RS Kartini.', NULL, 43, '2024-06-15 13:08:58', '2024-06-15 13:08:58');
 
 -- --------------------------------------------------------
 
@@ -257,8 +323,8 @@ INSERT INTO `laka` (`id_laka`, `id_informasi_khusus`, `id_kondisi_cahaya`, `id_c
 --
 
 CREATE TABLE `permukaan_jalan` (
-  `id_permukaan_jalan` int(11) NOT NULL,
-  `permukaan_jalan` varchar(35) DEFAULT NULL
+  `id_permukaan_jalan` int NOT NULL,
+  `permukaan_jalan` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -280,11 +346,11 @@ INSERT INTO `permukaan_jalan` (`id_permukaan_jalan`, `permukaan_jalan`) VALUES
 --
 
 CREATE TABLE `pesan_kapolri` (
-  `id_pesan` int(11) NOT NULL,
-  `img_kapolri` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_pesan` int NOT NULL,
+  `img_kapolri` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -301,13 +367,13 @@ INSERT INTO `pesan_kapolri` (`id_pesan`, `img_kapolri`, `deskripsi`, `created_at
 --
 
 CREATE TABLE `polres` (
-  `id_polres` int(11) NOT NULL,
-  `nama_polres` varchar(100) NOT NULL,
-  `alamat` varchar(100) DEFAULT NULL,
-  `telepon` varchar(15) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `jumlah_anggota` int(11) DEFAULT NULL,
-  `img_polres` varchar(50) DEFAULT NULL
+  `id_polres` int NOT NULL,
+  `nama_polres` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `alamat` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `telepon` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `jumlah_anggota` int DEFAULT NULL,
+  `img_polres` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -315,6 +381,7 @@ CREATE TABLE `polres` (
 --
 
 INSERT INTO `polres` (`id_polres`, `nama_polres`, `alamat`, `telepon`, `email`, `jumlah_anggota`, `img_polres`) VALUES
+(1, 'undefined', NULL, NULL, NULL, NULL, NULL),
 (2, 'POLRES KUPANG KOTA', 'Jl. Frans Seda, Kayu Putih, Kec. Oebobo, Kota Kupang, Nusa Tenggara Tim. 85228', '110', '', 666, '2818359612.jpg');
 
 -- --------------------------------------------------------
@@ -324,10 +391,10 @@ INSERT INTO `polres` (`id_polres`, `nama_polres`, `alamat`, `telepon`, `email`, 
 --
 
 CREATE TABLE `sejarah` (
-  `id_sejarah` int(11) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_sejarah` int NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -344,8 +411,8 @@ INSERT INTO `sejarah` (`id_sejarah`, `deskripsi`, `created_at`, `updated_at`) VA
 --
 
 CREATE TABLE `status_jalan` (
-  `id_status_jalan` int(11) NOT NULL,
-  `status_jalan` varchar(50) DEFAULT NULL
+  `id_status_jalan` int NOT NULL,
+  `status_jalan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -364,8 +431,8 @@ INSERT INTO `status_jalan` (`id_status_jalan`, `status_jalan`) VALUES
 --
 
 CREATE TABLE `tingkat_kecelakaan` (
-  `id_tingkat_kecelakaan` int(11) NOT NULL,
-  `tingkat_kecelakaan` varchar(50) DEFAULT NULL
+  `id_tingkat_kecelakaan` int NOT NULL,
+  `tingkat_kecelakaan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -384,8 +451,8 @@ INSERT INTO `tingkat_kecelakaan` (`id_tingkat_kecelakaan`, `tingkat_kecelakaan`)
 --
 
 CREATE TABLE `tipe_jalan` (
-  `id_tipe_jalan` int(11) NOT NULL,
-  `tipe_jalan` varchar(75) DEFAULT NULL
+  `id_tipe_jalan` int NOT NULL,
+  `tipe_jalan` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -404,11 +471,11 @@ INSERT INTO `tipe_jalan` (`id_tipe_jalan`, `tipe_jalan`) VALUES
 --
 
 CREATE TABLE `titik_rawan` (
-  `id_titik_rawan` int(11) NOT NULL,
-  `img_titik_rawan` varchar(50) DEFAULT NULL,
-  `nama_jalan_rawan` varchar(100) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_titik_rawan` int NOT NULL,
+  `img_titik_rawan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nama_jalan_rawan` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -416,9 +483,21 @@ CREATE TABLE `titik_rawan` (
 --
 
 INSERT INTO `titik_rawan` (`id_titik_rawan`, `img_titik_rawan`, `nama_jalan_rawan`, `created_at`, `updated_at`) VALUES
-(2, '654880270.jpg', 'Jln. W.J Lalamentik', '2024-01-16 07:09:32', '2024-01-16 07:09:32'),
-(3, '1301453848.jpg', 'Jln. Frans Seda', '2024-01-16 07:09:32', '2024-01-16 07:09:32'),
-(4, '1922264560.jpg', 'Jln. amabi', '2024-01-16 07:09:32', '2024-01-16 07:09:32');
+(38, '492376342.jpg', 'jln. Timor Raya', '2024-06-15 01:04:28', '2024-06-15 01:04:28'),
+(39, '2341734534.jpg', 'Jl. El Tari', '2024-06-15 03:55:09', '2024-06-15 03:55:09'),
+(40, '3985513379.jpg', 'Jl. A. Yani', '2024-06-15 03:57:45', '2024-06-15 03:57:45'),
+(41, '2890543425.jpg', 'Jl. Piet A. Tallo ', '2024-06-15 03:58:24', '2024-06-15 03:58:24'),
+(42, '1073017549.jpg', 'Jl. Jenderal Sudirman', '2024-06-15 03:58:58', '2024-06-15 03:58:58'),
+(43, '1304392039.jpg', 'Jl. Frans Seda ', '2024-06-15 03:59:40', '2024-06-15 03:59:40'),
+(44, '400456896.jpg', 'jln. Adi Sucipto', '2024-06-15 04:00:09', '2024-06-15 04:00:09'),
+(45, '1989354456.jpg', 'jln. Pahlawan', '2024-06-15 04:00:37', '2024-06-15 04:00:37'),
+(46, '3621105472.jpg', 'Jl. HR Koroh', '2024-06-15 04:01:09', '2024-06-15 04:01:09'),
+(47, '2834474752.jpg', 'Jl. Cak Doko', '2024-06-15 04:01:39', '2024-06-15 04:01:39'),
+(48, '3038337077.jpg', 'Jl. Yos Sudarso', '2024-06-15 04:02:17', '2024-06-15 04:02:17'),
+(49, '1198364728.jpg', 'Jl. M Praja', '2024-06-15 04:02:50', '2024-06-15 04:02:50'),
+(50, '349730502.jpg', 'Jl. W.J. Lalamentik ', '2024-06-15 04:03:39', '2024-06-15 04:03:39'),
+(51, '3005763705.jpg', 'Jln. Jalur 40', '2024-06-15 04:04:10', '2024-06-15 04:04:10'),
+(52, '2982704465.jpg', 'Jl. Jend. Soeharto', '2024-06-15 04:04:43', '2024-06-15 04:04:43');
 
 -- --------------------------------------------------------
 
@@ -427,17 +506,17 @@ INSERT INTO `titik_rawan` (`id_titik_rawan`, `img_titik_rawan`, `nama_jalan_rawa
 --
 
 CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL,
-  `id_role` int(11) DEFAULT 3,
-  `id_active` int(11) DEFAULT 2,
-  `en_user` varchar(75) DEFAULT NULL,
-  `token` char(6) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `image` varchar(100) DEFAULT 'default.svg',
-  `email` varchar(75) DEFAULT NULL,
-  `password` varchar(75) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp()
+  `id_user` int NOT NULL,
+  `id_role` int DEFAULT '3',
+  `id_active` int DEFAULT '2',
+  `en_user` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `token` char(6) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `image` varchar(100) COLLATE utf8mb4_general_ci DEFAULT 'default.svg',
+  `email` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `password` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -445,7 +524,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `id_role`, `id_active`, `en_user`, `token`, `name`, `image`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, NULL, 'admin', 'default.svg', 'admin@gmail.com', '$2y$10$//KMATh3ibPoI3nHFp7x/u7vnAbo2WyUgmI4x0CVVrH8ajFhMvbjG', '2023-12-06 23:09:44', '2023-12-06 23:09:44');
+(1, 1, 1, NULL, NULL, 'admin', 'default.svg', 'admin@gmail.com', '$2y$10$//KMATh3ibPoI3nHFp7x/u7vnAbo2WyUgmI4x0CVVrH8ajFhMvbjG', '2023-12-06 23:09:44', '2023-12-06 23:09:44'),
+(2, 3, 1, '2y106QjNKngq0LJPT4xiLdfyubDAoCoC7YgKJ3XzII2xkPM3FNlmvG', '135488', 'juned', 'default.svg', 'ardhyjuned7@gmail.com', '$2y$10$82Zfl.SoxAqwebfPUncnnOBr/ZtYqNwzh096atIcqid/H/ZO38J/6', '2024-01-16 13:16:58', '2024-01-16 13:17:27'),
+(3, 2, 1, '2y10lvXReLoMpY9gDiepX8LZUB2W2vO4RJNlo2UPj6dFMG7o3Ooh6', '861787', 'iren', 'default.svg', 'irenpasu@gmail.com', '$2y$10$/jhAS/cwz/UFuqF5i7baDeAZ1BV6HCFLv7Nol8Aj/uEcjaoXMqdBa', '2024-01-18 18:40:03', '2024-01-18 18:40:49'),
+(4, 2, 1, '2y10c6gNNhzNxYGvV3OatwNLuvqFTxiffzhXbUGu554kYR0c73xM9Fe', '272853', 'arlan', 'default.svg', 'arlan270899@gmail.com', '$2y$10$FB6N7COeVn/Sy2wmYHrW6unPc6j2C5/zgh60TU3nrXfDO3fovGySm', '2024-06-11 08:15:20', '2024-06-11 08:15:42');
 
 -- --------------------------------------------------------
 
@@ -454,9 +536,9 @@ INSERT INTO `users` (`id_user`, `id_role`, `id_active`, `en_user`, `token`, `nam
 --
 
 CREATE TABLE `user_access_menu` (
-  `id_access_menu` int(11) NOT NULL,
-  `id_role` int(11) DEFAULT NULL,
-  `id_menu` int(11) DEFAULT NULL
+  `id_access_menu` int NOT NULL,
+  `id_role` int DEFAULT NULL,
+  `id_menu` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -476,9 +558,9 @@ INSERT INTO `user_access_menu` (`id_access_menu`, `id_role`, `id_menu`) VALUES
 --
 
 CREATE TABLE `user_access_sub_menu` (
-  `id_access_sub_menu` int(11) NOT NULL,
-  `id_role` int(11) DEFAULT NULL,
-  `id_sub_menu` int(11) DEFAULT NULL
+  `id_access_sub_menu` int NOT NULL,
+  `id_role` int DEFAULT NULL,
+  `id_sub_menu` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -518,8 +600,8 @@ INSERT INTO `user_access_sub_menu` (`id_access_sub_menu`, `id_role`, `id_sub_men
 --
 
 CREATE TABLE `user_menu` (
-  `id_menu` int(11) NOT NULL,
-  `menu` varchar(50) DEFAULT NULL
+  `id_menu` int NOT NULL,
+  `menu` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -540,8 +622,8 @@ INSERT INTO `user_menu` (`id_menu`, `menu`) VALUES
 --
 
 CREATE TABLE `user_role` (
-  `id_role` int(11) NOT NULL,
-  `role` varchar(35) DEFAULT NULL
+  `id_role` int NOT NULL,
+  `role` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -560,8 +642,8 @@ INSERT INTO `user_role` (`id_role`, `role`) VALUES
 --
 
 CREATE TABLE `user_status` (
-  `id_status` int(11) NOT NULL,
-  `status` varchar(35) DEFAULT NULL
+  `id_status` int NOT NULL,
+  `status` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -579,12 +661,12 @@ INSERT INTO `user_status` (`id_status`, `status`) VALUES
 --
 
 CREATE TABLE `user_sub_menu` (
-  `id_sub_menu` int(11) NOT NULL,
-  `id_menu` int(11) DEFAULT NULL,
-  `id_active` int(11) DEFAULT 2,
-  `title` varchar(50) DEFAULT NULL,
-  `url` varchar(50) DEFAULT NULL,
-  `icon` varchar(50) DEFAULT NULL
+  `id_sub_menu` int NOT NULL,
+  `id_menu` int DEFAULT NULL,
+  `id_active` int DEFAULT '2',
+  `title` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `url` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `icon` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -624,11 +706,11 @@ INSERT INTO `user_sub_menu` (`id_sub_menu`, `id_menu`, `id_active`, `title`, `ur
 --
 
 CREATE TABLE `visi_misi` (
-  `id_vm` int(11) NOT NULL,
-  `img_vm` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_vm` int NOT NULL,
+  `img_vm` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -827,157 +909,157 @@ ALTER TABLE `visi_misi`
 -- AUTO_INCREMENT untuk tabel `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `cuaca`
 --
 ALTER TABLE `cuaca`
-  MODIFY `id_cuaca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cuaca` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `fungsi_jalan`
 --
 ALTER TABLE `fungsi_jalan`
-  MODIFY `id_fungsi_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_fungsi_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `informasi_khusus`
 --
 ALTER TABLE `informasi_khusus`
-  MODIFY `id_informasi_khusus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_informasi_khusus` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `kecelakaan_menonjol`
 --
 ALTER TABLE `kecelakaan_menonjol`
-  MODIFY `id_kecelakaan_menonjol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kecelakaan_menonjol` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas_jalan`
 --
 ALTER TABLE `kelas_jalan`
-  MODIFY `id_kelas_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kelas_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kemiringan_jalan`
 --
 ALTER TABLE `kemiringan_jalan`
-  MODIFY `id_kemiringan_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kemiringan_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kondisi_cahaya`
 --
 ALTER TABLE `kondisi_cahaya`
-  MODIFY `id_kondisi_cahaya` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kondisi_cahaya` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kontak`
 --
 ALTER TABLE `kontak`
-  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kontak` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `laka`
 --
 ALTER TABLE `laka`
-  MODIFY `id_laka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_laka` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT untuk tabel `permukaan_jalan`
 --
 ALTER TABLE `permukaan_jalan`
-  MODIFY `id_permukaan_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_permukaan_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesan_kapolri`
 --
 ALTER TABLE `pesan_kapolri`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pesan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `polres`
 --
 ALTER TABLE `polres`
-  MODIFY `id_polres` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_polres` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `sejarah`
 --
 ALTER TABLE `sejarah`
-  MODIFY `id_sejarah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_sejarah` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `status_jalan`
 --
 ALTER TABLE `status_jalan`
-  MODIFY `id_status_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_status_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tingkat_kecelakaan`
 --
 ALTER TABLE `tingkat_kecelakaan`
-  MODIFY `id_tingkat_kecelakaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_tingkat_kecelakaan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tipe_jalan`
 --
 ALTER TABLE `tipe_jalan`
-  MODIFY `id_tipe_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_tipe_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `titik_rawan`
 --
 ALTER TABLE `titik_rawan`
-  MODIFY `id_titik_rawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_titik_rawan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id_access_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_access_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_sub_menu`
 --
 ALTER TABLE `user_access_sub_menu`
-  MODIFY `id_access_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_access_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_role` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_status`
 --
 ALTER TABLE `user_status`
-  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_status` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `visi_misi`
 --
 ALTER TABLE `visi_misi`
-  MODIFY `id_vm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_vm` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -987,39 +1069,39 @@ ALTER TABLE `visi_misi`
 -- Ketidakleluasaan untuk tabel `laka`
 --
 ALTER TABLE `laka`
-  ADD CONSTRAINT `laka_ibfk_1` FOREIGN KEY (`id_informasi_khusus`) REFERENCES `informasi_khusus` (`id_informasi_khusus`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_10` FOREIGN KEY (`id_kemiringan_jalan`) REFERENCES `kemiringan_jalan` (`id_kemiringan_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_11` FOREIGN KEY (`id_status_jalan`) REFERENCES `status_jalan` (`id_status_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_1` FOREIGN KEY (`id_informasi_khusus`) REFERENCES `informasi_khusus` (`id_informasi_khusus`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_10` FOREIGN KEY (`id_kemiringan_jalan`) REFERENCES `kemiringan_jalan` (`id_kemiringan_jalan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_11` FOREIGN KEY (`id_status_jalan`) REFERENCES `status_jalan` (`id_status_jalan`) ON UPDATE CASCADE,
   ADD CONSTRAINT `laka_ibfk_12` FOREIGN KEY (`id_polres`) REFERENCES `polres` (`id_polres`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `laka_ibfk_13` FOREIGN KEY (`id_titik_rawan`) REFERENCES `titik_rawan` (`id_titik_rawan`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_2` FOREIGN KEY (`id_kondisi_cahaya`) REFERENCES `kondisi_cahaya` (`id_kondisi_cahaya`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_3` FOREIGN KEY (`id_cuaca`) REFERENCES `cuaca` (`id_cuaca`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_4` FOREIGN KEY (`id_tingkat_kecelakaan`) REFERENCES `tingkat_kecelakaan` (`id_tingkat_kecelakaan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_5` FOREIGN KEY (`id_kecelakaan_menonjol`) REFERENCES `kecelakaan_menonjol` (`id_kecelakaan_menonjol`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_6` FOREIGN KEY (`id_fungsi_jalan`) REFERENCES `fungsi_jalan` (`id_fungsi_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_7` FOREIGN KEY (`id_kelas_jalan`) REFERENCES `kelas_jalan` (`id_kelas_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_8` FOREIGN KEY (`id_tipe_jalan`) REFERENCES `tipe_jalan` (`id_tipe_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_9` FOREIGN KEY (`id_permukaan_jalan`) REFERENCES `permukaan_jalan` (`id_permukaan_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `laka_ibfk_2` FOREIGN KEY (`id_kondisi_cahaya`) REFERENCES `kondisi_cahaya` (`id_kondisi_cahaya`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_3` FOREIGN KEY (`id_cuaca`) REFERENCES `cuaca` (`id_cuaca`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_4` FOREIGN KEY (`id_tingkat_kecelakaan`) REFERENCES `tingkat_kecelakaan` (`id_tingkat_kecelakaan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_5` FOREIGN KEY (`id_kecelakaan_menonjol`) REFERENCES `kecelakaan_menonjol` (`id_kecelakaan_menonjol`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_6` FOREIGN KEY (`id_fungsi_jalan`) REFERENCES `fungsi_jalan` (`id_fungsi_jalan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_7` FOREIGN KEY (`id_kelas_jalan`) REFERENCES `kelas_jalan` (`id_kelas_jalan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_8` FOREIGN KEY (`id_tipe_jalan`) REFERENCES `tipe_jalan` (`id_tipe_jalan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_9` FOREIGN KEY (`id_permukaan_jalan`) REFERENCES `permukaan_jalan` (`id_permukaan_jalan`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`id_active`) REFERENCES `user_status` (`id_status`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`id_active`) REFERENCES `user_status` (`id_status`);
 
 --
 -- Ketidakleluasaan untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  ADD CONSTRAINT `user_access_menu_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_access_menu_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`),
   ADD CONSTRAINT `user_access_menu_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `user_menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `user_access_sub_menu`
 --
 ALTER TABLE `user_access_sub_menu`
-  ADD CONSTRAINT `user_access_sub_menu_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_access_sub_menu_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`),
   ADD CONSTRAINT `user_access_sub_menu_ibfk_2` FOREIGN KEY (`id_sub_menu`) REFERENCES `user_sub_menu` (`id_sub_menu`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -1027,7 +1109,7 @@ ALTER TABLE `user_access_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD CONSTRAINT `user_sub_menu_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `user_menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_sub_menu_ibfk_2` FOREIGN KEY (`id_active`) REFERENCES `user_status` (`id_status`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `user_sub_menu_ibfk_2` FOREIGN KEY (`id_active`) REFERENCES `user_status` (`id_status`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

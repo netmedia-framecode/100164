@@ -33,13 +33,43 @@ header("Content-Disposition: attachment; filename=Data Kecelakaan - Digital Satl
       <th class="text-center">Status Jalan</th>
       <th class="text-center">Nilai Kerugian Non Kendaraan</th>
       <th class="text-center">Nilai Kerugian Kendaraan</th>
+      <th class="text-center">Solusi</th>
       <th class="text-center">Keterangan Kerugian</th>
     </tr>
   </thead>
+  <tfoot>
+    <tr>
+      <th class="text-center">#</th>
+      <th class="text-center">No. Laka</th>
+      <th class="text-center">Polres</th>
+      <th class="text-center">Waktu Kejadian</th>
+      <th class="text-center">Tingkat Kecelakaan</th>
+      <th class="text-center">Jumlah Meninggal</th>
+      <th class="text-center">Jumlah Luka Berat</th>
+      <th class="text-center">Jumlah Luka Ringan</th>
+      <th class="text-center">Titik Acuan</th>
+      <th class="text-center">Informasi Khusus</th>
+      <th class="text-center">Tipe Kecelakaan</th>
+      <th class="text-center">Kondisi Cahaya</th>
+      <th class="text-center">Cuaca</th>
+      <th class="text-center">kecelakaan Menonjol</th>
+      <th class="text-center">Nama Jalan</th>
+      <th class="text-center">Fungsi Jalan</th>
+      <th class="text-center">Kelas Jalan</th>
+      <th class="text-center">Tipe Jalan</th>
+      <th class="text-center">Permukaan Jalan</th>
+      <th class="text-center">Batas Kecepatan</th>
+      <th class="text-center">Kemiringan Jalan</th>
+      <th class="text-center">Status Jalan</th>
+      <th class="text-center">Nilai Kerugian Non Kendaraan</th>
+      <th class="text-center">Solusi</th>
+      <th class="text-center">Keterangan Kerugian</th>
+    </tr>
+  </tfoot>
   <tbody>
     <?php if (mysqli_num_rows($views_laka) == 0) { ?>
       <tr>
-        <th scope="row" colspan="9">belum ada data kecelakaan</th>
+        <th scope="row" colspan="24">belum ada data kecelakaan</th>
       </tr>
       <?php } else if (mysqli_num_rows($views_laka) > 0) {
       $no = 1;
@@ -69,39 +99,11 @@ header("Content-Disposition: attachment; filename=Data Kecelakaan - Digital Satl
           <td><?= $data['status_jalan'] ?></td>
           <td>Rp. <?= number_format($data['nilai_kerugian_non_kendaraan']) ?></td>
           <td>Rp. <?= number_format($data['nilai_kerugian_kendaraan']) ?></td>
+          <td><?= $data['solusi'] ?></td>
           <td><?= $data['keterangan_kerugian'] ?></td>
         </tr>
     <?php $no++;
       }
     } ?>
   </tbody>
-  <tfoot>
-    <tr>
-      <th class="text-center">#</th>
-      <th class="text-center">No. Laka</th>
-      <th class="text-center">Polres</th>
-      <th class="text-center">Waktu Kejadian</th>
-      <th class="text-center">Tingkat Kecelakaan</th>
-      <th class="text-center">Jumlah Meninggal</th>
-      <th class="text-center">Jumlah Luka Berat</th>
-      <th class="text-center">Jumlah Luka Ringan</th>
-      <th class="text-center">Titik Acuan</th>
-      <th class="text-center">Informasi Khusus</th>
-      <th class="text-center">Tipe Kecelakaan</th>
-      <th class="text-center">Kondisi Cahaya</th>
-      <th class="text-center">Cuaca</th>
-      <th class="text-center">kecelakaan Menonjol</th>
-      <th class="text-center">Nama Jalan</th>
-      <th class="text-center">Fungsi Jalan</th>
-      <th class="text-center">Kelas Jalan</th>
-      <th class="text-center">Tipe Jalan</th>
-      <th class="text-center">Permukaan Jalan</th>
-      <th class="text-center">Batas Kecepatan</th>
-      <th class="text-center">Kemiringan Jalan</th>
-      <th class="text-center">Status Jalan</th>
-      <th class="text-center">Nilai Kerugian Non Kendaraan</th>
-      <th class="text-center">Nilai Kerugian Kendaraan</th>
-      <th class="text-center">Keterangan Kerugian</th>
-    </tr>
-  </tfoot>
 </table>

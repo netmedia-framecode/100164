@@ -178,8 +178,6 @@ CREATE TABLE laka (
   jumlah_meninggal INT,
   jumlah_luka_berat INT,
   jumlah_luka_ringan INT,
-  latitude VARCHAR(50),
-  longitude VARCHAR(50),
   titik_acuan VARCHAR(100),
   tipe_kecelakaan TEXT,
   batas_kecepatan_dilokasi INT,

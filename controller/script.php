@@ -368,7 +368,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
 
   $select_user_access_menu = "SELECT user_access_menu.*, user_role.role, user_menu.menu
                                 FROM user_access_menu 
-                                JOIN user_role ON user_access_menu.id_role=.user_role.id_role 
+                                JOIN user_role ON user_access_menu.id_role=user_role.id_role 
                                 JOIN user_menu ON user_access_menu.id_menu=user_menu.id_menu
                               ";
   $views_user_access_menu = mysqli_query($conn, $select_user_access_menu);
@@ -416,7 +416,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
 
   $select_user_access_sub_menu = "SELECT user_access_sub_menu.*, user_role.role, user_sub_menu.title
                                     FROM user_access_sub_menu 
-                                    JOIN user_role ON user_access_sub_menu.id_role=.user_role.id_role 
+                                    JOIN user_role ON user_access_sub_menu.id_role=user_role.id_role 
                                     JOIN user_sub_menu ON user_access_sub_menu.id_sub_menu=user_sub_menu.id_sub_menu
                                   ";
   $views_user_access_sub_menu = mysqli_query($conn, $select_user_access_sub_menu);
@@ -977,7 +977,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
       $message = "Data kecelakaan yang anda pilih berhasil dihapus.";
       $message_type = "success";
       alert($message, $message_type);
-      header("Location: data-pemetaan");
+      header("Location: data-kecelakaan");
       exit();
     }
   }

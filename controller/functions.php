@@ -1580,6 +1580,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         batas_kecepatan_dilokasi,
         nilai_kerugian_non_kendaraan,
         nilai_kerugian_kendaraan,
+        solusi,
         keterangan_kerugian,
         jam_kejadian
       ) VALUES(
@@ -1606,6 +1607,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         '$data[batas_kecepatan_dilokasi]',
         '$data[nilai_kerugian_non_kendaraan]',
         '$data[nilai_kerugian_kendaraan]',
+        '$data[solusi]',
         '$data[keterangan_kerugian]',
         '$data[jam_kejadian]'
       )";
@@ -1668,7 +1670,8 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         $batas_kecepatan = valid($conn, $rowData[0][18]);
         $nilai_kerugian_non_kendaraan = valid($conn, $rowData[0][21]);
         $nilai_kerugian_kendaraan = valid($conn, $rowData[0][22]);
-        $keterangan_kerugian = valid($conn, $rowData[0][23]);
+        $solusi = valid($conn, $rowData[0][23]);
+        $keterangan_kerugian = valid($conn, $rowData[0][24]);
 
         // Ambil data ID dari tabel lain dengan data yang sesuai di excel
         $check_informasi_khusus = "SELECT * FROM informasi_khusus WHERE informasi_khusus LIKE '%$id_informasi_khusus%'";
@@ -1803,6 +1806,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
           batas_kecepatan_dilokasi,
           nilai_kerugian_non_kendaraan,
           nilai_kerugian_kendaraan,
+          solusi,
           keterangan_kerugian,
           id_titik_rawan
         ) VALUES (
@@ -1828,6 +1832,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
           '$batas_kecepatan',
           '$nilai_kerugian_non_kendaraan',
           '$nilai_kerugian_kendaraan',
+          '$solusi',
           '$keterangan_kerugian',
           '$id_titik_rawan'
         )";

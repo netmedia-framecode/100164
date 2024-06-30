@@ -42,7 +42,7 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
               $take_titik_rawan = mysqli_query($conn, $select_titik_rawan);
               $data = mysqli_fetch_assoc($take_titik_rawan);
 
-              $select_laka = "SELECT laka.*, informasi_khusus.informasi_khusus, kondisi_cahaya.kondisi_cahaya, cuaca.kondisi, tingkat_kecelakaan.tingkat_kecelakaan, kecelakaan_menonjol.kecelakaan_menonjol, fungsi_jalan.fungsi_jalan, kelas_jalan.kelas_jalan, tipe_jalan.tipe_jalan, permukaan_jalan.permukaan_jalan, kemiringan_jalan.kemiringan_jalan, status_jalan.status_jalan, polres.nama_polres, polres.alamat, polres.telepon, polres.email, polres.jumlah_anggota, titik_rawan.nama_jalan_rawan
+              $select_laka = "SELECT laka.*, informasi_khusus.informasi_khusus, kondisi_cahaya.kondisi_cahaya, cuaca.kondisi, tingkat_kecelakaan.tingkat_kecelakaan, kecelakaan_menonjol.kecelakaan_menonjol, fungsi_jalan.fungsi_jalan, kelas_jalan.kelas_jalan, tipe_jalan.tipe_jalan, permukaan_jalan.permukaan_jalan, kemiringan_jalan.kemiringan_jalan, status_jalan.status_jalan, polres.nama_polres, polres.alamat, polres.telepon, polres.email, polres.jumlah_anggota, titik_rawan.nama_jalan_rawan, titik_rawan.solusi
                     FROM laka
                     JOIN informasi_khusus ON laka.id_informasi_khusus=informasi_khusus.id_informasi_khusus
                     JOIN kondisi_cahaya ON laka.id_kondisi_cahaya=kondisi_cahaya.id_kondisi_cahaya
@@ -149,6 +149,9 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
                                   echo "Gagal mengambil data polres";
                                 }
                                 ?></dd>
+                                
+                            <dt>Solusi:</dt><br>
+                            <dd class="text-left mb-3"><?= $data['solusi'] ?></dd>
                           </dl>
                         </div>
                       </section>
@@ -185,7 +188,6 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
                                     <th class="text-center">Status Jalan</th>
                                     <th class="text-center">Nilai Kerugian Non Kendaraan</th>
                                     <th class="text-center">Nilai Kerugian Kendaraan</th>
-                                    <th class="text-center">Solusi</th>
                                     <th class="text-center">Keterangan</th>
                                   </tr>
                                 </thead>
@@ -214,7 +216,6 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
                                     <th class="text-center">Status Jalan</th>
                                     <th class="text-center">Nilai Kerugian Non Kendaraan</th>
                                     <th class="text-center">Nilai Kerugian Kendaraan</th>
-                                    <th class="text-center">Solusi</th>
                                     <th class="text-center">Keterangan</th>
                                   </tr>
                                 </tfoot>
@@ -244,7 +245,6 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
                                       <td><?= $data['status_jalan'] ?></td>
                                       <td>Rp. <?= number_format($data['nilai_kerugian_non_kendaraan']) ?></td>
                                       <td>Rp. <?= number_format($data['nilai_kerugian_kendaraan']) ?></td>
-                                      <td><?= $data['solusi'] ?></td>
                                       <td><?= $data['keterangan_kerugian'] ?></td>
                                     </tr>
                                   <?php } ?>

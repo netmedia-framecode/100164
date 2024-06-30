@@ -48,7 +48,6 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
               <th class="text-center">Status Jalan</th>
               <th class="text-center">Nilai Kerugian Non Kendaraan</th>
               <th class="text-center">Nilai Kerugian Kendaraan</th>
-              <th class="text-center">Solusi</th>
               <th class="text-center">Keterangan</th>
               <th class="text-center">Aksi</th>
             </tr>
@@ -78,7 +77,6 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
               <th class="text-center">Status Jalan</th>
               <th class="text-center">Nilai Kerugian Non Kendaraan</th>
               <th class="text-center">Nilai Kerugian Kendaraan</th>
-              <th class="text-center">Solusi</th>
               <th class="text-center">Keterangan</th>
               <th class="text-center">Aksi</th>
             </tr>
@@ -109,7 +107,6 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
                 <td><?= $data['status_jalan'] ?></td>
                 <td>Rp. <?= number_format($data['nilai_kerugian_non_kendaraan']) ?></td>
                 <td>Rp. <?= number_format($data['nilai_kerugian_kendaraan']) ?></td>
-                <td><?= $data['solusi'] ?></td>
                 <td><?= $data['keterangan_kerugian'] ?></td>
                 <td class="text-center">
                   <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $data['id_laka'] ?>">
@@ -417,12 +414,6 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
                                 <input type="text" name="nilai_kerugian_kendaraan" value="<?php if (isset($data['nilai_kerugian_kendaraan'])) {
                                                                                             echo $data['nilai_kerugian_kendaraan'];
                                                                                           } ?>" class="form-control" id="nilai_kerugian_kendaraan" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label for="solusi">Solusi</label>
-                                <textarea class="form-control" name="solusi" id="solusi" rows="3"><?php if (isset($data['solusi'])) {
-                                                                                                    echo $data['solusi'];
-                                                                                                  } ?></textarea>
                               </div>
                               <div class="form-group">
                                 <label for="keterangan_kerugian">Keterangan</label>
@@ -774,12 +765,6 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
               <input type="number" name="nilai_kerugian_kendaraan" value="<?php if (isset($_POST['nilai_kerugian_kendaraan'])) {
                                                                           echo $_POST['nilai_kerugian_kendaraan'];
                                                                         } ?>" class="form-control" id="nilai_kerugian_kendaraan" placeholder="">
-            </div>
-            <div class="form-group">
-              <label for="solusi">Solusi</label>
-              <textarea class="form-control" name="solusi" id="solusi" rows="3"><?php if (isset($_POST['solusi'])) {
-                                                                                  echo $_POST['solusi'];
-                                                                                } ?></textarea>
             </div>
             <div class="form-group">
               <label for="keterangan_kerugian">Keterangan</label>

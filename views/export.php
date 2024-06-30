@@ -33,7 +33,6 @@ header("Content-Disposition: attachment; filename=Data Kecelakaan - Digital Satl
       <th class="text-center">Status Jalan</th>
       <th class="text-center">Nilai Kerugian Non Kendaraan</th>
       <th class="text-center">Nilai Kerugian Kendaraan</th>
-      <th class="text-center">Solusi</th>
       <th class="text-center">Keterangan Kerugian</th>
     </tr>
   </thead>
@@ -62,7 +61,6 @@ header("Content-Disposition: attachment; filename=Data Kecelakaan - Digital Satl
       <th class="text-center">Kemiringan Jalan</th>
       <th class="text-center">Status Jalan</th>
       <th class="text-center">Nilai Kerugian Non Kendaraan</th>
-      <th class="text-center">Solusi</th>
       <th class="text-center">Keterangan Kerugian</th>
     </tr>
   </tfoot>
@@ -99,7 +97,6 @@ header("Content-Disposition: attachment; filename=Data Kecelakaan - Digital Satl
           <td><?= $data['status_jalan'] ?></td>
           <td>Rp. <?= number_format($data['nilai_kerugian_non_kendaraan']) ?></td>
           <td>Rp. <?= number_format($data['nilai_kerugian_kendaraan']) ?></td>
-          <td><?= $data['solusi'] ?></td>
           <td><?= $data['keterangan_kerugian'] ?></td>
         </tr>
     <?php $no++;

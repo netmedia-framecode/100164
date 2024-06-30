@@ -18,12 +18,14 @@ require_once("../templates/views_top.php"); ?>
           <thead>
             <tr>
               <th class="text-center">Nama Jalan</th>
+              <th class="text-center">Solusi</th>
               <th class="text-center">Aksi</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th class="text-center">Nama Jalan</th>
+              <th class="text-center">Solusi</th>
               <th class="text-center">Aksi</th>
             </tr>
           </tfoot>
@@ -34,6 +36,7 @@ require_once("../templates/views_top.php"); ?>
                   <p><?= $data['nama_jalan_rawan'] ?></p>
                   <img src="../assets/img/titik_rawan/<?= $data['img_titik_rawan'] ?>" style="width: 400px;" alt="">
                 </td>
+                <td><?= $data['solusi'] ?></td>
                 <td class="d-flex justify-content-center">
                   <button type="button" class="btn btn-warning btn-sm ml-3" data-toggle="modal" data-target="#edit<?= $data['id_titik_rawan'] ?>">
                     <i class="bi bi-pen"></i> Ubah
@@ -47,7 +50,7 @@ require_once("../templates/views_top.php"); ?>
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                           <input type="hidden" name="id_titik_rawan" value="<?= $data['id_titik_rawan'] ?>">
                           <input type="hidden" name="nama_jalan_rawanOld" value="<?= $data['nama_jalan_rawan'] ?>">
                           <input type="hidden" name="img_titik_rawanOld" value="<?= $data['img_titik_rawan'] ?>">
@@ -66,6 +69,10 @@ require_once("../templates/views_top.php"); ?>
                                 <input type="file" name="img_titik_rawan" class="custom-file-input" id="img_titik_rawan">
                                 <label class="custom-file-label" for="img_titik_rawan">Unggah File</label>
                               </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="solusi" class="form-label">Solusi</label>
+                              <textarea class="form-control" name="solusi" id="solusi" rows="3" required><?= $data['solusi'] ?></textarea>
                             </div>
                           </div>
                           <div class="modal-footer justify-content-center border-top-0">
@@ -90,6 +97,7 @@ require_once("../templates/views_top.php"); ?>
                         </div>
                         <form action="" method="post">
                           <input type="hidden" name="id_titik_rawan" value="<?= $data['id_titik_rawan'] ?>">
+                          <input type="hidden" name="img_titik_rawan" value="<?= $data['img_titik_rawan'] ?>">
                           <div class="modal-body">
                             <p>Jika anda yakin ingin menghapus data ini, klik Hapus!</p>
                           </div>
@@ -135,6 +143,10 @@ require_once("../templates/views_top.php"); ?>
                                                                                                           } ?>>
                 <label class="custom-file-label" for="img_titik_rawan">Unggah File</label>
               </div>
+            </div>
+            <div class="mb-3">
+              <label for="solusi" class="form-label">Solusi</label>
+              <textarea class="form-control" name="solusi" id="solusi" rows="3" required></textarea>
             </div>
           </div>
           <div class="modal-footer justify-content-center border-top-0">

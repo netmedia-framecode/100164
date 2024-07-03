@@ -15,23 +15,6 @@ $name_website = "Digital Satlantas Kota Kupang";
 $select_auth = "SELECT * FROM auth";
 $views_auth = mysqli_query($conn, $select_auth);
 
-$select_laka = "SELECT laka.*, informasi_khusus.informasi_khusus, kondisi_cahaya.kondisi_cahaya, cuaca.kondisi, tingkat_kecelakaan.tingkat_kecelakaan, kecelakaan_menonjol.kecelakaan_menonjol, fungsi_jalan.fungsi_jalan, kelas_jalan.kelas_jalan, tipe_jalan.tipe_jalan, permukaan_jalan.permukaan_jalan, kemiringan_jalan.kemiringan_jalan, status_jalan.status_jalan, polres.nama_polres, polres.alamat, polres.telepon, polres.email, polres.jumlah_anggota, titik_rawan.nama_jalan_rawan
-FROM laka
-JOIN informasi_khusus ON laka.id_informasi_khusus=informasi_khusus.id_informasi_khusus
-JOIN kondisi_cahaya ON laka.id_kondisi_cahaya=kondisi_cahaya.id_kondisi_cahaya
-JOIN cuaca ON laka.id_cuaca=cuaca.id_cuaca
-JOIN tingkat_kecelakaan ON laka.id_tingkat_kecelakaan=tingkat_kecelakaan.id_tingkat_kecelakaan
-JOIN kecelakaan_menonjol ON laka.id_kecelakaan_menonjol=kecelakaan_menonjol.id_kecelakaan_menonjol
-JOIN fungsi_jalan ON laka.id_fungsi_jalan=fungsi_jalan.id_fungsi_jalan
-JOIN kelas_jalan ON laka.id_kelas_jalan=kelas_jalan.id_kelas_jalan
-JOIN tipe_jalan ON laka.id_tipe_jalan=tipe_jalan.id_tipe_jalan
-JOIN permukaan_jalan ON laka.id_permukaan_jalan=permukaan_jalan.id_permukaan_jalan
-JOIN kemiringan_jalan ON laka.id_kemiringan_jalan=kemiringan_jalan.id_kemiringan_jalan
-JOIN status_jalan ON laka.id_status_jalan=status_jalan.id_status_jalan
-JOIN polres ON laka.id_polres=polres.id_polres
-JOIN titik_rawan ON laka.id_titik_rawan=titik_rawan.id_titik_rawan
-";
-$views_laka = mysqli_query($conn, $select_laka);
 $select_polres = "SELECT polres.*, COUNT(laka.id_laka) AS jumlah_laka
   FROM polres
   JOIN laka ON polres.id_polres = laka.id_polres
@@ -1087,4 +1070,11 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
 
   $select_polres_dash = "SELECT * FROM polres WHERE id_polres != 1";
   $views_polres_dash = mysqli_query($conn, $select_polres_dash);
+
+  $select_laka = "SELECT laka.*, polres.nama_polres, titik_rawan.nama_jalan_rawan
+  FROM laka
+  JOIN polres ON laka.id_polres=polres.id_polres
+  JOIN titik_rawan ON laka.id_titik_rawan=titik_rawan.id_titik_rawan
+  ";
+  $views_laka = mysqli_query($conn, $select_laka);
 }

@@ -27,28 +27,8 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
             <tr>
               <th class="text-center">No. Laka</th>
               <th class="text-center">Polres</th>
-              <th class="text-center">Waktu Kejadian</th>
-              <th class="text-center">Tingkat Kecelakaan</th>
-              <th class="text-center">Jumlah Meninggal</th>
-              <th class="text-center">Jumlah Luka Berat</th>
-              <th class="text-center">Jumlah Luka Ringan</th>
-              <th class="text-center">Titik Acuan</th>
-              <th class="text-center">Informasi Khusus</th>
-              <th class="text-center">Tipe Kecelakaan</th>
-              <th class="text-center">Kondisi Cahaya</th>
-              <th class="text-center">Cuaca</th>
-              <th class="text-center">kecelakaan Menonjol</th>
-              <th class="text-center">Nama Jalan</th>
-              <th class="text-center">Fungsi Jalan</th>
-              <th class="text-center">Kelas Jalan</th>
-              <th class="text-center">Tipe Jalan</th>
-              <th class="text-center">Permukaan Jalan</th>
-              <th class="text-center">Batas Kecepatan</th>
-              <th class="text-center">Kemiringan Jalan</th>
-              <th class="text-center">Status Jalan</th>
-              <th class="text-center">Nilai Kerugian Non Kendaraan</th>
-              <th class="text-center">Nilai Kerugian Kendaraan</th>
-              <th class="text-center">Keterangan</th>
+              <th class="text-center">Waktu Kecelakaan</th>
+              <th class="text-center">Lokasi</th>
               <th class="text-center">Aksi</th>
             </tr>
           </thead>
@@ -56,59 +36,117 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
             <tr>
               <th class="text-center">No. Laka</th>
               <th class="text-center">Polres</th>
-              <th class="text-center">Waktu Kejadian</th>
-              <th class="text-center">Tingkat Kecelakaan</th>
-              <th class="text-center">Jumlah Meninggal</th>
-              <th class="text-center">Jumlah Luka Berat</th>
-              <th class="text-center">Jumlah Luka Ringan</th>
-              <th class="text-center">Titik Acuan</th>
-              <th class="text-center">Informasi Khusus</th>
-              <th class="text-center">Tipe Kecelakaan</th>
-              <th class="text-center">Kondisi Cahaya</th>
-              <th class="text-center">Cuaca</th>
-              <th class="text-center">kecelakaan Menonjol</th>
-              <th class="text-center">Nama Jalan</th>
-              <th class="text-center">Fungsi Jalan</th>
-              <th class="text-center">Kelas Jalan</th>
-              <th class="text-center">Tipe Jalan</th>
-              <th class="text-center">Permukaan Jalan</th>
-              <th class="text-center">Batas Kecepatan</th>
-              <th class="text-center">Kemiringan Jalan</th>
-              <th class="text-center">Status Jalan</th>
-              <th class="text-center">Nilai Kerugian Non Kendaraan</th>
-              <th class="text-center">Nilai Kerugian Kendaraan</th>
-              <th class="text-center">Keterangan</th>
+              <th class="text-center">Waktu Kecelakaan</th>
+              <th class="text-center">Lokasi</th>
               <th class="text-center">Aksi</th>
             </tr>
           </tfoot>
           <tbody>
             <?php foreach ($views_laka as $data) { ?>
               <tr>
-                <td><?= $data['no_laka'] ?></td>
+                <td>
+                  <p><?= $data['no_laka'] ?></p>
+                  <img src="../assets/img/laka/<?= $data['img_laka'] ?>" style="width: 200px;" alt="">
+                </td>
                 <td><?= $data['nama_polres'] ?></td>
-                <td><?= $data['tanggal_kejadian'] . " " . $data['jam_kejadian'] ?></td>
-                <td><?= $data['tingkat_kecelakaan'] ?></td>
-                <td><?= $data['jumlah_meninggal'] ?></td>
-                <td><?= $data['jumlah_luka_berat'] ?></td>
-                <td><?= $data['jumlah_luka_ringan'] ?></td>
-                <td><?= $data['titik_acuan'] ?></td>
-                <td><?= $data['informasi_khusus'] ?></td>
-                <td><?= $data['tipe_kecelakaan'] ?></td>
-                <td><?= $data['kondisi_cahaya'] ?></td>
-                <td><?= $data['kondisi'] ?></td>
-                <td><?= $data['kecelakaan_menonjol'] ?></td>
+                <td><?php $tanggal_kejadian = date_create($data["tanggal_kejadian"]);
+                    echo date_format($tanggal_kejadian, "d M Y"); ?></td>
                 <td><?= $data['nama_jalan_rawan'] ?></td>
-                <td><?= $data['fungsi_jalan'] ?></td>
-                <td><?= $data['kelas_jalan'] ?></td>
-                <td><?= $data['tipe_jalan'] ?></td>
-                <td><?= $data['permukaan_jalan'] ?></td>
-                <td><?= $data['batas_kecepatan_dilokasi'] ?></td>
-                <td><?= $data['kemiringan_jalan'] ?></td>
-                <td><?= $data['status_jalan'] ?></td>
-                <td>Rp. <?= number_format($data['nilai_kerugian_non_kendaraan']) ?></td>
-                <td>Rp. <?= number_format($data['nilai_kerugian_kendaraan']) ?></td>
-                <td><?= $data['keterangan_kerugian'] ?></td>
                 <td class="text-center">
+                  <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail<?= $data['id_laka'] ?>">
+                    <i class="bi bi-search"></i> Detail
+                  </button>
+                  <div class="modal fade" id="detail<?= $data['id_laka'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header border-bottom-0 shadow">
+                          <h5 class="modal-title" id="exampleModalLabel">Detail Kecelakaan</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-left">
+                          <?php
+
+                          $tk_laka = "SELECT * FROM tingkat_kecelakaan WHERE id_tingkat_kecelakaan='$data[id_tingkat_kecelakaan]'";
+                          $view_tk_laka = mysqli_query($conn, $tk_laka);
+                          $data_detail = mysqli_fetch_assoc($view_tk_laka);
+
+                          echo "Tingkat Kecelakaan : " . $data_detail['tingkat_kecelakaan'] . "<br>";
+                          echo "Jumlah Meninggal : " . $data['jumlah_meninggal'] . "<br>";
+                          echo "Jumlah Luka Berat : " . $data['jumlah_luka_berat'] . "<br>";
+                          echo "Jumlah Luka Ringan : " . $data['jumlah_luka_ringan'] . "<br>";
+                          echo "Titik Acuan : " . $data['titik_acuan'] . "<br>";
+
+                          $ik_laka = "SELECT * FROM informasi_khusus WHERE id_informasi_khusus='$data[id_informasi_khusus]'";
+                          $view_ik_laka = mysqli_query($conn, $ik_laka);
+                          $data_detail = mysqli_fetch_assoc($view_ik_laka);
+
+                          echo "Informasi Khusus : " . $data_detail['informasi_khusus'] . "<br>";
+                          echo "Tipe Kecelakaan : " . $data['tipe_kecelakaan'] . "<br>";
+
+                          $kc_laka = "SELECT * FROM kondisi_cahaya WHERE id_kondisi_cahaya='$data[id_kondisi_cahaya]'";
+                          $view_kc_laka = mysqli_query($conn, $kc_laka);
+                          $data_detail = mysqli_fetch_assoc($view_kc_laka);
+
+                          echo "Kondisi Cahaya : " . $data_detail['kondisi_cahaya'] . "<br>";
+
+                          $cuaca_laka = "SELECT * FROM cuaca WHERE id_cuaca='$data[id_cuaca]'";
+                          $view_cuaca_laka = mysqli_query($conn, $cuaca_laka);
+                          $data_detail = mysqli_fetch_assoc($view_cuaca_laka);
+
+                          echo "Cuaca : " . $data_detail['kondisi'] . "<br>";
+
+                          $kecelakaan_menonjol_laka = "SELECT * FROM kecelakaan_menonjol WHERE id_kecelakaan_menonjol='$data[id_kecelakaan_menonjol]'";
+                          $view_kecelakaan_menonjol_laka = mysqli_query($conn, $kecelakaan_menonjol_laka);
+                          $data_detail = mysqli_fetch_assoc($view_kecelakaan_menonjol_laka);
+
+                          echo "Kecelakaan Menonjol : " . $data_detail['kecelakaan_menonjol'] . "<br>";
+
+                          $fungsi_jalan_laka = "SELECT * FROM fungsi_jalan WHERE id_fungsi_jalan='$data[id_fungsi_jalan]'";
+                          $view_fungsi_jalan_laka = mysqli_query($conn, $fungsi_jalan_laka);
+                          $data_detail = mysqli_fetch_assoc($view_fungsi_jalan_laka);
+
+                          echo "Fungsi Jalan : " . $data_detail['fungsi_jalan'] . "<br>";
+
+                          $kelas_jalan_laka = "SELECT * FROM kelas_jalan WHERE id_kelas_jalan='$data[id_kelas_jalan]'";
+                          $view_kelas_jalan_laka = mysqli_query($conn, $kelas_jalan_laka);
+                          $data_detail = mysqli_fetch_assoc($view_kelas_jalan_laka);
+
+                          echo "Kelas Jalan : " . $data_detail['kelas_jalan'] . "<br>";
+
+                          $tipe_jalan_laka = "SELECT * FROM tipe_jalan WHERE id_tipe_jalan='$data[id_tipe_jalan]'";
+                          $view_tipe_jalan_laka = mysqli_query($conn, $tipe_jalan_laka);
+                          $data_detail = mysqli_fetch_assoc($view_tipe_jalan_laka);
+
+                          echo "Tipe Jalan : " . $data_detail['tipe_jalan'] . "<br>";
+
+                          $permukaan_jalan_laka = "SELECT * FROM permukaan_jalan WHERE id_permukaan_jalan='$data[id_permukaan_jalan]'";
+                          $view_permukaan_jalan_laka = mysqli_query($conn, $permukaan_jalan_laka);
+                          $data_detail = mysqli_fetch_assoc($view_permukaan_jalan_laka);
+
+                          echo "Permukaan Jalan : " . $data_detail['permukaan_jalan'] . "<br>";
+                          echo "Batas Kecepatan di Lokasi : " . $data['batas_kecepatan_dilokasi'] . "<br>";
+
+                          $kemiringan_jalan_laka = "SELECT * FROM kemiringan_jalan WHERE id_kemiringan_jalan='$data[id_kemiringan_jalan]'";
+                          $view_kemiringan_jalan_laka = mysqli_query($conn, $kemiringan_jalan_laka);
+                          $data_detail = mysqli_fetch_assoc($view_kemiringan_jalan_laka);
+
+                          echo "Kemiringan Jalan : " . $data_detail['kemiringan_jalan'] . "<br>";
+
+                          $status_jalan_laka = "SELECT * FROM status_jalan WHERE id_status_jalan='$data[id_status_jalan]'";
+                          $view_status_jalan_laka = mysqli_query($conn, $status_jalan_laka);
+                          $data_detail = mysqli_fetch_assoc($view_status_jalan_laka);
+
+                          echo "Status Jalan : " . $data_detail['status_jalan'] . "<br>";
+                          echo "Nilai Kerugian Non Kendaraan : " . $data['nilai_kerugian_non_kendaraan'] . "<br>";
+                          echo "Nilai Kerugian Kendaraan : " . $data['nilai_kerugian_kendaraan'] . "<br>";
+                          echo "Keterangan : " . $data['Keterangan_kerugian'] . "<br>";
+                          ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $data['id_laka'] ?>">
                     <i class="bi bi-pen"></i> Ubah
                   </button>
@@ -751,20 +789,20 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
             <div class="form-group">
               <label for="batas_kecepatan_dilokasi">Batas Kecepatan Dilokasi</label>
               <input type="number" name="batas_kecepatan_dilokasi" value="<?php if (isset($_POST['batas_kecepatan_dilokasi'])) {
-                                                                          echo $_POST['batas_kecepatan_dilokasi'];
-                                                                        } ?>" class="form-control" id="batas_kecepatan_dilokasi" placeholder="" required>
+                                                                            echo $_POST['batas_kecepatan_dilokasi'];
+                                                                          } ?>" class="form-control" id="batas_kecepatan_dilokasi" placeholder="" required>
             </div>
             <div class="form-group">
               <label for="nilai_kerugian_non_kendaraan">Nilai Kerugian Non Kendaraan</label>
               <input type="number" name="nilai_kerugian_non_kendaraan" value="<?php if (isset($_POST['nilai_kerugian_non_kendaraan'])) {
-                                                                              echo $_POST['nilai_kerugian_non_kendaraan'];
-                                                                            } ?>" class="form-control" id="nilai_kerugian_non_kendaraan" placeholder="">
+                                                                                echo $_POST['nilai_kerugian_non_kendaraan'];
+                                                                              } ?>" class="form-control" id="nilai_kerugian_non_kendaraan" placeholder="">
             </div>
             <div class="form-group">
               <label for="nilai_kerugian_kendaraan">Nilai Kerugian Kendaraan</label>
               <input type="number" name="nilai_kerugian_kendaraan" value="<?php if (isset($_POST['nilai_kerugian_kendaraan'])) {
-                                                                          echo $_POST['nilai_kerugian_kendaraan'];
-                                                                        } ?>" class="form-control" id="nilai_kerugian_kendaraan" placeholder="">
+                                                                            echo $_POST['nilai_kerugian_kendaraan'];
+                                                                          } ?>" class="form-control" id="nilai_kerugian_kendaraan" placeholder="">
             </div>
             <div class="form-group">
               <label for="keterangan_kerugian">Keterangan</label>

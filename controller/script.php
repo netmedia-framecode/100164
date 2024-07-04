@@ -948,7 +948,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
       $message = "Data kecelakaan yang anda pilih berhasil diubah.";
       $message_type = "success";
       alert($message, $message_type);
-      header("Location: data-pemetaan");
+      header("Location: data-kecelakaan");
       exit();
     }
   }

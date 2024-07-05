@@ -1767,7 +1767,11 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         } else {
           $id_polres = 1;
         }
-        $check_titik_rawan = "SELECT * FROM titik_rawan WHERE nama_jalan_rawan LIKE '%$id_titik_rawan%'";
+        $nama_jalan_rawan = strtoupper($id_titik_rawan);
+        $nama_jalan_rawan = str_replace('.', '', $nama_jalan_rawan);
+        $nama_jalan_rawan = preg_replace('/\s+/', ' ', $nama_jalan_rawan);
+        $nama_jalan_rawan = trim($nama_jalan_rawan);
+        $check_titik_rawan = "SELECT * FROM titik_rawan WHERE nama_jalan_rawan LIKE '%$nama_jalan_rawan%'";
         $data_titik_rawan = mysqli_query($conn, $check_titik_rawan);
         if (mysqli_num_rows($data_titik_rawan) > 0) {
           $data_titik_rawan = mysqli_fetch_assoc($data_titik_rawan);
@@ -1889,7 +1893,12 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         alert($message, $message_type);
         return false;
       }
-      $sql = "INSERT INTO titik_rawan(img_titik_rawan,nama_jalan_rawan,solusi) VALUES('$img_titik_rawan','$data[nama_jalan_rawan]','$data[solusi]')";
+      $nama_jalan_rawan = $data['nama_jalan_rawan'];
+      $nama_jalan_rawan = strtoupper($nama_jalan_rawan);
+      $nama_jalan_rawan = str_replace('.', '', $nama_jalan_rawan);
+      $nama_jalan_rawan = preg_replace('/\s+/', ' ', $nama_jalan_rawan);
+      $nama_jalan_rawan = trim($nama_jalan_rawan);
+      $sql = "INSERT INTO titik_rawan(img_titik_rawan,nama_jalan_rawan,solusi) VALUES('$img_titik_rawan','$nama_jalan_rawan','$data[solusi]')";
     }
 
     if ($action == "update") {
@@ -1926,7 +1935,12 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
       } else if (empty($_FILE['img_titik_rawan']["name"])) {
         $img_titik_rawan = $data['img_titik_rawanOld'];
       }
-      $sql = "UPDATE titik_rawan SET img_titik_rawan='$img_titik_rawan', nama_jalan_rawan='$data[nama_jalan_rawan]', solusi='$data[solusi]' WHERE id_titik_rawan='$data[id_titik_rawan]'";
+      $nama_jalan_rawan = $data['nama_jalan_rawan'];
+      $nama_jalan_rawan = strtoupper($nama_jalan_rawan);
+      $nama_jalan_rawan = str_replace('.', '', $nama_jalan_rawan);
+      $nama_jalan_rawan = preg_replace('/\s+/', ' ', $nama_jalan_rawan);
+      $nama_jalan_rawan = trim($nama_jalan_rawan);
+      $sql = "UPDATE titik_rawan SET img_titik_rawan='$img_titik_rawan', nama_jalan_rawan='$nama_jalan_rawan', solusi='$data[solusi]' WHERE id_titik_rawan='$data[id_titik_rawan]'";
     }
 
     if ($action == "delete") {

@@ -72,7 +72,7 @@ require_once("../templates/views_top.php"); ?>
                             </div>
                             <div class="mb-3">
                               <label for="solusi" class="form-label">Solusi</label>
-                              <textarea class="form-control" name="solusi" id="solusi" rows="3" required><?= $data['solusi'] ?></textarea>
+                              <textarea class="form-control" name="solusi" id="solusi" rows="3"><?= $data['solusi'] ?></textarea>
                             </div>
                           </div>
                           <div class="modal-footer justify-content-center border-top-0">
@@ -146,7 +146,7 @@ require_once("../templates/views_top.php"); ?>
             </div>
             <div class="mb-3">
               <label for="solusi" class="form-label">Solusi</label>
-              <textarea class="form-control" name="solusi" id="solusi" rows="3" required></textarea>
+              <textarea class="form-control" name="solusi" id="solusi" rows="3"></textarea>
             </div>
           </div>
           <div class="modal-footer justify-content-center border-top-0">

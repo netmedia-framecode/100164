@@ -115,8 +115,8 @@ require_once("../templates/views_top.php"); ?>
           <h6 class="m-0 font-weight-bold text-primary">Polres</h6>
         </div>
         <div class="card-body">
-          <?php foreach ($views_polres as $data) : ?>
-            <div class="card mb-3 border-0 shadow">
+          <?php foreach ($views_polres_dash as $data) : ?>
+            <div class="card mb-3 border-0">
               <div class="row no-gutters">
                 <div class="col-md-4">
                   <img src="../assets/img/polres/<?= $data['img_polres'] ?>" style="width: 100%;height: 220px;object-fit: cover;" alt="...">
@@ -176,8 +176,7 @@ require_once("../templates/views_top.php"); ?>
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
             <div class="dropdown-header">Detail</div>
-            <a class="dropdown-item" href="pemetaan">Tambah Data</a>
-            <a class="dropdown-item" href="data-pemetaan">Data Pemetaan Kecelakaan</a>
+            <a class="dropdown-item" href="data-kecelakaan">Tambah Data</a>
           </div>
         </div>
       </div>

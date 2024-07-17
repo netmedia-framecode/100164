@@ -12,17 +12,23 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= $_SESSION["project_gis_korlantas"]["name_page"] ?></h1>
-    <div class="d-none d-sm-inline-block">
-      <a href="#" class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#tambah"><i class="bi bi-plus-lg"></i> Tambah</a>
-      <a href="#" class="btn btn-sm btn-success shadow-sm" data-toggle="modal" data-target="#import"><i class="bi bi-file-arrow-up"></i> Import</a>
-      <a href="export" class="btn btn-sm btn-success shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Export</a>
+    <div class="d-none d-sm-inline-block text-right">
+      <a href="#" class="btn btn-sm btn-primary shadow" data-toggle="modal" data-target="#tambah"><i class="bi bi-plus-lg"></i> Tambah</a>
+      <a href="#" class="btn btn-sm btn-success shadow" data-toggle="modal" data-target="#import"><i class="bi bi-file-arrow-up"></i> Import</a>
+      <a href="export" class="btn btn-sm btn-success shadow"><i class="fas fa-download fa-sm text-white-50"></i> Export</a>
+      <form action="" method="post">
+        <div class="form-group d-flex mt-3">
+          <input type="text" name="keyword_laka" class="form-control rounded-0 btn-sm shadow" required>
+          <button class="btn btn-outline-secondary rounded-0 btn-sm shadow" style="width: 100px;" type="submit" name="search_laka"><i class="bi bi-search"></i> Cari</button>
+        </div>
+      </form>
     </div>
   </div>
 
   <div class="card shadow mb-4 border-0">
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered text-dark" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered text-dark display" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th class="text-center">No. Laka</th>
@@ -46,7 +52,6 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
               <tr>
                 <td>
                   <p><?= $data['no_laka'] ?></p>
-                  <img src="../assets/img/laka/<?= $data['img_laka'] ?>" style="width: 200px;" alt="">
                 </td>
                 <td><?= $data['nama_polres'] ?></td>
                 <td><?php $tanggal_kejadian = date_create($data["tanggal_kejadian"]);
@@ -141,7 +146,7 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
                           echo "Status Jalan : " . $data_detail['status_jalan'] . "<br>";
                           echo "Nilai Kerugian Non Kendaraan : " . $data['nilai_kerugian_non_kendaraan'] . "<br>";
                           echo "Nilai Kerugian Kendaraan : " . $data['nilai_kerugian_kendaraan'] . "<br>";
-                          echo "Keterangan : " . $data['Keterangan_kerugian'] . "<br>";
+                          echo "Keterangan : " . $data['keterangan_kerugian'] . "<br>";
                           ?>
                         </div>
                       </div>
@@ -483,7 +488,6 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
                         </div>
                         <form action="" method="post">
                           <input type="hidden" name="id_laka" value="<?= $data['id_laka'] ?>">
-                          <input type="hidden" name="img_laka" value="<?= $data['img_laka'] ?>">
                           <div class="modal-body">
                             <p>Jika anda yakin ingin menghapus data ini, klik Hapus!</p>
                           </div>

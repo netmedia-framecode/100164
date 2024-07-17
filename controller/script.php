@@ -1071,10 +1071,21 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
   $select_polres_dash = "SELECT * FROM polres WHERE id_polres != 1";
   $views_polres_dash = mysqli_query($conn, $select_polres_dash);
 
-  $select_laka = "SELECT laka.*, polres.nama_polres, titik_rawan.nama_jalan_rawan
-  FROM laka
-  JOIN polres ON laka.id_polres=polres.id_polres
-  JOIN titik_rawan ON laka.id_titik_rawan=titik_rawan.id_titik_rawan
-  ";
+  if(isset($_POST['search_laka'])){
+    $keyword_laka=valid($conn, $_POST['keyword_laka']);
+    $select_laka = "SELECT laka.*, polres.nama_polres, titik_rawan.nama_jalan_rawan
+    FROM laka
+    JOIN polres ON laka.id_polres=polres.id_polres
+    JOIN titik_rawan ON laka.id_titik_rawan=titik_rawan.id_titik_rawan
+    WHERE titik_rawan.nama_jalan_rawan LIKE '%$keyword_laka%'
+    OR laka.no_laka LIKE '%$keyword_laka%'
+    ";
+  }else if(!isset($_POST['search_laka'])){
+    $select_laka = "SELECT laka.*, polres.nama_polres, titik_rawan.nama_jalan_rawan
+    FROM laka
+    JOIN polres ON laka.id_polres=polres.id_polres
+    JOIN titik_rawan ON laka.id_titik_rawan=titik_rawan.id_titik_rawan
+    ";
+  }
   $views_laka = mysqli_query($conn, $select_laka);
 }

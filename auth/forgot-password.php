@@ -30,9 +30,6 @@ require_once("../templates/auth_top.php"); ?>
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="register">Buat sebuah akun!</a>
-              </div>
-              <div class="text-center">
                 <a class="small" href="./">Sudah memiliki akun? Masuk!</a>
               </div>
             </div>

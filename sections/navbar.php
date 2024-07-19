@@ -40,9 +40,6 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="auth/register">Daftar</a>
-          </li>
-          <li class="nav-item">
             <a class="btn btn-outline-primary btn-sm m-1 px-3" href="auth/">
               <i class="fa fa-sign-in small mr-2"></i>
               Masuk

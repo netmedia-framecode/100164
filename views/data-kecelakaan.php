@@ -28,9 +28,10 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
   <div class="card shadow mb-4 border-0">
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered text-dark display" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered text-dark display" width="100%" cellspacing="0">
           <thead>
             <tr>
+              <th class="text-center">No</th>
               <th class="text-center">No. Laka</th>
               <th class="text-center">Polres</th>
               <th class="text-center">Waktu Kecelakaan</th>
@@ -40,6 +41,7 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
           </thead>
           <tfoot>
             <tr>
+              <th class="text-center">No</th>
               <th class="text-center">No. Laka</th>
               <th class="text-center">Polres</th>
               <th class="text-center">Waktu Kecelakaan</th>
@@ -48,8 +50,9 @@ if (isset($_SESSION["project_gis_korlantas"]["id_pemetaan"])) {
             </tr>
           </tfoot>
           <tbody>
-            <?php foreach ($views_laka as $data) { ?>
+            <?php $no=1;foreach ($views_laka as $data) { ?>
               <tr>
+                <td><?= $no++ ?></td>
                 <td>
                   <p><?= $data['no_laka'] ?></p>
                 </td>

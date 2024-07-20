@@ -9,7 +9,7 @@ require_once("functions.php");
 
 $messageTypes = ["success", "info", "warning", "danger", "dark"];
 
-$baseURL = "http://$_SERVER[HTTP_HOST]/apps/tugas/gis_korlantas/";
+$baseURL = "http://$_SERVER[HTTP_HOST]/100164-main/";
 $name_website = "Digital Satlantas Kota Kupang";
 
 $select_auth = "SELECT * FROM auth";
@@ -18,7 +18,6 @@ $views_auth = mysqli_query($conn, $select_auth);
 $select_polres = "SELECT polres.*, COUNT(laka.id_laka) AS jumlah_laka
   FROM polres
   JOIN laka ON polres.id_polres = laka.id_polres
-  JOIN titik_rawan ON laka.id_titik_rawan = titik_rawan.id_titik_rawan
   WHERE polres.id_polres != 1
   GROUP BY polres.id_polres
 ";

@@ -73,39 +73,6 @@ require_once("../templates/views_top.php"); ?>
   </div>
 
   <!-- Content Row -->
-  <!-- <div class="row">
-    <div class="col-xl-12 col-lg-7">
-      <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Grafik Kecelakaan Tahun <?= date("Y") ?></h6>
-        </div>
-        <div class="card-body">
-          <div class="chart-area">
-            <?php
-            $currentYear = date("Y");
-            $sql = "SELECT MONTH(tanggal_kejadian) as month, COUNT(*) as total FROM laka WHERE YEAR(tanggal_kejadian) = $currentYear AND MONTH(tanggal_kejadian) BETWEEN 1 AND 12 GROUP BY month";
-            $result = $conn->query($sql);
-            $data = [];
-            if ($result->num_rows > 0) {
-              while ($row = $result->fetch_assoc()) {
-                $monthName = date("F", mktime(0, 0, 0, $row['month'], 1));
-                $data[] = [
-                  'month' => $monthName,
-                  'total' => $row['total'],
-                ];
-              }
-            } ?>
-            <canvas id="myAreaChart"></canvas>
-            <script>
-              var dataLaka = <?php echo json_encode($data); ?>;
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- Content Row -->
   <div class="row">
 
     <!-- Content Column -->
@@ -116,7 +83,7 @@ require_once("../templates/views_top.php"); ?>
         </div>
         <div class="card-body">
           <?php foreach ($views_polres_dash as $data) : ?>
-            <div class="card mb-3 border-0">
+            <div class="card mb-3 border-0 shadow">
               <div class="row no-gutters">
                 <div class="col-md-4">
                   <img src="../assets/img/polres/<?= $data['img_polres'] ?>" style="width: 100%;height: 220px;object-fit: cover;" alt="...">

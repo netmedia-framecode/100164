@@ -45,7 +45,7 @@ require_once("../templates/views_top.php"); ?>
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header border-bottom-0 shadow">
-                          <h5 class="modal-title" id="exampleModalLabel">Hapus <?= $data['nama_jalan_rawan'] ?></h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Ubah <?= $data['nama_jalan_rawan'] ?></h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -72,7 +72,7 @@ require_once("../templates/views_top.php"); ?>
                             </div>
                             <div class="mb-3">
                               <label for="solusi" class="form-label">Solusi</label>
-                              <textarea class="form-control" name="solusi" id="solusi" rows="3"><?= $data['solusi'] ?></textarea>
+                              <textarea class="form-control" name="solusi" id="solusi" rows="3" required><?= $data['solusi'] ?></textarea>
                             </div>
                           </div>
                           <div class="modal-footer justify-content-center border-top-0">
@@ -146,7 +146,7 @@ require_once("../templates/views_top.php"); ?>
             </div>
             <div class="mb-3">
               <label for="solusi" class="form-label">Solusi</label>
-              <textarea class="form-control" name="solusi" id="solusi" rows="3"></textarea>
+              <textarea class="form-control" name="solusi" id="solusi" rows="3" required></textarea>
             </div>
           </div>
           <div class="modal-footer justify-content-center border-top-0">

@@ -73,9 +73,6 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
                       </dl>
                     </div>
                   </div>
-                  <a href="polres?id=<?= $data['id_polres'] ?>" class="card-footer">
-                    <span class="ts-btn-arrow">Detail</span>
-                  </a>
                 </div>
               </div>
             <?php endforeach; ?>

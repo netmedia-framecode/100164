@@ -1084,6 +1084,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
     FROM laka
     JOIN polres ON laka.id_polres=polres.id_polres
     JOIN titik_rawan ON laka.id_titik_rawan=titik_rawan.id_titik_rawan
+    ORDER BY laka.id_laka DESC LIMIT 50
     ";
   }
   $views_laka = mysqli_query($conn, $select_laka);

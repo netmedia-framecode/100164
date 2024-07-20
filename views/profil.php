@@ -7,7 +7,7 @@ require_once("../templates/views_top.php"); ?>
 
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= $_SESSION['project_pemetaan_toko_roti']['name_page'] ?></h1>
+    <h1 class="h3 mb-0 text-gray-800"><?= $_SESSION['project_gis_korlantas']['name_page'] ?></h1>
   </div>
 
   <?php foreach ($view_profile as $data) { ?>

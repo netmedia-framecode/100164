@@ -17,6 +17,7 @@ require_once("../templates/views_top.php"); ?>
         <table class="table table-bordered text-dark" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
+              <th class="text-center">Black Spot</th>
               <th class="text-center">Nama Jalan</th>
               <th class="text-center">Solusi</th>
               <th class="text-center">Aksi</th>
@@ -24,6 +25,7 @@ require_once("../templates/views_top.php"); ?>
           </thead>
           <tfoot>
             <tr>
+              <th class="text-center">Black Spot</th>
               <th class="text-center">Nama Jalan</th>
               <th class="text-center">Solusi</th>
               <th class="text-center">Aksi</th>
@@ -32,6 +34,9 @@ require_once("../templates/views_top.php"); ?>
           <tbody>
             <?php foreach ($views_titik_rawan as $data) { ?>
               <tr>
+                <td>
+                  <img src="../assets/img/titik_rawan/<?= $data['black_spot'] ?>" style="width: 400px;" alt="">
+                </td>
                 <td>
                   <p><?= $data['nama_jalan_rawan'] ?></p>
                   <img src="../assets/img/titik_rawan/<?= $data['img_titik_rawan'] ?>" style="width: 400px;" alt="">
@@ -54,6 +59,7 @@ require_once("../templates/views_top.php"); ?>
                           <input type="hidden" name="id_titik_rawan" value="<?= $data['id_titik_rawan'] ?>">
                           <input type="hidden" name="nama_jalan_rawanOld" value="<?= $data['nama_jalan_rawan'] ?>">
                           <input type="hidden" name="img_titik_rawanOld" value="<?= $data['img_titik_rawan'] ?>">
+                          <input type="hidden" name="black_spotOld" value="<?= $data['black_spot'] ?>">
                           <div class="modal-body">
                             <div class="form-group">
                               <label for="nama_jalan_rawan">Nama Jalan</label>
@@ -62,6 +68,13 @@ require_once("../templates/views_top.php"); ?>
                                                                                 } else {
                                                                                   echo $data['nama_jalan_rawan'];
                                                                                 } ?>" class="form-control" id="nama_jalan_rawan" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="black_spot">Gambar Black Spot Kecelakaan</label>
+                              <div class="custom-file">
+                                <input type="file" name="black_spot" class="custom-file-input" id="black_spot">
+                                <label class="custom-file-label" for="black_spot">Unggah File</label>
+                              </div>
                             </div>
                             <div class="form-group">
                               <label for="img_titik_rawan">Gambar Titik Rawan Kecelakaan</label>
@@ -134,6 +147,15 @@ require_once("../templates/views_top.php"); ?>
               <input type="text" name="nama_jalan_rawan" value="<?php if (isset($_POST['nama_jalan_rawan'])) {
                                                                   echo $_POST['nama_jalan_rawan'];
                                                                 } ?>" class="form-control" id="nama_jalan_rawan" placeholder="" required>
+            </div>
+            <div class="form-group">
+              <label for="black_spot">Gambar Black Spot Kecelakaan</label>
+              <div class="custom-file">
+                <input type="file" name="black_spot" class="custom-file-input" id="black_spot" <?php if (!isset($_POST['ubah-titik-rawan'])) {
+                                                                                                            echo " required";
+                                                                                                          } ?>>
+                <label class="custom-file-label" for="black_spot">Unggah File</label>
+              </div>
             </div>
             <div class="form-group">
               <label for="img_titik_rawan">Gambar Titik Rawan Kecelakaan</label>

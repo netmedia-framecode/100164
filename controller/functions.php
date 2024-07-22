@@ -1875,6 +1875,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         alert($message, $message_type);
         return false;
       }
+
       $fileName = basename($_FILES["img_titik_rawan"]["name"]);
       $fileName = str_replace(" ", "-", $fileName);
       $fileName_encrypt = crc32($fileName);
@@ -1893,12 +1894,32 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
         alert($message, $message_type);
         return false;
       }
+
+      $fileName = basename($_FILES["black_spot"]["name"]);
+      $fileName = str_replace(" ", "-", $fileName);
+      $fileName_encrypt = crc32($fileName);
+      $ekstensiGambar = explode('.', $fileName);
+      $ekstensiGambar = strtolower(end($ekstensiGambar));
+      $imageUploadPath = $path . "black_spot_". $fileName_encrypt . "." . $ekstensiGambar;
+      $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
+      $allowTypes = array('jpg', 'png', 'jpeg');
+      if (in_array($fileType, $allowTypes)) {
+        $imageTemp = $_FILES["black_spot"]["tmp_name"];
+        compressImage($imageTemp, $imageUploadPath, 75);
+        $black_spot = "black_spot_".$fileName_encrypt . "." . $ekstensiGambar;
+      } else {
+        $message = "Maaf, hanya file gambar JPG, JPEG, dan PNG yang diizinkan.";
+        $message_type = "danger";
+        alert($message, $message_type);
+        return false;
+      }
+
       $nama_jalan_rawan = $data['nama_jalan_rawan'];
       $nama_jalan_rawan = strtoupper($nama_jalan_rawan);
       $nama_jalan_rawan = str_replace('.', '', $nama_jalan_rawan);
       $nama_jalan_rawan = preg_replace('/\s+/', ' ', $nama_jalan_rawan);
       $nama_jalan_rawan = trim($nama_jalan_rawan);
-      $sql = "INSERT INTO titik_rawan(img_titik_rawan,nama_jalan_rawan,solusi) VALUES('$img_titik_rawan','$nama_jalan_rawan','$data[solusi]')";
+      $sql = "INSERT INTO titik_rawan(img_titik_rawan,black_spot,nama_jalan_rawan,solusi) VALUES('$img_titik_rawan','$black_spot','$nama_jalan_rawan','$data[solusi]')";
     }
 
     if ($action == "update") {
@@ -1912,6 +1933,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
           return false;
         }
       }
+
       if (!empty($_FILES['img_titik_rawan']["name"])) {
         $fileName = basename($_FILES["img_titik_rawan"]["name"]);
         $fileName = str_replace(" ", "-", $fileName);
@@ -1935,12 +1957,37 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
       } else if (empty($_FILE['img_titik_rawan']["name"])) {
         $img_titik_rawan = $data['img_titik_rawanOld'];
       }
+
+      if (!empty($_FILES['black_spot']["name"])) {
+        $fileName = basename($_FILES["black_spot"]["name"]);
+        $fileName = str_replace(" ", "-", $fileName);
+        $fileName_encrypt = crc32($fileName);
+        $ekstensiGambar = explode('.', $fileName);
+        $ekstensiGambar = strtolower(end($ekstensiGambar));
+        $imageUploadPath = $path ."black_spot_".  $fileName_encrypt . "." . $ekstensiGambar;
+        $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
+        $allowTypes = array('jpg', 'png', 'jpeg');
+        if (in_array($fileType, $allowTypes)) {
+          $imageTemp = $_FILES["black_spot"]["tmp_name"];
+          compressImage($imageTemp, $imageUploadPath, 75);
+          $black_spot = "black_spot_". $fileName_encrypt . "." . $ekstensiGambar;
+          unlink($path . $data['black_spotnOld']);
+        } else {
+          $message = "Maaf, hanya file gambar JPG, JPEG, dan PNG yang diizinkan.";
+          $message_type = "danger";
+          alert($message, $message_type);
+          return false;
+        }
+      } else if (empty($_FILE['black_spot']["name"])) {
+        $black_spot = $data['black_spotnOld'];
+      }
+
       $nama_jalan_rawan = $data['nama_jalan_rawan'];
       $nama_jalan_rawan = strtoupper($nama_jalan_rawan);
       $nama_jalan_rawan = str_replace('.', '', $nama_jalan_rawan);
       $nama_jalan_rawan = preg_replace('/\s+/', ' ', $nama_jalan_rawan);
       $nama_jalan_rawan = trim($nama_jalan_rawan);
-      $sql = "UPDATE titik_rawan SET img_titik_rawan='$img_titik_rawan', nama_jalan_rawan='$nama_jalan_rawan', solusi='$data[solusi]' WHERE id_titik_rawan='$data[id_titik_rawan]'";
+      $sql = "UPDATE titik_rawan SET img_titik_rawan='$img_titik_rawan', black_spot='$black_spot', nama_jalan_rawan='$nama_jalan_rawan', solusi='$data[solusi]' WHERE id_titik_rawan='$data[id_titik_rawan]'";
     }
 
     if ($action == "delete") {

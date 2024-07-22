@@ -9,7 +9,8 @@ require_once("functions.php");
 
 $messageTypes = ["success", "info", "warning", "danger", "dark"];
 
-$baseURL = "http://$_SERVER[HTTP_HOST]/100164-main/";
+$baseURL = "http://$_SERVER[HTTP_HOST]/apps/tugas/gis_korlantas/";
+// $baseURL = "http://$_SERVER[HTTP_HOST]/100164-main/";
 $name_website = "Digital Satlantas Kota Kupang";
 
 $select_auth = "SELECT * FROM auth";

@@ -42,7 +42,7 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
               $take_titik_rawan = mysqli_query($conn, $select_titik_rawan);
               $data = mysqli_fetch_assoc($take_titik_rawan);
 
-              $select_laka = "SELECT laka.*, informasi_khusus.informasi_khusus, kondisi_cahaya.kondisi_cahaya, cuaca.kondisi, tingkat_kecelakaan.tingkat_kecelakaan, kecelakaan_menonjol.kecelakaan_menonjol, fungsi_jalan.fungsi_jalan, kelas_jalan.kelas_jalan, tipe_jalan.tipe_jalan, permukaan_jalan.permukaan_jalan, kemiringan_jalan.kemiringan_jalan, status_jalan.status_jalan, polres.nama_polres, polres.alamat, polres.telepon, polres.email, polres.jumlah_anggota, titik_rawan.nama_jalan_rawan, titik_rawan.solusi
+              $select_laka = "SELECT laka.*, informasi_khusus.informasi_khusus, kondisi_cahaya.kondisi_cahaya, cuaca.kondisi, tingkat_kecelakaan.tingkat_kecelakaan, kecelakaan_menonjol.kecelakaan_menonjol, fungsi_jalan.fungsi_jalan, kelas_jalan.kelas_jalan, tipe_jalan.tipe_jalan, permukaan_jalan.permukaan_jalan, kemiringan_jalan.kemiringan_jalan, status_jalan.status_jalan, polres.nama_polres, polres.alamat, polres.telepon, polres.email, polres.jumlah_anggota, titik_rawan.nama_jalan_rawan, titik_rawan.solusi, titik_rawan.black_spot
                     FROM laka
                     JOIN informasi_khusus ON laka.id_informasi_khusus=informasi_khusus.id_informasi_khusus
                     JOIN kondisi_cahaya ON laka.id_kondisi_cahaya=kondisi_cahaya.id_kondisi_cahaya
@@ -152,6 +152,13 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
                                 
                             <dt>Solusi:</dt><br>
                             <dd class="text-left mb-3"><?= $data['solusi'] ?></dd>
+                            <dt>Black Spot:</dt><br>
+                            <dd class="text-left mb-3">
+                              <?php $black_spot = "SELECT * FROM titik_rawan WHERE id_titik_rawan='$id_titik_rawan'";
+                                $black_spot = mysqli_query($conn, $black_spot);
+                                $data_black_spot = mysqli_fetch_assoc($black_spot); ?>
+                              <img src="assets/img/titik_rawan/<?= $data_black_spot['black_spot']?>" style="width: 100%;object_fit: cover;" alt="">
+                            </dd>
                           </dl>
                         </div>
                       </section>

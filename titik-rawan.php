@@ -158,6 +158,7 @@ $_SESSION["project_gis_korlantas"]["name_page"] = "Pesan Kapolri"; ?>
                                 $black_spot = mysqli_query($conn, $black_spot);
                                 $data_black_spot = mysqli_fetch_assoc($black_spot); ?>
                               <img src="assets/img/titik_rawan/<?= $data_black_spot['black_spot']?>" style="width: 100%;object_fit: cover;" alt="">
+                              <p><?= $data_black_spot['deskripsi'];?></p>
                             </dd>
                           </dl>
                         </div>

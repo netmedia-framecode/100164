@@ -1919,7 +1919,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
       $nama_jalan_rawan = str_replace('.', '', $nama_jalan_rawan);
       $nama_jalan_rawan = preg_replace('/\s+/', ' ', $nama_jalan_rawan);
       $nama_jalan_rawan = trim($nama_jalan_rawan);
-      $sql = "INSERT INTO titik_rawan(img_titik_rawan,black_spot,nama_jalan_rawan,solusi) VALUES('$img_titik_rawan','$black_spot','$nama_jalan_rawan','$data[solusi]')";
+      $sql = "INSERT INTO titik_rawan(img_titik_rawan,black_spot,deskripsi,nama_jalan_rawan,solusi) VALUES('$img_titik_rawan','$black_spot','$data[deskripsi_black]','$nama_jalan_rawan','$data[solusi]')";
     }
 
     if ($action == "update") {
@@ -1987,7 +1987,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
       $nama_jalan_rawan = str_replace('.', '', $nama_jalan_rawan);
       $nama_jalan_rawan = preg_replace('/\s+/', ' ', $nama_jalan_rawan);
       $nama_jalan_rawan = trim($nama_jalan_rawan);
-      $sql = "UPDATE titik_rawan SET img_titik_rawan='$img_titik_rawan', black_spot='$black_spot', nama_jalan_rawan='$nama_jalan_rawan', solusi='$data[solusi]' WHERE id_titik_rawan='$data[id_titik_rawan]'";
+      $sql = "UPDATE titik_rawan SET img_titik_rawan='$img_titik_rawan', black_spot='$black_spot', deskripsi='$data[deskripsi_black]', nama_jalan_rawan='$nama_jalan_rawan', solusi='$data[solusi]' WHERE id_titik_rawan='$data[id_titik_rawan]'";
     }
 
     if ($action == "delete") {

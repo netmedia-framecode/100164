@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 20 Jul 2024 pada 11.48
--- Versi server: 10.6.18-MariaDB-cll-lve
--- Versi PHP: 8.3.8
+-- Waktu pembuatan: 26 Jul 2024 pada 00.27
+-- Versi server: 8.0.30
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `zjxtorpv_100164`
+-- Database: `gis_korlantas`
 --
 
 -- --------------------------------------------------------
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `auth` (
-  `id` int(11) NOT NULL,
-  `image` varchar(50) DEFAULT NULL,
-  `bg` varchar(10) DEFAULT NULL
+  `id` int NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `bg` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -47,8 +47,8 @@ INSERT INTO `auth` (`id`, `image`, `bg`) VALUES
 --
 
 CREATE TABLE `cuaca` (
-  `id_cuaca` int(11) NOT NULL,
-  `kondisi` varchar(50) DEFAULT NULL
+  `id_cuaca` int NOT NULL,
+  `kondisi` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -68,8 +68,8 @@ INSERT INTO `cuaca` (`id_cuaca`, `kondisi`) VALUES
 --
 
 CREATE TABLE `fungsi_jalan` (
-  `id_fungsi_jalan` int(11) NOT NULL,
-  `fungsi_jalan` varchar(35) DEFAULT NULL
+  `id_fungsi_jalan` int NOT NULL,
+  `fungsi_jalan` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -88,8 +88,8 @@ INSERT INTO `fungsi_jalan` (`id_fungsi_jalan`, `fungsi_jalan`) VALUES
 --
 
 CREATE TABLE `informasi_khusus` (
-  `id_informasi_khusus` int(11) NOT NULL,
-  `informasi_khusus` varchar(100) NOT NULL
+  `id_informasi_khusus` int NOT NULL,
+  `informasi_khusus` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -109,8 +109,8 @@ INSERT INTO `informasi_khusus` (`id_informasi_khusus`, `informasi_khusus`) VALUE
 --
 
 CREATE TABLE `kecelakaan_menonjol` (
-  `id_kecelakaan_menonjol` int(11) NOT NULL,
-  `kecelakaan_menonjol` varchar(10) DEFAULT NULL
+  `id_kecelakaan_menonjol` int NOT NULL,
+  `kecelakaan_menonjol` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -128,8 +128,8 @@ INSERT INTO `kecelakaan_menonjol` (`id_kecelakaan_menonjol`, `kecelakaan_menonjo
 --
 
 CREATE TABLE `kelas_jalan` (
-  `id_kelas_jalan` int(11) NOT NULL,
-  `kelas_jalan` varchar(100) DEFAULT NULL
+  `id_kelas_jalan` int NOT NULL,
+  `kelas_jalan` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -148,8 +148,8 @@ INSERT INTO `kelas_jalan` (`id_kelas_jalan`, `kelas_jalan`) VALUES
 --
 
 CREATE TABLE `kemiringan_jalan` (
-  `id_kemiringan_jalan` int(11) NOT NULL,
-  `kemiringan_jalan` varchar(50) DEFAULT NULL
+  `id_kemiringan_jalan` int NOT NULL,
+  `kemiringan_jalan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -168,8 +168,8 @@ INSERT INTO `kemiringan_jalan` (`id_kemiringan_jalan`, `kemiringan_jalan`) VALUE
 --
 
 CREATE TABLE `kondisi_cahaya` (
-  `id_kondisi_cahaya` int(11) NOT NULL,
-  `kondisi_cahaya` varchar(50) DEFAULT NULL
+  `id_kondisi_cahaya` int NOT NULL,
+  `kondisi_cahaya` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -187,12 +187,12 @@ INSERT INTO `kondisi_cahaya` (`id_kondisi_cahaya`, `kondisi_cahaya`) VALUES
 --
 
 CREATE TABLE `kontak` (
-  `id_kontak` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `email` text NOT NULL,
-  `subject` varchar(50) NOT NULL,
-  `message` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_kontak` int NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` text COLLATE utf8mb4_general_ci NOT NULL,
+  `subject` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `message` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -215,34 +215,34 @@ INSERT INTO `kontak` (`id_kontak`, `name`, `email`, `subject`, `message`, `creat
 --
 
 CREATE TABLE `laka` (
-  `id_laka` int(11) NOT NULL,
-  `id_informasi_khusus` int(11) DEFAULT NULL,
-  `id_kondisi_cahaya` int(11) DEFAULT NULL,
-  `id_cuaca` int(11) DEFAULT NULL,
-  `id_tingkat_kecelakaan` int(11) DEFAULT NULL,
-  `id_kecelakaan_menonjol` int(11) DEFAULT NULL,
-  `id_fungsi_jalan` int(11) DEFAULT NULL,
-  `id_kelas_jalan` int(11) DEFAULT NULL,
-  `id_tipe_jalan` int(11) DEFAULT NULL,
-  `id_permukaan_jalan` int(11) DEFAULT NULL,
-  `id_kemiringan_jalan` int(11) DEFAULT NULL,
-  `id_status_jalan` int(11) DEFAULT NULL,
-  `id_polres` int(11) DEFAULT NULL,
-  `no_laka` varchar(75) DEFAULT NULL,
+  `id_laka` int NOT NULL,
+  `id_informasi_khusus` int DEFAULT NULL,
+  `id_kondisi_cahaya` int DEFAULT NULL,
+  `id_cuaca` int DEFAULT NULL,
+  `id_tingkat_kecelakaan` int DEFAULT NULL,
+  `id_kecelakaan_menonjol` int DEFAULT NULL,
+  `id_fungsi_jalan` int DEFAULT NULL,
+  `id_kelas_jalan` int DEFAULT NULL,
+  `id_tipe_jalan` int DEFAULT NULL,
+  `id_permukaan_jalan` int DEFAULT NULL,
+  `id_kemiringan_jalan` int DEFAULT NULL,
+  `id_status_jalan` int DEFAULT NULL,
+  `id_polres` int DEFAULT NULL,
+  `no_laka` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `tanggal_kejadian` date DEFAULT NULL,
-  `jumlah_meninggal` int(11) DEFAULT NULL,
-  `jumlah_luka_berat` int(11) DEFAULT NULL,
-  `jumlah_luka_ringan` int(11) DEFAULT NULL,
-  `titik_acuan` varchar(100) DEFAULT NULL,
-  `tipe_kecelakaan` text DEFAULT NULL,
-  `batas_kecepatan_dilokasi` int(11) DEFAULT NULL,
-  `nilai_kerugian_non_kendaraan` int(11) DEFAULT NULL,
-  `nilai_kerugian_kendaraan` int(11) DEFAULT NULL,
-  `keterangan_kerugian` text DEFAULT NULL,
+  `jumlah_meninggal` int DEFAULT NULL,
+  `jumlah_luka_berat` int DEFAULT NULL,
+  `jumlah_luka_ringan` int DEFAULT NULL,
+  `titik_acuan` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `tipe_kecelakaan` text COLLATE utf8mb4_general_ci,
+  `batas_kecepatan_dilokasi` int DEFAULT NULL,
+  `nilai_kerugian_non_kendaraan` int DEFAULT NULL,
+  `nilai_kerugian_kendaraan` int DEFAULT NULL,
+  `keterangan_kerugian` text COLLATE utf8mb4_general_ci,
   `jam_kejadian` time DEFAULT NULL,
-  `id_titik_rawan` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_titik_rawan` int DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -534,8 +534,8 @@ INSERT INTO `laka` (`id_laka`, `id_informasi_khusus`, `id_kondisi_cahaya`, `id_c
 --
 
 CREATE TABLE `permukaan_jalan` (
-  `id_permukaan_jalan` int(11) NOT NULL,
-  `permukaan_jalan` varchar(35) DEFAULT NULL
+  `id_permukaan_jalan` int NOT NULL,
+  `permukaan_jalan` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -557,11 +557,11 @@ INSERT INTO `permukaan_jalan` (`id_permukaan_jalan`, `permukaan_jalan`) VALUES
 --
 
 CREATE TABLE `pesan_kapolri` (
-  `id_pesan` int(11) NOT NULL,
-  `img_kapolri` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_pesan` int NOT NULL,
+  `img_kapolri` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -569,7 +569,7 @@ CREATE TABLE `pesan_kapolri` (
 --
 
 INSERT INTO `pesan_kapolri` (`id_pesan`, `img_kapolri`, `deskripsi`, `created_at`, `updated_at`) VALUES
-(1, '', '<p>Kepada masyarakat mari kita dukung upaya-upaya untuk mewujudkan Polri yang lebih profesional dan amanah. Berbagai pengalaman berbangsa dan bernegara selama ini, tentunya akan menjadi pelajaran berharga bagi kita semua dalam upaya melanjutkan reformasi Polri. Kami membuka diri, menampung aspirasi dan pandangan dari semua elemen masyarakat, untuk mendudukkan Polri menjadi pelindung dan pengayom bagi segenap warga bangsa.<br />\r\n<br />\r\nKami tidak hanya akan selalu bekerja profesional, yakni mendasarkan kinerjanya kepada ilmu pengetahuan dan sistem hukum yang berlaku, tetapi juga amanah, akuntabel kepada pemangku kepentingan antara lain dengan menggunakan kewenangannya secara bijak dan santun pada masyarakat yang kami layani.<br />\r\n<br />\r\nPolri milik kita. Mari kita jadikan Polri seperti yang kita dambakan.<br />\r\n<br />\r\nJalan Trunojoyo no. 3, Kebayoran Baru Jakarta 12110<br />\r\nTerima Kasih,&nbsp;<br />\r\n<br />\r\n<br />\r\nKapolri<br />\r\n<strong>Drs. Listyo Sigit Prabowo, M.Si</strong><br />\r\nJendral Polisi</p>\r\n', '2024-01-16 12:11:25', '2024-07-03 17:11:55');
+(1, '', '<p>Kepada masyarakat mari kita dukung upaya-upaya untuk mewujudkan Polri yang lebih profesional dan amanah. Berbagai pengalaman berbangsa dan bernegara selama ini, tentunya akan menjadi pelajaran berharga bagi kita semua dalam upaya melanjutkan reformasi Polri. Kami membuka diri, menampung aspirasi dan pandangan dari semua elemen masyarakat, untuk mendudukkan Polri menjadi pelindung dan pengayom bagi segenap warga bangsa.<br />\r\n<br />\r\nKami tidak hanya akan selalu bekerja profesional, yakni mendasarkan kinerjanya kepada ilmu pengetahuan dan sistem hukum yang berlaku, tetapi juga amanah, akuntabel kepada pemangku kepentingan antara lain dengan menggunakan kewenangannya secara bijak dan santun pada masyarakat yang kami layani.<br />\r\n<br />\r\nPolri milik kita. Mari kita jadikan Polri seperti yang kita dambakan.<br />\r\n<br />\r\nJalan Trunojoyo no. 3, Kebayoran Baru Jakarta 12110<br />\r\nTerima Kasih,&nbsp;<br />\r\n<br />\r\n<br />\r\nKapolri<br />\r\n<strong>Drs. Listyo Sigit Prabowo, M.Si</strong><br />\r\nJendral Polisi</p>\r\n', '2024-01-16 12:11:25', '2024-07-20 15:00:09');
 
 -- --------------------------------------------------------
 
@@ -578,13 +578,13 @@ INSERT INTO `pesan_kapolri` (`id_pesan`, `img_kapolri`, `deskripsi`, `created_at
 --
 
 CREATE TABLE `polres` (
-  `id_polres` int(11) NOT NULL,
-  `nama_polres` varchar(100) NOT NULL,
-  `alamat` varchar(100) DEFAULT NULL,
-  `telepon` varchar(15) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `jumlah_anggota` int(11) DEFAULT NULL,
-  `img_polres` varchar(50) DEFAULT NULL
+  `id_polres` int NOT NULL,
+  `nama_polres` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `alamat` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `telepon` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `jumlah_anggota` int DEFAULT NULL,
+  `img_polres` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -602,10 +602,10 @@ INSERT INTO `polres` (`id_polres`, `nama_polres`, `alamat`, `telepon`, `email`, 
 --
 
 CREATE TABLE `sejarah` (
-  `id_sejarah` int(11) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_sejarah` int NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -622,8 +622,8 @@ INSERT INTO `sejarah` (`id_sejarah`, `deskripsi`, `created_at`, `updated_at`) VA
 --
 
 CREATE TABLE `status_jalan` (
-  `id_status_jalan` int(11) NOT NULL,
-  `status_jalan` varchar(50) DEFAULT NULL
+  `id_status_jalan` int NOT NULL,
+  `status_jalan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -642,8 +642,8 @@ INSERT INTO `status_jalan` (`id_status_jalan`, `status_jalan`) VALUES
 --
 
 CREATE TABLE `tingkat_kecelakaan` (
-  `id_tingkat_kecelakaan` int(11) NOT NULL,
-  `tingkat_kecelakaan` varchar(50) DEFAULT NULL
+  `id_tingkat_kecelakaan` int NOT NULL,
+  `tingkat_kecelakaan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -662,8 +662,8 @@ INSERT INTO `tingkat_kecelakaan` (`id_tingkat_kecelakaan`, `tingkat_kecelakaan`)
 --
 
 CREATE TABLE `tipe_jalan` (
-  `id_tipe_jalan` int(11) NOT NULL,
-  `tipe_jalan` varchar(75) DEFAULT NULL
+  `id_tipe_jalan` int NOT NULL,
+  `tipe_jalan` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -682,35 +682,38 @@ INSERT INTO `tipe_jalan` (`id_tipe_jalan`, `tipe_jalan`) VALUES
 --
 
 CREATE TABLE `titik_rawan` (
-  `id_titik_rawan` int(11) NOT NULL,
-  `img_titik_rawan` varchar(50) DEFAULT NULL,
-  `nama_jalan_rawan` varchar(100) DEFAULT NULL,
-  `solusi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_titik_rawan` int NOT NULL,
+  `img_titik_rawan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `black_spot` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_jalan_rawan` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `solusi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `titik_rawan`
 --
 
-INSERT INTO `titik_rawan` (`id_titik_rawan`, `img_titik_rawan`, `nama_jalan_rawan`, `solusi`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'undefined', '', '2024-07-02 07:25:35', '2024-07-02 07:25:35'),
-(39, '494539773.jpeg', 'JL ELTARI', 'kurangi kecepatan  pada jalan ini  pengendara di harapkan tidak melampaui batas kecepatan yang ada', '2024-06-15 03:55:09', '2024-06-15 03:55:09'),
-(41, '661680781.jpeg', 'JL PIET A TALLO', 'harap mengurangi kecepatan bagi pengguna jalan karena adanya perbaikan jalan', '2024-06-15 03:58:24', '2024-06-15 03:58:24'),
-(42, '3592863832.jpeg', 'JL JEND SUDIRMAN', 'di jalan ini selalu ramai karena banyaknya aktifitas diharapkan kepada pengendara untuk mengurangi kecepatan', '2024-06-15 03:58:58', '2024-06-15 03:58:58'),
-(43, '2756805072.jpeg', 'JL FRANS SEDA', 'kurangi kecepatan  pada jalan ini  pengendara di harapkan tidak melampaui batas kecepatan yang ada', '2024-06-15 03:59:40', '2024-06-15 03:59:40'),
-(44, '1913152205.jpeg', 'JL ADI SUCIPTO', 'di jalan ini terdapat beberapa tikungan tajam sehingga para pengendara diharapkan untuk mengurangi kecepatan', '2024-06-15 04:00:09', '2024-06-15 04:00:09'),
-(45, '2263568875.jpeg', 'JL PAHLAWAN', 'jalan ini sering di lalui truk bermuatan berat, diharapkan pengguna jalan lain dapat berhati-hati dalam berkendara', '2024-06-15 04:00:37', '2024-06-15 04:00:37'),
-(46, '583398270.jpeg', 'JL H R KOROH', 'para pengendara di harapkan berhati-hati karena di jalan ini sering dilintasi hewan milik Masyarakat setempat', '2024-06-15 04:01:09', '2024-06-15 04:01:09'),
-(48, '3408130272.jpeg', 'JL YOS SURDASO', 'di jalan ini terdapat turunan disertai tikungan tajam diharapkan pengguna jalan tetap focus dalam berkendara', '2024-06-15 04:02:17', '2024-06-15 04:02:17'),
-(50, '3919126747.jpeg', 'JL W J LALAMENTIK', 'di jalan ini selalu ramai karena banyaknya aktifitas diharapkan kepada pengendara untuk mengurangi kecepatan', '2024-06-15 04:03:39', '2024-06-15 04:03:39'),
-(51, '3962347816.jpeg', 'JL JALUR 40', 'minimnya Cahaya dijalan ini dapat berpengaruh pada pengguna jalan, di harapkan kepada pengendara agar tetap waspada  melewati jalan ini', '2024-06-15 04:04:10', '2024-06-15 04:04:10'),
-(52, '1353888502.jpeg', 'JL JEND SOEHARTO', 'di jalan ini selalu ramai karena merupakan pusat kota diharapkan kepada pengendara untuk mengurangi kecepatan\\r\\n', '2024-06-15 04:04:43', '2024-06-15 04:04:43'),
-(57, '2616090963.jpeg', 'JL AHMAD YANI', 'banyaknya pejalan kaki di jalan ini, diharapkan pengendara lebih focus dan berhati-hati melewati jalan ini\\r\\n', '2024-07-06 20:02:27', '2024-07-06 20:02:27'),
-(58, '1303872078.jpeg', 'JL TIMOR RAYA', 'tumpahan oli sering terjadi di jalan ini, di harapkan kepada pengguna  jalan agar berhati hati di jalan ini', '2024-07-06 20:02:55', '2024-07-06 20:02:55'),
-(59, '1863144053.jpeg', 'JL CAK DOKO', 'banjir yang terjadi di jalan ini mengakibatkan sulitnya akses bagi pengendara, di harapkan pengendara lebih berhati-hati pada saat melewati jalan ini', '2024-07-06 20:03:33', '2024-07-06 20:03:33'),
-(60, '3109335400.jpeg', 'JL M PRAJA', 'jalan ini tidak memiliki rambu lalu lintas. Pengguna diharapkan lebih focus dalam berkendara', '2024-07-06 20:04:03', '2024-07-06 20:04:03');
+INSERT INTO `titik_rawan` (`id_titik_rawan`, `img_titik_rawan`, `black_spot`, `deskripsi`, `nama_jalan_rawan`, `solusi`, `created_at`, `updated_at`) VALUES
+(1, NULL, '', '', 'undefined', '', '2024-07-02 07:25:35', '2024-07-02 07:25:35'),
+(39, '494539773.jpeg', 'black_spot_1437853485.jpg', 'tes', 'JL ELTARI', 'kurangi kecepatan  pada jalan ini  pengendara di harapkan tidak melampaui batas kecepatan yang ada', '2024-06-15 03:55:09', '2024-06-15 03:55:09'),
+(41, '661680781.jpeg', '', '', 'JL PIET A TALLO', 'harap mengurangi kecepatan bagi pengguna jalan karena adanya perbaikan jalan', '2024-06-15 03:58:24', '2024-06-15 03:58:24'),
+(42, '3592863832.jpeg', '', '', 'JL JEND SUDIRMAN', 'di jalan ini selalu ramai karena banyaknya aktifitas diharapkan kepada pengendara untuk mengurangi kecepatan', '2024-06-15 03:58:58', '2024-06-15 03:58:58'),
+(43, '2756805072.jpeg', '', '', 'JL FRANS SEDA', 'kurangi kecepatan  pada jalan ini  pengendara di harapkan tidak melampaui batas kecepatan yang ada', '2024-06-15 03:59:40', '2024-06-15 03:59:40'),
+(44, '1913152205.jpeg', '', '', 'JL ADI SUCIPTO', 'di jalan ini terdapat beberapa tikungan tajam sehingga para pengendara diharapkan untuk mengurangi kecepatan', '2024-06-15 04:00:09', '2024-06-15 04:00:09'),
+(45, '2263568875.jpeg', '', '', 'JL PAHLAWAN', 'jalan ini sering di lalui truk bermuatan berat, diharapkan pengguna jalan lain dapat berhati-hati dalam berkendara', '2024-06-15 04:00:37', '2024-06-15 04:00:37'),
+(46, '583398270.jpeg', '', '', 'JL H R KOROH', 'para pengendara di harapkan berhati-hati karena di jalan ini sering dilintasi hewan milik Masyarakat setempat', '2024-06-15 04:01:09', '2024-06-15 04:01:09'),
+(48, '3408130272.jpeg', '', '', 'JL YOS SURDASO', 'di jalan ini terdapat turunan disertai tikungan tajam diharapkan pengguna jalan tetap focus dalam berkendara', '2024-06-15 04:02:17', '2024-06-15 04:02:17'),
+(50, '3919126747.jpeg', '', '', 'JL W J LALAMENTIK', 'di jalan ini selalu ramai karena banyaknya aktifitas diharapkan kepada pengendara untuk mengurangi kecepatan', '2024-06-15 04:03:39', '2024-06-15 04:03:39'),
+(51, '3962347816.jpeg', '', '', 'JL JALUR 40', 'minimnya Cahaya dijalan ini dapat berpengaruh pada pengguna jalan, di harapkan kepada pengendara agar tetap waspada  melewati jalan ini', '2024-06-15 04:04:10', '2024-06-15 04:04:10'),
+(52, '1353888502.jpeg', '', '', 'JL JEND SOEHARTO', 'di jalan ini selalu ramai karena merupakan pusat kota diharapkan kepada pengendara untuk mengurangi kecepatan\\r\\n', '2024-06-15 04:04:43', '2024-06-15 04:04:43'),
+(57, '2616090963.jpeg', '', '', 'JL AHMAD YANI', 'banyaknya pejalan kaki di jalan ini, diharapkan pengendara lebih focus dan berhati-hati melewati jalan ini', '2024-07-06 20:02:27', '2024-07-06 20:02:27'),
+(58, '1303872078.jpeg', '', '', 'JL TIMOR RAYA', 'tumpahan oli sering terjadi di jalan ini, di harapkan kepada pengguna  jalan agar berhati hati di jalan ini', '2024-07-06 20:02:55', '2024-07-06 20:02:55'),
+(59, '1863144053.jpeg', '', '', 'JL CAK DOKO', 'banjir yang terjadi di jalan ini mengakibatkan sulitnya akses bagi pengendara, di harapkan pengendara lebih berhati-hati pada saat melewati jalan ini', '2024-07-06 20:03:33', '2024-07-06 20:03:33'),
+(60, '3109335400.jpeg', '', '', 'JL M PRAJA', 'jalan ini tidak memiliki rambu lalu lintas. Pengguna diharapkan lebih focus dalam berkendara', '2024-07-06 20:04:03', '2024-07-06 20:04:03'),
+(75, '1850990331.jpg', 'black_spot_703833131.jpg', '', 'TES', 'tes', '2024-07-23 06:13:14', '2024-07-23 06:13:14');
 
 -- --------------------------------------------------------
 
@@ -719,17 +722,17 @@ INSERT INTO `titik_rawan` (`id_titik_rawan`, `img_titik_rawan`, `nama_jalan_rawa
 --
 
 CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL,
-  `id_role` int(11) DEFAULT 3,
-  `id_active` int(11) DEFAULT 2,
-  `en_user` varchar(75) DEFAULT NULL,
-  `token` char(6) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `image` varchar(100) DEFAULT 'default.svg',
-  `email` varchar(75) DEFAULT NULL,
-  `password` varchar(75) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp()
+  `id_user` int NOT NULL,
+  `id_role` int DEFAULT '3',
+  `id_active` int DEFAULT '2',
+  `en_user` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `token` char(6) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `image` varchar(100) COLLATE utf8mb4_general_ci DEFAULT 'default.svg',
+  `email` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `password` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -751,9 +754,9 @@ INSERT INTO `users` (`id_user`, `id_role`, `id_active`, `en_user`, `token`, `nam
 --
 
 CREATE TABLE `user_access_menu` (
-  `id_access_menu` int(11) NOT NULL,
-  `id_role` int(11) DEFAULT NULL,
-  `id_menu` int(11) DEFAULT NULL
+  `id_access_menu` int NOT NULL,
+  `id_role` int DEFAULT NULL,
+  `id_menu` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -771,9 +774,9 @@ INSERT INTO `user_access_menu` (`id_access_menu`, `id_role`, `id_menu`) VALUES
 --
 
 CREATE TABLE `user_access_sub_menu` (
-  `id_access_sub_menu` int(11) NOT NULL,
-  `id_role` int(11) DEFAULT NULL,
-  `id_sub_menu` int(11) DEFAULT NULL
+  `id_access_sub_menu` int NOT NULL,
+  `id_role` int DEFAULT NULL,
+  `id_sub_menu` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -813,8 +816,8 @@ INSERT INTO `user_access_sub_menu` (`id_access_sub_menu`, `id_role`, `id_sub_men
 --
 
 CREATE TABLE `user_menu` (
-  `id_menu` int(11) NOT NULL,
-  `menu` varchar(50) DEFAULT NULL
+  `id_menu` int NOT NULL,
+  `menu` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -835,8 +838,8 @@ INSERT INTO `user_menu` (`id_menu`, `menu`) VALUES
 --
 
 CREATE TABLE `user_role` (
-  `id_role` int(11) NOT NULL,
-  `role` varchar(35) DEFAULT NULL
+  `id_role` int NOT NULL,
+  `role` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -855,8 +858,8 @@ INSERT INTO `user_role` (`id_role`, `role`) VALUES
 --
 
 CREATE TABLE `user_status` (
-  `id_status` int(11) NOT NULL,
-  `status` varchar(35) DEFAULT NULL
+  `id_status` int NOT NULL,
+  `status` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -874,12 +877,12 @@ INSERT INTO `user_status` (`id_status`, `status`) VALUES
 --
 
 CREATE TABLE `user_sub_menu` (
-  `id_sub_menu` int(11) NOT NULL,
-  `id_menu` int(11) DEFAULT NULL,
-  `id_active` int(11) DEFAULT 2,
-  `title` varchar(50) DEFAULT NULL,
-  `url` varchar(50) DEFAULT NULL,
-  `icon` varchar(50) DEFAULT NULL
+  `id_sub_menu` int NOT NULL,
+  `id_menu` int DEFAULT NULL,
+  `id_active` int DEFAULT '2',
+  `title` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `url` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `icon` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -919,11 +922,11 @@ INSERT INTO `user_sub_menu` (`id_sub_menu`, `id_menu`, `id_active`, `title`, `ur
 --
 
 CREATE TABLE `visi_misi` (
-  `id_vm` int(11) NOT NULL,
-  `img_vm` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_vm` int NOT NULL,
+  `img_vm` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1122,157 +1125,157 @@ ALTER TABLE `visi_misi`
 -- AUTO_INCREMENT untuk tabel `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `cuaca`
 --
 ALTER TABLE `cuaca`
-  MODIFY `id_cuaca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cuaca` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `fungsi_jalan`
 --
 ALTER TABLE `fungsi_jalan`
-  MODIFY `id_fungsi_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_fungsi_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `informasi_khusus`
 --
 ALTER TABLE `informasi_khusus`
-  MODIFY `id_informasi_khusus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_informasi_khusus` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `kecelakaan_menonjol`
 --
 ALTER TABLE `kecelakaan_menonjol`
-  MODIFY `id_kecelakaan_menonjol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kecelakaan_menonjol` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas_jalan`
 --
 ALTER TABLE `kelas_jalan`
-  MODIFY `id_kelas_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kelas_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kemiringan_jalan`
 --
 ALTER TABLE `kemiringan_jalan`
-  MODIFY `id_kemiringan_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kemiringan_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kondisi_cahaya`
 --
 ALTER TABLE `kondisi_cahaya`
-  MODIFY `id_kondisi_cahaya` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kondisi_cahaya` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kontak`
 --
 ALTER TABLE `kontak`
-  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_kontak` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `laka`
 --
 ALTER TABLE `laka`
-  MODIFY `id_laka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=438;
+  MODIFY `id_laka` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=446;
 
 --
 -- AUTO_INCREMENT untuk tabel `permukaan_jalan`
 --
 ALTER TABLE `permukaan_jalan`
-  MODIFY `id_permukaan_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_permukaan_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesan_kapolri`
 --
 ALTER TABLE `pesan_kapolri`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pesan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `polres`
 --
 ALTER TABLE `polres`
-  MODIFY `id_polres` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_polres` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `sejarah`
 --
 ALTER TABLE `sejarah`
-  MODIFY `id_sejarah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_sejarah` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `status_jalan`
 --
 ALTER TABLE `status_jalan`
-  MODIFY `id_status_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_status_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tingkat_kecelakaan`
 --
 ALTER TABLE `tingkat_kecelakaan`
-  MODIFY `id_tingkat_kecelakaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_tingkat_kecelakaan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tipe_jalan`
 --
 ALTER TABLE `tipe_jalan`
-  MODIFY `id_tipe_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_tipe_jalan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `titik_rawan`
 --
 ALTER TABLE `titik_rawan`
-  MODIFY `id_titik_rawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_titik_rawan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id_access_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_access_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_sub_menu`
 --
 ALTER TABLE `user_access_sub_menu`
-  MODIFY `id_access_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_access_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_role` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_status`
 --
 ALTER TABLE `user_status`
-  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_status` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `visi_misi`
 --
 ALTER TABLE `visi_misi`
-  MODIFY `id_vm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_vm` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -1282,39 +1285,39 @@ ALTER TABLE `visi_misi`
 -- Ketidakleluasaan untuk tabel `laka`
 --
 ALTER TABLE `laka`
-  ADD CONSTRAINT `laka_ibfk_1` FOREIGN KEY (`id_informasi_khusus`) REFERENCES `informasi_khusus` (`id_informasi_khusus`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_10` FOREIGN KEY (`id_kemiringan_jalan`) REFERENCES `kemiringan_jalan` (`id_kemiringan_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_11` FOREIGN KEY (`id_status_jalan`) REFERENCES `status_jalan` (`id_status_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_1` FOREIGN KEY (`id_informasi_khusus`) REFERENCES `informasi_khusus` (`id_informasi_khusus`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_10` FOREIGN KEY (`id_kemiringan_jalan`) REFERENCES `kemiringan_jalan` (`id_kemiringan_jalan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_11` FOREIGN KEY (`id_status_jalan`) REFERENCES `status_jalan` (`id_status_jalan`) ON UPDATE CASCADE,
   ADD CONSTRAINT `laka_ibfk_12` FOREIGN KEY (`id_polres`) REFERENCES `polres` (`id_polres`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `laka_ibfk_13` FOREIGN KEY (`id_titik_rawan`) REFERENCES `titik_rawan` (`id_titik_rawan`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_2` FOREIGN KEY (`id_kondisi_cahaya`) REFERENCES `kondisi_cahaya` (`id_kondisi_cahaya`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_3` FOREIGN KEY (`id_cuaca`) REFERENCES `cuaca` (`id_cuaca`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_4` FOREIGN KEY (`id_tingkat_kecelakaan`) REFERENCES `tingkat_kecelakaan` (`id_tingkat_kecelakaan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_5` FOREIGN KEY (`id_kecelakaan_menonjol`) REFERENCES `kecelakaan_menonjol` (`id_kecelakaan_menonjol`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_6` FOREIGN KEY (`id_fungsi_jalan`) REFERENCES `fungsi_jalan` (`id_fungsi_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_7` FOREIGN KEY (`id_kelas_jalan`) REFERENCES `kelas_jalan` (`id_kelas_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_8` FOREIGN KEY (`id_tipe_jalan`) REFERENCES `tipe_jalan` (`id_tipe_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `laka_ibfk_9` FOREIGN KEY (`id_permukaan_jalan`) REFERENCES `permukaan_jalan` (`id_permukaan_jalan`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `laka_ibfk_2` FOREIGN KEY (`id_kondisi_cahaya`) REFERENCES `kondisi_cahaya` (`id_kondisi_cahaya`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_3` FOREIGN KEY (`id_cuaca`) REFERENCES `cuaca` (`id_cuaca`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_4` FOREIGN KEY (`id_tingkat_kecelakaan`) REFERENCES `tingkat_kecelakaan` (`id_tingkat_kecelakaan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_5` FOREIGN KEY (`id_kecelakaan_menonjol`) REFERENCES `kecelakaan_menonjol` (`id_kecelakaan_menonjol`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_6` FOREIGN KEY (`id_fungsi_jalan`) REFERENCES `fungsi_jalan` (`id_fungsi_jalan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_7` FOREIGN KEY (`id_kelas_jalan`) REFERENCES `kelas_jalan` (`id_kelas_jalan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_8` FOREIGN KEY (`id_tipe_jalan`) REFERENCES `tipe_jalan` (`id_tipe_jalan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `laka_ibfk_9` FOREIGN KEY (`id_permukaan_jalan`) REFERENCES `permukaan_jalan` (`id_permukaan_jalan`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`id_active`) REFERENCES `user_status` (`id_status`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`id_active`) REFERENCES `user_status` (`id_status`);
 
 --
 -- Ketidakleluasaan untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  ADD CONSTRAINT `user_access_menu_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_access_menu_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`),
   ADD CONSTRAINT `user_access_menu_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `user_menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `user_access_sub_menu`
 --
 ALTER TABLE `user_access_sub_menu`
-  ADD CONSTRAINT `user_access_sub_menu_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_access_sub_menu_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`),
   ADD CONSTRAINT `user_access_sub_menu_ibfk_2` FOREIGN KEY (`id_sub_menu`) REFERENCES `user_sub_menu` (`id_sub_menu`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -1322,7 +1325,7 @@ ALTER TABLE `user_access_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD CONSTRAINT `user_sub_menu_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `user_menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_sub_menu_ibfk_2` FOREIGN KEY (`id_active`) REFERENCES `user_status` (`id_status`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `user_sub_menu_ibfk_2` FOREIGN KEY (`id_active`) REFERENCES `user_status` (`id_status`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

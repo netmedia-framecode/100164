@@ -18,6 +18,7 @@ require_once("../templates/views_top.php"); ?>
           <thead>
             <tr>
               <th class="text-center">Black Spot</th>
+              <th class="text-center">Deskripsi</th>
               <th class="text-center">Nama Jalan</th>
               <th class="text-center">Solusi</th>
               <th class="text-center">Aksi</th>
@@ -26,6 +27,7 @@ require_once("../templates/views_top.php"); ?>
           <tfoot>
             <tr>
               <th class="text-center">Black Spot</th>
+              <th class="text-center">Deskripsi</th>
               <th class="text-center">Nama Jalan</th>
               <th class="text-center">Solusi</th>
               <th class="text-center">Aksi</th>
@@ -37,6 +39,7 @@ require_once("../templates/views_top.php"); ?>
                 <td>
                   <img src="../assets/img/titik_rawan/<?= $data['black_spot'] ?>" style="width: 400px;" alt="">
                 </td>
+                <td><?= $data['deskripsi'] ?></td>
                 <td>
                   <p><?= $data['nama_jalan_rawan'] ?></p>
                   <img src="../assets/img/titik_rawan/<?= $data['img_titik_rawan'] ?>" style="width: 400px;" alt="">
@@ -75,6 +78,14 @@ require_once("../templates/views_top.php"); ?>
                                 <input type="file" name="black_spot" class="custom-file-input" id="black_spot">
                                 <label class="custom-file-label" for="black_spot">Unggah File</label>
                               </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="deskripsi_black">Deskripsi</label>
+                              <textarea class="form-control" name="deskripsi_black" id="deskripsi_black" rows="3"><?php if (isset($_POST['deskripsi'])) {
+                                                                                                  echo $_POST['deskripsi'];
+                                                                                                } else {
+                                                                                                  echo $data['deskripsi'];
+                                                                                                } ?></textarea>
                             </div>
                             <div class="form-group">
                               <label for="img_titik_rawan">Gambar Titik Rawan Kecelakaan</label>
@@ -151,18 +162,18 @@ require_once("../templates/views_top.php"); ?>
             <div class="form-group">
               <label for="black_spot">Gambar Black Spot Kecelakaan</label>
               <div class="custom-file">
-                <input type="file" name="black_spot" class="custom-file-input" id="black_spot" <?php if (!isset($_POST['ubah-titik-rawan'])) {
-                                                                                                            echo " required";
-                                                                                                          } ?>>
+                <input type="file" name="black_spot" class="custom-file-input" id="black_spot" required>
                 <label class="custom-file-label" for="black_spot">Unggah File</label>
               </div>
             </div>
             <div class="form-group">
+              <label for="deskripsi_black">Deskripsi</label>
+              <textarea class="form-control" name="deskripsi_black" id="deskripsi_black" rows="3"></textarea>
+            </div>
+            <div class="form-group">
               <label for="img_titik_rawan">Gambar Titik Rawan Kecelakaan</label>
               <div class="custom-file">
-                <input type="file" name="img_titik_rawan" class="custom-file-input" id="img_titik_rawan" <?php if (!isset($_POST['ubah-titik-rawan'])) {
-                                                                                                            echo " required";
-                                                                                                          } ?>>
+                <input type="file" name="img_titik_rawan" class="custom-file-input" id="img_titik_rawan" required>
                 <label class="custom-file-label" for="img_titik_rawan">Unggah File</label>
               </div>
             </div>

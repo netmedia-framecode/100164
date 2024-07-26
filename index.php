@@ -86,9 +86,6 @@ $_SESSION["project_gis_korlantas"]["name_page"] = ""; ?>
 
       <section id="featured-properties" class="ts-block pt-5">
         <div class="container">
-          <div class="ts-title text-center">
-            <h2>List Polres</h2>
-          </div>
           <div class="row">
             <?php foreach ($views_polres as $data) : ?>
               <div class="col-sm-6 col-lg-4">
@@ -126,15 +123,9 @@ $_SESSION["project_gis_korlantas"]["name_page"] = ""; ?>
                       </dl>
                     </div>
                   </div>
-                  <a href="polres?id=<?= $data['id_polres'] ?>" class="card-footer">
-                    <span class="ts-btn-arrow">Detail</span>
-                  </a>
                 </div>
               </div>
             <?php endforeach; ?>
-          </div>
-          <div class="text-center mt-3">
-            <a href="polres" class="btn btn-outline-dark ts-btn-border-muted">Lihat Semua Polres</a>
           </div>
         </div>
       </section>

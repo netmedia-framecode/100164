@@ -1971,7 +1971,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
           $imageTemp = $_FILES["black_spot"]["tmp_name"];
           compressImage($imageTemp, $imageUploadPath, 75);
           $black_spot = "black_spot_". $fileName_encrypt . "." . $ekstensiGambar;
-          unlink($path . $data['black_spotnOld']);
+          unlink($path . $data['black_spotOld']);
         } else {
           $message = "Maaf, hanya file gambar JPG, JPEG, dan PNG yang diizinkan.";
           $message_type = "danger";
@@ -1979,7 +1979,7 @@ if (isset($_SESSION["project_gis_korlantas"]["users"])) {
           return false;
         }
       } else if (empty($_FILE['black_spot']["name"])) {
-        $black_spot = $data['black_spotnOld'];
+        $black_spot = $data['black_spotOld'];
       }
 
       $nama_jalan_rawan = $data['nama_jalan_rawan'];
